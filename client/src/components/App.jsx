@@ -16,7 +16,7 @@ class App extends React.Component {
 	render () {
 		return (
 			<div>
-				<h1 className={styles.testClass}>CATWALK</h1>
+				<h1 className={AppStyle.testClass}>CATWALK</h1>
 				<RelatedProduct /*props={this.state}*/ />
 			</div>
 		);
