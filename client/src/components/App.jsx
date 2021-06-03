@@ -1,6 +1,10 @@
+// Imports
+import ReactDOM from 'react-dom'
 import React from 'react'
 
-import styles from './app.css'
+// Styles
+import AppStyle from '../styles/app.css'
+
 
 /* ** IMPORT COMPONENT FILES ** */
 import RelatedProduct from './RelatedProduct.jsx';
