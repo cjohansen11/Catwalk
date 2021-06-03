@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Frontend Capstone Project - Hack Reactor",
   "scripts": {
-    "build": "webpack",
-    "react:dev": "npx webpack serve --liveReload --mode='development' -o './client/dist'"
+    "build": "webpack --watch",
+    "react:dev": "npx webpack serve --liveReload --mode='development' -o './client/dist'",
+    "start": "nodemon ./server/index.js"
+
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,9 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "express": "^4.17.1",
     "lodash": "^4.17.21",
+    "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
