@@ -22,6 +22,7 @@ class App extends React.Component {
 
 				<h1 className={AppStyle.testClass}>CATWALK</h1>
 				<Overview/>
+
 				<RelatedProduct /*props={this.state}*/ />
 			</div>
 
