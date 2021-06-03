@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './app.css'
+
 
 class Overview extends React.Component {
 	constructor (props) {
@@ -13,7 +13,7 @@ class Overview extends React.Component {
 	render () {
 		return (
 			<div>
-				<h4>Overview</h4>
+				<h1>Overview</h1>
 			</div>
 		);
 	}
