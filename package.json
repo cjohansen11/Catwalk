@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Frontend Capstone Project - Hack Reactor",
   "scripts": {
-    "build": "webpack --watch",
-    "react:dev": "npx webpack serve --liveReload --mode='development' -o './client/dist'",
+    "build": "webpack",
+    "watch": " webpack --watch",
     "start": "nodemon ./server/index.js"
 
   },

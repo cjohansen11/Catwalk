@@ -1,4 +1,6 @@
-
-/node_modules
-/client/dist
-package-lock.json
+app.bundle.js
+client/dist/app.bundle.js
+*.log
+node_modules
+bower_components
+.DS_Store
