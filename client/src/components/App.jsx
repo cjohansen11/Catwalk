@@ -1,10 +1,13 @@
-// Imports 
+// Imports
 import ReactDOM from 'react-dom'
 import React from 'react'
 
 // Styles
 import AppStyle from '../styles/app.css'
 
+
+/* ** IMPORT COMPONENT FILES ** */
+import RelatedProduct from './RelatedProduct.jsx';
 
 class App extends React.Component {
 	constructor (props) {
@@ -13,7 +16,8 @@ class App extends React.Component {
 	render () {
 		return (
 			<div>
-				<h1 className={AppStyle.test}>CATWALK</h1>
+				<h1 className={AppStyle.testClass}>CATWALK</h1>
+				<RelatedProduct /*props={this.state}*/ />
 			</div>
 		);
 	}

@@ -6,7 +6,6 @@
     "build": "webpack",
     "watch": " webpack --watch",
     "start": "nodemon ./server/index.js"
-
   },
   "repository": {
     "type": "git",
