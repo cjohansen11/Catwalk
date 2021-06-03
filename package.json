@@ -6,7 +6,6 @@
     "build": "webpack --watch",
     "react:dev": "npx webpack serve --liveReload --mode='development' -o './client/dist'",
     "start": "nodemon ./server/index.js"
-
   },
   "repository": {
     "type": "git",
