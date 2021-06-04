@@ -10,31 +10,38 @@ import RelatedStyles from '../../styles/relatedProducts.css';
 const RelatedProduct = () => {
 
   /* ** STATE FOR DUMMY_DATA ** */
-  const [featuredProduct, setFeaturedProduct] = useState(dummy.mainProduct); // Object
-  const [relatedProducts, setRelatedProducts] = useState(dummy.related); // Array
-  const [relatedProductList, setRelatedProductList] = useState(dummy.relatedProductList); // Array of Objects
+  const [featuredProduct, setFeaturedProduct] = useState({}); // Object
+  const [relatedProducts, setRelatedProducts] = useState([]); // Array
+  const [relatedProductList, setRelatedProductList] = useState([]); // Array of Objects
 
-  const headers = {
-    'User-Agent': 'request',
-    'Authorization': `Basic ${GIT_TOKEN}`
+  let options = (path, id, params) => {
+    return {
+      method: 'get',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/${path}/${id}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${GIT_TOKEN}`
+      }
+    };
   };
 
-  const options = {
-    method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19091',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `${GIT_TOKEN}`
-    }
+  const getFeaturedProduct = (path, id, params) => {
+    axios(options(path, id, params))
+      .then(res => {
+        setFeaturedProduct(res.data);
+      });
   };
 
-  const getFeaturedProduct = () => axios(options)
-    .then(res => {
-      setFeaturedProduct(res.data);
-    });
+  const getRelatedProducts = (path, id, params) => {
+    axios(options(path, id, params))
+      .then(res => {
+        setRelatedProducts(res.data);
+      });
+  };
 
   useEffect(() => {
-    getFeaturedProduct;
+    getFeaturedProduct('products', 19091);
+    // getRelatedProducts('products', featuredProduct.id);
   }, []);
 
   return (
