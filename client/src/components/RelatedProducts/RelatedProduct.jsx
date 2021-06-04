@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react';
 /* ** IMPORT TEST DATA ** */
 import dummy from '../../../../dummy_data/related_product.js';
 
+/* ** IMPORT STYLESHEET ** */
+import RelatedStyles from '../../styles/relatedProducts.css';
+
 const RelatedProduct = () => {
   return (
     <div>
       {console.log(dummy.mainProduct)}
-      <h2>Welcome to the Related Products section</h2>
+      <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
       <h2>Welcome to the Your Outfit section</h2>
     </div>
   );
