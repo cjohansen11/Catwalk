@@ -1,33 +1,31 @@
-// Imports
-import ReactDOM from 'react-dom'
-import React from 'react'
+// Imports 
+import React from 'react';
 
 // Styles
-import AppStyle from '../styles/app.css'
-
+import AppStyle from '../styles/app.css';
 
 /* ** IMPORT COMPONENT FILES ** */
-import RelatedProduct from './RelatedProduct.jsx';
-
-import Overview from './Overview.jsx'
+import Overview from './Overview/Overview.jsx';
+import RelatedProduct from './RelatedProducts/RelatedProduct.jsx';
 
 class App extends React.Component {
-	constructor (props) {
-		super(props)
-	}
-	render () {
-		return (
-			<div>
+  constructor (props) {
+    super(props);
+    this.state = {
 
+    };
+  }
+  render () {
+    return (
+      <div>
+        <h1 className={AppStyle.testClass}>CATWALK</h1>
+        <Overview/>
 
-				<h1 className={AppStyle.testClass}>CATWALK</h1>
-				<Overview/>
+        <RelatedProduct /*props={this.state}*/ />
+      </div>
 
-				<RelatedProduct /*props={this.state}*/ />
-			</div>
-
-		);
-	}
+    );
+  }
 }
 
-export default App
+export default App;
