@@ -10,6 +10,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<h1 className={styles.testClass}>CATWALK</h1>
+				<RelatedProduct props={this.state} />
 			</div>
 		);
 	}
