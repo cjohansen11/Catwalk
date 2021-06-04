@@ -13,13 +13,14 @@ const RelatedProduct = () => {
   /* ** STATE FOR DUMMY_DATA ** */
   const [featuredProduct, setFeaturedProduct] = useState(dummy.mainProduct); // Object
   const [relatedProducts, setRelatedProducts] = useState(dummy.related); // Array
-  // dummy[dummy.related[2]] -- Product data for product from relatedProduct list
+  const [relatedProductList, setRelatedProductList] = useState(dummy.relatedProductList); // Array of Objects
 
   return (
     <div>
-      {console.log(dummy[dummy.related[2]])}
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
-      <ProductCard />
+      {relatedProductList.map(product => {
+        return <ProductCard key={product.id} product={product} />;
+      })}
       <h2>Welcome to the Your Outfit section</h2>
       <ProductCard />
     </div>

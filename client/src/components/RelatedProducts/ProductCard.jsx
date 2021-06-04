@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 /* ** IMPORT CHILD COMPONENT(s) ** */
 import PreviewImage from './PreviewImage.jsx';
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
     <div className="productCard">
       <PreviewImage />
