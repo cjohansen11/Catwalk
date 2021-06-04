@@ -1,6 +1,8 @@
-app.bundle.js
-client/dist/app.bundle.js
-*.log
+# Folders
+.DS_Store
 node_modules
 bower_components
-.DS_Store
+
+# Files
+*.log
+client/dist/app.bundle.js
