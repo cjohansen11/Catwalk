@@ -6,11 +6,12 @@ import PreviewImage from './PreviewImage.jsx';
 const ProductCard = ({ product }) => {
   return (
     <div className="productCard">
+      {console.log('product in card', product.name)}
       <PreviewImage />
-      <h4 className="productName">Product Name</h4>
-      <h5 className="productCategory">Category</h5>
+      <h4 className="productName">{product.name}</h4>
+      <h5 className="productCategory">{product.category}</h5>
       <h5 className="productRating">Rating: ****</h5>
-      <h5 className="productPrice">Price</h5>
+      <h5 className="productPrice">{product.price}</h5>
     </div>
   );
 };
