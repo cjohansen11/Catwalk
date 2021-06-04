@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Frontend Capstone Project - Hack Reactor",
   "scripts": {
+    "lint": "eslint",
     "build": "webpack",
     "watch": " webpack --watch",
-    "start": "nodemon ./server/index.js"
+    "start": "nodemon ./server/index.js",
+    "test": "jest --watchAll --env=jsdom"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.7",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
@@ -28,6 +31,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-react": "^7.24.0",
     "eslint-webpack-plugin": "^2.5.4",
+    "jest": "^27.0.4",
     "style-loader": "^2.0.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0",

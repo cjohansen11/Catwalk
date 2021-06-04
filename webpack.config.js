@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+const ESLintConfig = {
+	extensions: ['js', 'jsx']
+};
 
 const config = {
 	entry: {
@@ -37,9 +40,7 @@ const config = {
 		]
 	},
 	plugins: [
-		new ESLintPlugin({
-			extensions: ['js', 'jsx']
-		})
+		new ESLintPlugin(ESLintConfig)
 	],
 	output: {
 		path: path.resolve(__dirname, './client/dist'),
