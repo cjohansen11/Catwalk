@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-/* ** IMPORT TEST DATA ** */
+/* ** IMPORTS ** */
 import dummy from '../../../../dummy_data/related_product.js';
-
-/* ** IMPORT CHILD COMPONENT ** */
+import GIT_TOKEN from './config.js';
 import ProductCard from './ProductCard.jsx';
-
-/* ** IMPORT STYLESHEET ** */
 import RelatedStyles from '../../styles/relatedProducts.css';
 
 const RelatedProduct = () => {
@@ -17,6 +14,7 @@ const RelatedProduct = () => {
 
   return (
     <div>
+      {console.log(GIT_TOKEN)}
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
       {relatedProductList.map(product => {
         return <ProductCard key={product.id} product={product} />;
