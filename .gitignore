@@ -6,3 +6,4 @@ bower_components
 # Files
 *.log
 client/dist/app.bundle.js
+client/components/Overview/config.js
