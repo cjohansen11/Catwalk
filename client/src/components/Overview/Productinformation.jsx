@@ -25,7 +25,7 @@ class Productinformation extends React.Component {
 
   componentDidMount() {
 
-  axios(this.options)
+    axios(this.options)
       .then((data) => {
         console.log('this is the data', data.data);
         this.setState({
