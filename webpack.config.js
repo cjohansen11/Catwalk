@@ -52,7 +52,7 @@ module.exports = (env, argv) => {
 	if (argv.mode === 'production')
 		config['mode'] = 'production'
 
-	else 
+	else
 		config['mode'] = 'development'
 
 	return config
