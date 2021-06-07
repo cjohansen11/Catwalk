@@ -6,9 +6,13 @@ import '../../styles/relatedProducts.css';
 const Carousel = ({ relatedProductList }) => {
   const [count, setCount] = useState(0);
 
-  const testFunc = () => {
-    let classes = document.getElementsByClassName('container');
-    console.log(classes);
+  const handleNextClick = () => {
+    let eachCard = Array.from(document.getElementsByClassName('productCard'));
+
+    eachCard.forEach(card => {
+      card.style.transform = 'translateX(-200px)';
+      console.log(card.style.transform);
+    });
   };
 
   return (
@@ -19,7 +23,7 @@ const Carousel = ({ relatedProductList }) => {
       {relatedProductList.map(product => {
         return <ProductCard key={product.details.id} product={{product}} />;
       })}
-      <div className={`${'right_arrow_box'}`}>
+      <div className={`${'right_arrow_box'}`} onClick={() => handleNextClick()}>
         <div className={`${'right_arrow'}`}>❯</div>
       </div>
     </div>
