@@ -3,8 +3,45 @@
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1;
-  grid-gap: 20px;
+  position: relative;
+  width: 800px;
+  height: 320px;
+  display: flex;
+  overflow-x: hidden;
+  column-gap: 30px;
+  margin: auto;
+}
+
+.right_arrow_box {
+  position: absolute;
+  right: 0px;
+  height: 320px;
+  width: 30px;
+  backdrop-filter: blur(4px);
+}
+
+.right_arrow {
+  font-size: 60px;
+  vertical-align: middle;
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  z-index: 6;
+}
+
+.left_arrow_box {
+  position: absolute;
+  left: 0px;
+  height: 320px;
+  width: 30px;
+  backdrop-filter: blur(4px);
+}
+
+.left_arrow {
+  font-size: 60px;
+  vertical-align: middle;
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  z-index: 6;
 }

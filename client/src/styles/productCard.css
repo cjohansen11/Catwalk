@@ -1,4 +1,5 @@
 .productCard {
+  border: 1px solid black;
   width: 250px;
   height: 300px;
   display: grid;
@@ -22,6 +23,7 @@
 }
 
 .productName {
+  text-align: center;
   grid-area: productName;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -31,6 +33,7 @@
 }
 
 .productCategory {
+  font-weight: 100;
   grid-area: category;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -57,3 +60,13 @@
   margin: auto;
 }
 
+.actionButton {
+  font-size: 30px;
+  color: black;
+  font-weight: 800;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin: 2px 0px 0px 75px;
+}
