@@ -1,4 +1,4 @@
-// Imports 
+// Imports
 import React from 'react';
 
 // Styles
@@ -20,7 +20,6 @@ class App extends React.Component {
       <div>
         <h1 className={AppStyle.testClass}>CATWALK</h1>
         <Overview/>
-
         <RelatedProduct /*props={this.state}*/ />
       </div>
 
