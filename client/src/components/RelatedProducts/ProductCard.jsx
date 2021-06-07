@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-/* ** IMPORT CHILD COMPONENT(s) ** */
+/* ** IMPORT COMPONENT(s) ** */
 import PreviewImage from './PreviewImage.jsx';
+import CardStyles from '../../styles/productCard.css';
 
 const ProductCard = ({ product }) => {
   product = product.product;
@@ -15,14 +16,15 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="productCard">
-      <img src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
-      <h4 className="productName">{product.details.name}</h4>
-      <h5 className="productCategory">{product.details.category}</h5>
-      <h5 className="productRating">{rating}</h5>
-      <h5 className="productPrice">{product.details.default_price}</h5>
+    <div className={CardStyles.productCard}>
+      <img className={CardStyles.image} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
+      <h5 className={CardStyles.productName}>{product.details.name}</h5>
+      <h5 className={CardStyles.productCategory}>{product.details.category}</h5>
+      <h5 className={CardStyles.productRating}>*****</h5>
+      <h5 className={CardStyles.productPrice}>{product.details.default_price}</h5>
     </div>
   );
 };
 
 export default ProductCard;
+

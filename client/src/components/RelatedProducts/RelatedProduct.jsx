@@ -98,18 +98,20 @@ const RelatedProduct = () => {
     getRelatedProductsList();
   }, [relatedProducts]);
 
-  if (!relatedProductList.length) {
-    return (
-      <h1>Still Loading...</h1>
-    );
-  }
+  // if (!relatedProductList.length) {
+  //   return (
+  //     <h1>Still Loading...</h1>
+  //   );
+  // }
 
   return (
     <div>
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
-      {relatedProductList.map(product => {
-        return <ProductCard key={product.details.id} product={{product}} />;
-      })}
+      <div className={RelatedStyles.container}>
+        {relatedProductList.map(product => {
+          return <ProductCard key={product.details.id} product={{product}} />;
+        })}
+      </div>
       <h2>Welcome to the Your Outfit section</h2>
       {/* <ProductCard /> */}
     </div>
