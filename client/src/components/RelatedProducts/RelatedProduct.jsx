@@ -109,7 +109,7 @@ const RelatedProduct = () => {
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
       <div className={RelatedStyles.container}>
         {relatedProductList.map(product => {
-          return <ProductCard key={product.details.id} product={{product}} />;
+          return <ProductCard className={RelatedStyles.container} key={product.details.id} product={{product}} />;
         })}
       </div>
       <h2>Welcome to the Your Outfit section</h2>
