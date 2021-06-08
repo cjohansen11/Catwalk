@@ -70,3 +70,7 @@
   grid-row-end: 2;
   margin: 2px 0px 0px 75px;
 }
+
+.currentCard {
+  transform: scale(1.05);
+}

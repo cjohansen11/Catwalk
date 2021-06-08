@@ -7,6 +7,7 @@ import '../../styles/productCard.css';
 
 const ProductCard = ({ product }) => {
   product = product.product;
+  const [currentCard, setCurrentCard] = useState(false);
 
   /* ** THIS NEEDS WORK ** */
   // let rating;
@@ -17,7 +18,10 @@ const ProductCard = ({ product }) => {
   // }
 
   return (
-    <div className={'productCard'}>
+    <div className={`${'productCard'}
+    ${currentCard ? 'currentCard' : ''}`}
+    onMouseEnter={() => setCurrentCard(true)}
+    onMouseLeave={() => setCurrentCard(false)}>
       <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
       <h5 className={'productName'}>{product.details.name}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
