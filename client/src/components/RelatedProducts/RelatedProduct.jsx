@@ -10,12 +10,13 @@ import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
 const RelatedProduct = () => {
+  let localStorage = window.localStorage;
 
   /* ** STATE FOR DUMMY_DATA ** */
   const [featuredProduct, setFeaturedProduct] = useState({}); // Object
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
   const [relatedProductList, setRelatedProductList] = useState([]); // Array of Objects
-  const [outfitList, setOutfitList] = useState([]); // Array
+  const [outfitList, setOutfitList] = useState(JSON.parse(localStorage.getItem('myOutfit')) || []); // Array
   const [yourOutfitList, setYourOutfitList] = useState([]); // Array of Objects
 
   /* ** OPTIONS FOR AXIOS REQUESTS ** */
@@ -57,8 +58,7 @@ const RelatedProduct = () => {
   const getRelatedProductsList = (array, type) => {
     let eachProductId;
 
-    console.log('array', array, 'type', type);
-    array.length && type === 'related' ? setRelatedProductList([]) : null;
+    array.length && type === 'related' ? setRelatedProductList([]) : setYourOutfitList([]);
 
     array.forEach(product => {
       let eachProductObject = {};
@@ -96,8 +96,13 @@ const RelatedProduct = () => {
       });
   };
 
+  /* ** ADDTIONAL FUNCTIONS ** */
   const changeFeaturedProduct = (productId) => {
     getFeaturedProduct('products', productId);
+  };
+
+  const removeOutfit = (productId) => {
+    setOutfitList(outfitList.filter(item => item !== productId));
   };
 
   /* USE EFFECT CALLS ** */
@@ -111,6 +116,7 @@ const RelatedProduct = () => {
 
   useEffect(() => {
     getRelatedProductsList(outfitList, 'outfit');
+    localStorage.setItem('myOutfit', JSON.stringify(outfitList));
   }, [outfitList]);
 
   return (
@@ -118,7 +124,7 @@ const RelatedProduct = () => {
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
       <Carousel relatedProductList={relatedProductList} changeFeaturedProduct={changeFeaturedProduct} />
       <h2>Welcome to the Your Outfit section</h2>
-      <YourOutfitList  yourOutfitList={yourOutfitList} setOutfitList={setOutfitList} featuredProduct={featuredProduct} getRelatedProductsList={getRelatedProductsList} />
+      <YourOutfitList  yourOutfitList={yourOutfitList} setOutfitList={setOutfitList} featuredProduct={featuredProduct} getRelatedProductsList={getRelatedProductsList} outfitList={outfitList} removeOutfit={removeOutfit} />
     </div>
   );
 };
