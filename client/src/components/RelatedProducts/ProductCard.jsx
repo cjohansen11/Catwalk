@@ -5,7 +5,7 @@ import StarRating from './StarRating.jsx';
 import PreviewImage from './PreviewImage.jsx';
 import '../../styles/productCard.css';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, changeFeaturedProduct }) => {
   product = product.product;
   const [currentCard, setCurrentCard] = useState(false);
 
@@ -21,7 +21,8 @@ const ProductCard = ({ product }) => {
     <div className={`${'productCard'}
     ${currentCard ? 'currentCard' : ''}`}
     onMouseEnter={() => setCurrentCard(true)}
-    onMouseLeave={() => setCurrentCard(false)}>
+    onMouseLeave={() => setCurrentCard(false)}
+    onClick={() => changeFeaturedProduct(product.details.id)}>
       <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
       <h5 className={'productName'}>{product.details.name}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>

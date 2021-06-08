@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard.jsx';
 import '../../styles/relatedProducts.css';
 
-const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
+const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRelatedProductsList }) => {
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
@@ -32,13 +32,21 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
     }
   };
 
+  const handleAddToOutfit = () => {
+    setOutfitList(prev => [...prev, featuredProduct.id]);
+  };
+
   return (
     <>
       <div className={`${'left_arrow'}
       ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
       <div className={`${'container'} ${'carousel'}`}>
-        {relatedProductList.map(product => {
-          return <ProductCard key={product.details.id} product={{product}} changeFeaturedProduct={changeFeaturedProduct} />;
+        <div className={`${'productCard'} ${'add-to-outfit'}`} onClick={() => handleAddToOutfit()} >
+          <div className={'plus-sign'}>+</div>
+          <div className={'add-to-outfit-text'}>Add to Outfit</div>
+        </div>
+        {yourOutfitList.map(product => {
+          return <ProductCard key={product.details.id} product={{product}} />;
         })}
       </div>
       <div className={`${'right_arrow'}
@@ -47,4 +55,4 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
   );
 };
 
-export default Carousel;
+export default YourOutfitList;
