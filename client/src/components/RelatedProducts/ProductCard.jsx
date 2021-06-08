@@ -18,7 +18,7 @@ const ProductCard = ({ product, changeFeaturedProduct }) => {
   // }
 
   return (
-    <div className={`${'productCard'} ${'product-card-array'}
+    <div className={`${'productCard'}
     ${currentCard ? 'currentCard' : ''}`}
     onMouseEnter={() => setCurrentCard(true)}
     onMouseLeave={() => setCurrentCard(false)}

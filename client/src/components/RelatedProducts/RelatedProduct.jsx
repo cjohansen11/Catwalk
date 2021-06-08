@@ -10,13 +10,12 @@ import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
 const RelatedProduct = () => {
-  let localStorage = window.localStorage;
 
   /* ** STATE FOR DUMMY_DATA ** */
   const [featuredProduct, setFeaturedProduct] = useState({}); // Object
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
   const [relatedProductList, setRelatedProductList] = useState([]); // Array of Objects
-  const [outfitList, setOutfitList] = useState(JSON.parse(localStorage.getItem('myOutfit')) || []); // Array
+  const [outfitList, setOutfitList] = useState([]); // Array
   const [yourOutfitList, setYourOutfitList] = useState([]); // Array of Objects
 
   /* ** OPTIONS FOR AXIOS REQUESTS ** */
@@ -58,7 +57,8 @@ const RelatedProduct = () => {
   const getRelatedProductsList = (array, type) => {
     let eachProductId;
 
-    array.length && type === 'related' ? setRelatedProductList([]) : setYourOutfitList([]);
+    console.log('array', array, 'type', type);
+    array.length && type === 'related' ? setRelatedProductList([]) : null;
 
     array.forEach(product => {
       let eachProductObject = {};
@@ -71,7 +71,7 @@ const RelatedProduct = () => {
               axios(options('reviews', product))
                 .then(res => {
                   eachProductObject['reviews'] = res.data;
-                  type === 'related' ? setRelatedProductList(relatedProductList => [eachProductObject, ...relatedProductList]) : setYourOutfitList(yourOutfitList => [eachProductObject, ...yourOutfitList]);
+                  type === 'related' ? setRelatedProductList(relatedProductList => [...relatedProductList, eachProductObject]) : setYourOutfitList(prev => [...prev, eachProductObject]);
                 });
             });
         });
@@ -96,16 +96,11 @@ const RelatedProduct = () => {
       });
   };
 
-  /* ** ADDTIONAL FUNCTIONS ** */
   const changeFeaturedProduct = (productId) => {
     getFeaturedProduct('products', productId);
   };
 
-  const removeOutfit = (productId) => {
-    setOutfitList(outfitList.filter(item => item !== productId));
-  };
-
-  /* ** USE EFFECT CALLS ** */
+  /* USE EFFECT CALLS ** */
   useEffect(() => {
     getFeaturedProduct('products', 19092);
   }, []);
@@ -116,7 +111,6 @@ const RelatedProduct = () => {
 
   useEffect(() => {
     getRelatedProductsList(outfitList, 'outfit');
-    localStorage.setItem('myOutfit', JSON.stringify(outfitList));
   }, [outfitList]);
 
   return (
@@ -124,13 +118,7 @@ const RelatedProduct = () => {
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
       <Carousel relatedProductList={relatedProductList} changeFeaturedProduct={changeFeaturedProduct} />
       <h2>Welcome to the Your Outfit section</h2>
-      <YourOutfitList
-        yourOutfitList={yourOutfitList}
-        setOutfitList={setOutfitList}
-        featuredProduct={featuredProduct}
-        getRelatedProductsList={getRelatedProductsList}
-        removeOutfit={removeOutfit}
-        outfitList={outfitList} />
+      <YourOutfitList  yourOutfitList={yourOutfitList} setOutfitList={setOutfitList} featuredProduct={featuredProduct} getRelatedProductsList={getRelatedProductsList} />
     </div>
   );
 };

@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-import OutfitCard from './OutfitCard.jsx';
+import ProductCard from './ProductCard.jsx';
 import '../../styles/relatedProducts.css';
 
-const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRelatedProductsList, removeOutfit, outfitList }) => {
+const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRelatedProductsList }) => {
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
 
 
-  let outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
+  let eachCard = Array.from(document.getElementsByClassName('productCard'));
 
-  const handleNextClickOutfit = () => {
-    if (cardCount + 2 <= outfitCards.length) {
-      outfitCards.forEach(card => {
+  const handleNextClick = () => {
+    if (cardCount + 2 <= eachCard.length) {
+      eachCard.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
         card.style.transitionDuration = '0.5s';
       });
@@ -21,40 +21,36 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
     }
   };
 
-  const handlePrevClickOutfit = () => {
+  const handlePrevClick = () => {
     if (cardCount > 1) {
-      outfitCards.forEach(card => {
+      eachCard.forEach(card => {
         card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
         card.style.transitionDuration = '0.5s';
+        console.log(card.style.transform);
       });
       setCardCount(cardCount - 1);
     }
   };
 
   const handleAddToOutfit = () => {
-    !outfitList.includes(featuredProduct.id) ? setOutfitList(prev => [...prev, featuredProduct.id]) : null;
+    setOutfitList(prev => [...prev, featuredProduct.id]);
   };
 
   return (
     <>
       <div className={`${'left_arrow'}
-      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
-      onClick={() => handlePrevClickOutfit()}>❮</div>
+      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
       <div className={`${'container'} ${'carousel'}`}>
-        <div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
-          onClick={() => handleAddToOutfit()} >
+        <div className={`${'productCard'} ${'add-to-outfit'}`} onClick={() => handleAddToOutfit()} >
           <div className={'plus-sign'}>+</div>
           <div className={'add-to-outfit-text'}>Add to Outfit</div>
         </div>
         {yourOutfitList.map(product => {
-          return <OutfitCard
-            key={product.details.id + product.details.name}
-            product={{product}}
-            removeOutfit={removeOutfit} />;
+          return <ProductCard key={product.details.id} product={{product}} />;
         })}
       </div>
       <div className={`${'right_arrow'}
-      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClickOutfit()}>❯</div>
+      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={(e) => handleNextClick()}>❯</div>
     </>
   );
 };
