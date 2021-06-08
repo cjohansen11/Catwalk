@@ -25,20 +25,22 @@ div.container > div:last-child {
 }
 
 .right_arrow {
+  width: 40px;
   position: relative;
   font-size: 60px;
   text-align: center;
   bottom: 213px;
-  left: 430px;
+  left: 1115px;
   z-index: 6;
 }
 
 .left_arrow {
+  width: 40px;
   position: relative;
   font-size: 60px;
   text-align: center;
   top: 206px;
-  right: 430px;
+  left: 285px;
   z-index: 6;
 }
 
