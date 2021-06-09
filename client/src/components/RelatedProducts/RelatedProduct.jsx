@@ -124,7 +124,7 @@ const RelatedProduct = () => {
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
       <Carousel relatedProductList={relatedProductList} changeFeaturedProduct={changeFeaturedProduct} />
       <h2>Welcome to the Your Outfit section</h2>
-      <YourOutfitList  yourOutfitList={yourOutfitList} setOutfitList={setOutfitList} featuredProduct={featuredProduct} getRelatedProductsList={getRelatedProductsList} outfitList={outfitList} removeOutfit={removeOutfit} />
+      <YourOutfitList yourOutfitList={yourOutfitList} setOutfitList={setOutfitList} featuredProduct={featuredProduct} getRelatedProductsList={getRelatedProductsList} outfitList={outfitList} removeOutfit={removeOutfit} />
     </div>
   );
 };
