@@ -1,16 +1,16 @@
 import React from 'react';
 
 const ModalRows = ({ feature, product }) => {
-  console.log('feature', feature);
+
   if (!feature.value) {
     return null;
   }
 
   return (
     <tr>
-      <td>{`${product === 'featured' ? '✓' : ''}`}</td>
+      <td>{`${product === 'similar' ? '✓' : product === 'featured' ? '✓' : ''}`}</td>
       <td>{feature.value}</td>
-      <td>{`${product === 'compared' ? '✓' : ''}`}</td>
+      <td>{`${product === 'similar' ? '✓' : product === 'compared' ? '✓' : ''}`}</td>
     </tr>
   );
 };

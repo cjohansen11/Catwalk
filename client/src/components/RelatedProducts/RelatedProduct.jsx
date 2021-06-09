@@ -91,7 +91,7 @@ const RelatedProduct = () => {
       .then(product => {
         getRelatedProducts('products', product.id, 'related')
           .then(res => {
-            return setRelatedProducts(res.data);
+            return setRelatedProducts(Array.from(new Set(res.data)));
           });
       });
   };

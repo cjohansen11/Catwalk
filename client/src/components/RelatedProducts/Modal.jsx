@@ -4,6 +4,14 @@ import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
 const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
+  // let similarFeatures = [];
+  // featuredProduct.features.filter(feature => {
+  //   comparedProduct.details.features.forEach(item => {
+  //     item.value === feature.value ? similarFeatures.push({value: feature.value}) : null;
+  //   });
+  // });
+
+  console.log('similarFeatures', similarFeatures);
 
   console.log('featured', featuredProduct.features);
   console.log('compared', comparedProduct.details.features);
@@ -26,6 +34,12 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
               <td>Features</td>
               <td></td>
             </tr>
+            {/* {similarFeatures.map(feature => {
+              return <ModalRows
+                key={Math.random()}
+                feature={feature}
+                product={'similar'} />;
+            })} */}
             {featuredProduct.features.map(feature => {
               return <ModalRows
                 feature={feature}
