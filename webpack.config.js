@@ -32,10 +32,10 @@ const config = {
 					{
 						loader: 'css-loader',
 						options: {
-							modules: false,
+							modules: false
 						}
 					}
-				]
+
 			}
 		]
 	},

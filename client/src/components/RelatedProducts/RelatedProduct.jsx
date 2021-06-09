@@ -5,14 +5,19 @@ import axios from 'axios';
 import dummy from '../../../../dummy_data/related_product.js';
 import GIT_TOKEN from './config.js';
 import ProductCard from './ProductCard.jsx';
+import Carousel from './Carousel.jsx';
+import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
 const RelatedProduct = () => {
+  let localStorage = window.localStorage;
 
   /* ** STATE FOR DUMMY_DATA ** */
   const [featuredProduct, setFeaturedProduct] = useState({}); // Object
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
   const [relatedProductList, setRelatedProductList] = useState([]); // Array of Objects
+  const [outfitList, setOutfitList] = useState(JSON.parse(localStorage.getItem('myOutfit')) || []); // Array
+  const [yourOutfitList, setYourOutfitList] = useState([]); // Array of Objects
 
   /* ** OPTIONS FOR AXIOS REQUESTS ** */
   let options = (path, id, path2, params) => {
@@ -50,10 +55,12 @@ const RelatedProduct = () => {
   };
 
   /* ** SET STATE METHODS ** */
-  const getRelatedProductsList = () => {
+  const getRelatedProductsList = (array, type) => {
     let eachProductId;
 
-    relatedProducts.forEach(product => {
+    array.length && type === 'related' ? setRelatedProductList([]) : setYourOutfitList([]);
+
+    array.forEach(product => {
       let eachProductObject = {};
       axios(options('products', product))
         .then(res => {
@@ -64,7 +71,7 @@ const RelatedProduct = () => {
               axios(options('reviews', product))
                 .then(res => {
                   eachProductObject['reviews'] = res.data;
-                  setRelatedProductList(relatedProductList => [...relatedProductList, eachProductObject]);
+                  type === 'related' ? setRelatedProductList(relatedProductList => [eachProductObject, ...relatedProductList]) : setYourOutfitList(yourOutfitList => [eachProductObject, ...yourOutfitList]);
                 });
             });
         });
@@ -89,29 +96,41 @@ const RelatedProduct = () => {
       });
   };
 
-  /* USE EFFECT CALLS ** */
+  /* ** ADDTIONAL FUNCTIONS ** */
+  const changeFeaturedProduct = (productId) => {
+    getFeaturedProduct('products', productId);
+  };
+
+  const removeOutfit = (productId) => {
+    setOutfitList(outfitList.filter(item => item !== productId));
+  };
+
+  /* ** USE EFFECT CALLS ** */
   useEffect(() => {
-    getFeaturedProduct('products', 19091);
+    getFeaturedProduct('products', 19092);
   }, []);
 
   useEffect(() => {
-    getRelatedProductsList();
+    getRelatedProductsList(relatedProducts, 'related');
   }, [relatedProducts]);
 
-  if (!relatedProductList.length) {
-    return (
-      <h1>Still Loading...</h1>
-    );
-  }
+  useEffect(() => {
+    getRelatedProductsList(outfitList, 'outfit');
+    localStorage.setItem('myOutfit', JSON.stringify(outfitList));
+  }, [outfitList]);
 
   return (
     <div>
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
-      {relatedProductList.map(product => {
-        return <ProductCard key={product.details.id} product={{product}} />;
-      })}
+      <Carousel relatedProductList={relatedProductList} changeFeaturedProduct={changeFeaturedProduct} />
       <h2>Welcome to the Your Outfit section</h2>
-      {/* <ProductCard /> */}
+      <YourOutfitList
+        yourOutfitList={yourOutfitList}
+        setOutfitList={setOutfitList}
+        featuredProduct={featuredProduct}
+        getRelatedProductsList={getRelatedProductsList}
+        removeOutfit={removeOutfit}
+        outfitList={outfitList} />
     </div>
   );
 };
