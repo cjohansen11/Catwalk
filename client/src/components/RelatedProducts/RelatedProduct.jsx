@@ -107,7 +107,7 @@ const RelatedProduct = () => {
 
   /* USE EFFECT CALLS ** */
   useEffect(() => {
-    getFeaturedProduct('products', 19092);
+    getFeaturedProduct('products', 19850);
   }, []);
 
   useEffect(() => {

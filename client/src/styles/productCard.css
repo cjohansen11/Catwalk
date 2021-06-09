@@ -60,6 +60,16 @@
   margin: auto;
 }
 
+.sale-price {
+  margin: 0%;
+}
+
+.default-price {
+  margin: 0%;
+  color: darkred;
+  text-decoration: line-through;
+}
+
 .actionButton {
   color: goldenrod;
   font-size: 30px;

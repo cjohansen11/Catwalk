@@ -8,6 +8,18 @@ import '../../styles/productCard.css';
 const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct }) => {
   product = product.product;
 
+  let defaultStyle;
+  let DisplayPrice;
+
+  product.styles.results.forEach(style => {
+    style['default?'] ? defaultStyle = style : null;
+    defaultStyle = defaultStyle || product.styles.results[0];
+  });
+
+  defaultStyle.sale_price ? DisplayPrice = <><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></> : DisplayPrice = <h5 className={'default-price'}>{defaultStyle.original_price}</h5>;
+
+
+
   /* ** THIS NEEDS WORK ** */
   // let rating;
   // if (Object.keys(product.reviews.ratings).length) {
@@ -18,12 +30,13 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
 
   return (
     <div className={`${'productCard'} ${'product-card-array'}`}>
-      <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"
+      <img className={'image'} src={defaultStyle.photos[0].thumbnail_url} alt="" className="previewImage"
         onClick={() => changeFeaturedProduct(product.details.id)}></img>
       <h5 className={'productName'} >{product.details.name}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating />
-      <h5 className={'productPrice'}>{product.details.default_price}</h5>
+      {defaultStyle.sale_price ? <span className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></span> : <span className={'productPrice'}><h5>{defaultStyle.original_price}</h5></span>}
+      {/* <span className={'productPrice'}><h5>{product.details.default_price}</h5></span> */}
       <div className={'actionButton'} onClick={() => {
         setComparedProduct(product);
         setToggleModal(true);
