@@ -37,10 +37,10 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
 
   return (
     <>
-      <div className={`${'left_arrow'}
-      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
-      onClick={() => handlePrevClickOutfit()}>❮</div>
-      <div className={`${'container'} ${'carousel'}`}>
+      <div className={`${'container'} ${'carousel'} ${'outfit-container'}`}>
+        <div className={`${'left_arrow'}
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
+        onClick={() => handlePrevClickOutfit()}>❮</div>
         <div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
           onClick={() => handleAddToOutfit()} >
           <div className={'plus-sign'}>+</div>
@@ -52,9 +52,9 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
             product={{product}}
             removeOutfit={removeOutfit} />;
         })}
+        <div className={`${'right_arrow'}
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClickOutfit()}>❯</div>
       </div>
-      <div className={`${'right_arrow'}
-      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClickOutfit()}>❯</div>
     </>
   );
 };

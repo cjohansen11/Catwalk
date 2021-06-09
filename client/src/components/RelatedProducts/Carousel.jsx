@@ -11,7 +11,6 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   const [toggleModal, setToggleModal] = useState(false);
   const [comparedProduct, setComparedProduct] = useState({});
 
-
   let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
 
   const handleNextClick = () => {
@@ -42,9 +41,9 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
 
   return (
     <>
-      <div className={`${'left_arrow'}
-      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
       <div className={`${'container'} ${'carousel'}`}>
+        <div className={`${'left_arrow'}
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
         {relatedProductList.map(product => {
           return <ProductCard
             key={product.details.id + product.details.name}
@@ -53,9 +52,9 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
             setToggleModal={setToggleModal}
             setComparedProduct={setComparedProduct} />;
         })}
+        <div className={`${'right_arrow'}
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
       </div>
-      <div className={`${'right_arrow'}
-      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
       {toggleModal ? <Modal
         setToggleModal={setToggleModal}
         featuredProduct={featuredProduct}
