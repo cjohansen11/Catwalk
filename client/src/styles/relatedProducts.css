@@ -4,6 +4,8 @@
 
 .container {
   position: relative;
+  display: flex;
+  flex-direction: row;
   width: 800px;
   height: 350px;
   display: flex;
@@ -13,7 +15,8 @@
 }
 
 .productCard {
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 div.container > div:first-child {
