@@ -14,9 +14,6 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
 
   const handleNextClick = () => {
-    // cardCount + 2 >= eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
-    // cardCount - 2 <= eachCard.length ? setHideLeftArrow(true) : setHideLeftArrow(false);
-
     if (cardCount + 2 <= eachCard.length) {
       eachCard.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
@@ -27,9 +24,6 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   };
 
   const handlePrevClick = () => {
-    // cardCount + 2 >= eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
-    // cardCount - 2 <= eachCard.length ? setHideLeftArrow(true) : setHideLeftArrow(false);
-
     if (cardCount > 1) {
       eachCard.forEach(card => {
         card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
@@ -38,6 +32,11 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
       setCardCount(cardCount - 1);
     }
   };
+
+  useEffect(() => {
+    cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
+    (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [cardCount]);
 
   return (
     <>

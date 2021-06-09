@@ -35,6 +35,11 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
     !outfitList.includes(featuredProduct.id) ? setOutfitList(prev => [...prev, featuredProduct.id]) : null;
   };
 
+  useEffect(() => {
+    cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
+    (cardCount + 1) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [cardCount]);
+
   return (
     <>
       <div className={`${'container'} ${'carousel'} ${'outfit-container'}`}>
