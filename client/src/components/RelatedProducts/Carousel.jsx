@@ -4,11 +4,12 @@ import ProductCard from './ProductCard.jsx';
 import Modal from './Modal.jsx';
 import '../../styles/relatedProducts.css';
 
-const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
+const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }) => {
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
+  const [comparedProduct, setComparedProduct] = useState({});
 
 
   let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
@@ -49,12 +50,16 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
             key={product.details.id + product.details.name}
             product={{product}}
             changeFeaturedProduct={changeFeaturedProduct}
-            setToggleModal={setToggleModal}/>;
+            setToggleModal={setToggleModal}
+            setComparedProduct={setComparedProduct} />;
         })}
       </div>
       <div className={`${'right_arrow'}
       ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
-      {toggleModal ? <Modal setToggleModal={setToggleModal} /> : null}
+      {toggleModal ? <Modal
+        setToggleModal={setToggleModal}
+        featuredProduct={featuredProduct}
+        comparedProduct={comparedProduct} /> : null}
     </>
   );
 };

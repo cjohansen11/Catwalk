@@ -5,7 +5,7 @@ import StarRating from './StarRating.jsx';
 import PreviewImage from './PreviewImage.jsx';
 import '../../styles/productCard.css';
 
-const ProductCard = ({ product, changeFeaturedProduct, setToggleModal }) => {
+const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct }) => {
   product = product.product;
   const [currentCard, setCurrentCard] = useState(false);
 
@@ -28,7 +28,10 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal }) => {
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating />
       <h5 className={'productPrice'}>{product.details.default_price}</h5>
-      <div className={'actionButton'} onClick={() => setToggleModal(true)}>☆</div>
+      <div className={'actionButton'} onClick={() => {
+        setComparedProduct(product);
+        setToggleModal(true);
+      }}>☆</div>
     </div>
   );
 };

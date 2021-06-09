@@ -1,8 +1,12 @@
 import React from 'react';
 
+import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
-const Modal = ({ setToggleModal }) => {
+const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
+
+  console.log('featured', featuredProduct.features);
+  console.log('compared', comparedProduct.details.features);
   return (
     <div className={`${'modal'}`} onClick={() => setToggleModal(false)}>
       <div className={`${'feature-table'}`}>
@@ -11,9 +15,9 @@ const Modal = ({ setToggleModal }) => {
         <table>
           <thead>
             <tr>
-              <th colSpan="1">Feature Product Name</th>
+              <th colSpan="1">{featuredProduct.name}</th>
               <th colSpan="1"></th>
-              <th colSpan="1">Comparing Product Name</th>
+              <th colSpan="1">{comparedProduct.details.name}</th>
             </tr>
           </thead>
           <tbody>
@@ -22,6 +26,16 @@ const Modal = ({ setToggleModal }) => {
               <td>Features</td>
               <td></td>
             </tr>
+            {featuredProduct.features.map(feature => {
+              return <ModalRows
+                feature={feature}
+                product={'featured'} />;
+            })}
+            {comparedProduct.details.features.map(feature => {
+              return <ModalRows
+                feature={feature}
+                product={'compared'} />;
+            })}
           </tbody>
         </table>
       </div>
