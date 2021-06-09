@@ -8,7 +8,6 @@ import '../../styles/productCard.css';
 
 const OutfitCard = ({ product, changeFeaturedProduct, removeOutfit }) => {
   product = product.product;
-  const [currentCard, setCurrentCard] = useState(false);
 
   /* ** THIS NEEDS WORK ** */
   // let rating;
@@ -19,10 +18,7 @@ const OutfitCard = ({ product, changeFeaturedProduct, removeOutfit }) => {
   // }
 
   return (
-    <div className={`${'productCard'} ${'outfit-card'}
-    ${currentCard ? 'currentCard' : ''}`}
-    onMouseEnter={() => setCurrentCard(true)}
-    onMouseLeave={() => setCurrentCard(false)}>
+    <div className={`${'productCard'} ${'outfit-card'}`}>
       <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
       <h5 className={'productName'}>{product.details.name}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>

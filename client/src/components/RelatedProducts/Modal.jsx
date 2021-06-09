@@ -4,22 +4,25 @@ import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
 const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
-  // let similarFeatures = [];
-  // featuredProduct.features.filter(feature => {
-  //   comparedProduct.details.features.forEach(item => {
-  //     item.value === feature.value ? similarFeatures.push({value: feature.value}) : null;
-  //   });
-  // });
+  let similarValues = [];
+  let similarFeatures = [];
+  let differentFeatures = [];
 
-  console.log('similarFeatures', similarFeatures);
+  featuredProduct.features.forEach(feature => {
+    comparedProduct.details.features.forEach(item => {
+      if (item.value === feature.value) {
+        similarFeatures.push({ type: 'similar', feature: feature.feature, value: feature.value }); similarValues.push(feature.value);
+      } else {
+        null;
+      }
+    });
+  });
 
-  console.log('featured', featuredProduct.features);
-  console.log('compared', comparedProduct.details.features);
   return (
     <div className={`${'modal'}`} onClick={() => setToggleModal(false)}>
       <div className={`${'feature-table'}`}>
         <button className={'button'} onClick={() => setToggleModal(false)}>Close</button>
-        <h4>Comparing</h4>
+        <h4>Comparison Table</h4>
         <table>
           <thead>
             <tr>
@@ -31,25 +34,26 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
           <tbody>
             <tr>
               <td></td>
-              <td>Features</td>
+              <td className={'feature'}>Features</td>
               <td></td>
             </tr>
-            {/* {similarFeatures.map(feature => {
+            {similarFeatures.length ? similarFeatures.map(feature => {
+              return <ModalRows
+                key={Math.random()}
+                feature={feature} />;
+            }) : null }
+            {!similarFeatures.length ? featuredProduct.features.map(feature => {
               return <ModalRows
                 key={Math.random()}
                 feature={feature}
-                product={'similar'} />;
-            })} */}
-            {featuredProduct.features.map(feature => {
+                type={'featured'} />;
+            }) : null}
+            {!similarFeatures.length ? comparedProduct.details.features.map(feature => {
               return <ModalRows
+                key={Math.random()}
                 feature={feature}
-                product={'featured'} />;
-            })}
-            {comparedProduct.details.features.map(feature => {
-              return <ModalRows
-                feature={feature}
-                product={'compared'} />;
-            })}
+                type={'compared'} />;
+            }) : null}
           </tbody>
         </table>
       </div>

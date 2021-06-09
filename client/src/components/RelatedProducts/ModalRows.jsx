@@ -1,16 +1,15 @@
 import React from 'react';
 
-const ModalRows = ({ feature, product }) => {
-
+const ModalRows = ({ feature, type }) => {
   if (!feature.value) {
     return null;
   }
 
   return (
     <tr>
-      <td>{`${product === 'similar' ? '✓' : product === 'featured' ? '✓' : ''}`}</td>
-      <td>{feature.value}</td>
-      <td>{`${product === 'similar' ? '✓' : product === 'compared' ? '✓' : ''}`}</td>
+      <td>{`${feature.type === 'similar' ? '✓' : type === 'featured' ? '✓' : ''}`}</td>
+      <td>{`${feature.feature} - ${feature.value}`}</td>
+      <td>{`${feature.type === 'similar' ? '✓' : type === 'compared' ? '✓' : ''}`}</td>
     </tr>
   );
 };
