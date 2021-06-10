@@ -69,6 +69,7 @@
   grid-row-start: 1;
   grid-row-end: 2;
   margin: 2px 0px 0px 75px;
+  cursor: pointer;
 }
 
 .currentCard {

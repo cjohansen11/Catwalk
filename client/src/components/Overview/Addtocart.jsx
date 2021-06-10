@@ -38,14 +38,14 @@ class Addtocart extends React.Component {
 
     axios(optionsCart)
       .then((data) => {
-        console.log('this is the current cart state', data.data);
+        // console.log('this is the current cart state', data.data);
         this.setState({
           cart: data.data
         });
 
       })
       .catch((error) => {
-        console.log('cart error', error);
+        // console.log('cart error', error);
       });
 
   }
@@ -74,7 +74,7 @@ class Addtocart extends React.Component {
     var search = Object.entries(this.props.currentStyle.skus);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === event.target.value) {
-        console.log('is this loop working?');
+        // console.log('is this loop working?');
         var sku = Number(search[i][0]);
         var styleStock = search[i][1]['quantity'];
         this.setState({
@@ -95,7 +95,7 @@ class Addtocart extends React.Component {
     var availStock = styleStock - purchased;
     var stockArray = this.stockArray(availStock);
     var dashValue = this.dashValue(availStock);
-    console.log(availStock, stockArray);
+    // console.log(availStock, stockArray);
     this.setState({
       availableStock: availStock,
       availableStockArray: stockArray,
@@ -131,13 +131,13 @@ class Addtocart extends React.Component {
 
 
   addedToCart(click) {
-    console.log('on click what', click);
+    // console.log('on click what', click);
     var search = Object.entries(this.props.currentStyle.skus);
     var skuId = '';
     var id = this.state.currentskuId;
     var quantity = this.state.selectedQuantity;
     var stock = this.state.currentStock;
-    console.log(search);
+    // console.log(search);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === this.state.selectedSize) {
 
@@ -167,17 +167,17 @@ class Addtocart extends React.Component {
     for (var i = 0; i < quantity; i++) {
       axios(optionsAddCart)
         .then((data) => {
-          console.log('added to cart!');
+          // console.log('added to cart!');
         })
 
         .catch((error) => {
-          console.log('cart error', error);
+          // console.log('cart error', error);
         });
     }
 
     axios(optionsCart)
       .then((data) => {
-        console.log('this is the cart', data.data);
+        // console.log('this is the cart', data.data);
         this.setState({
           cart: data.data
         });
@@ -185,7 +185,7 @@ class Addtocart extends React.Component {
         this.props.updateStyleArray();
       })
       .catch((error) => {
-        console.log('cart error', error);
+        // console.log('cart error', error);
       });
   }
 

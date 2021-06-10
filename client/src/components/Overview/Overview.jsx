@@ -77,14 +77,14 @@ class Overview extends React.Component {
 
     axios(optionsProduct)
       .then((data) => {
-        console.log('this is the product info', data.data);
+        // console.log('this is the product info', data.data);
         this.setState({
           currentProductInfo: data.data
         });
         return axios(optionsStyle);
       })
       .then((data) => {
-        console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
+        // console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
         var currentSelected = data.data.results[0];
         for (var i = 0; i < data.data.results.length; i++) {
           if (data.data.results[i]['default?'] === true) {
@@ -100,14 +100,14 @@ class Overview extends React.Component {
         return axios(optionsCart);
       })
       .then((data) => {
-        console.log('this is the current cart state', data.data);
+        // console.log('this is the current cart state', data.data);
         this.setState({
           cart: data.data
         });
         this.styleDropdown();
       })
       .catch((error) => {
-        console.log('the data did not renderrrr', error);
+        // console.log('the data did not renderrrr', error);
       });
   }
 

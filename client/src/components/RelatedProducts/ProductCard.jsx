@@ -5,9 +5,8 @@ import StarRating from './StarRating.jsx';
 import PreviewImage from './PreviewImage.jsx';
 import '../../styles/productCard.css';
 
-const ProductCard = ({ product, changeFeaturedProduct }) => {
+const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct }) => {
   product = product.product;
-  const [currentCard, setCurrentCard] = useState(false);
 
   /* ** THIS NEEDS WORK ** */
   // let rating;
@@ -18,17 +17,17 @@ const ProductCard = ({ product, changeFeaturedProduct }) => {
   // }
 
   return (
-    <div className={`${'productCard'} ${'product-card-array'}
-    ${currentCard ? 'currentCard' : ''}`}
-    onMouseEnter={() => setCurrentCard(true)}
-    onMouseLeave={() => setCurrentCard(false)}
-    onClick={() => changeFeaturedProduct(product.details.id)}>
-      <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
-      <h5 className={'productName'}>{product.details.name}</h5>
+    <div className={`${'productCard'} ${'product-card-array'}`}>
+      <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"
+        onClick={() => changeFeaturedProduct(product.details.id)}></img>
+      <h5 className={'productName'} >{product.details.name}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating />
       <h5 className={'productPrice'}>{product.details.default_price}</h5>
-      <div className={'actionButton'}>☆</div>
+      <div className={'actionButton'} onClick={() => {
+        setComparedProduct(product);
+        setToggleModal(true);
+      }}>☆</div>
     </div>
   );
 };

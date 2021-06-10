@@ -71,7 +71,7 @@ const RelatedProduct = () => {
               axios(options('reviews', product))
                 .then(res => {
                   eachProductObject['reviews'] = res.data;
-                  type === 'related' ? setRelatedProductList(relatedProductList => [eachProductObject, ...relatedProductList]) : setYourOutfitList(yourOutfitList => [eachProductObject, ...yourOutfitList]);
+                  type === 'related' ? setRelatedProductList(relatedProductList => [...relatedProductList, eachProductObject]) : setYourOutfitList(prev => [...prev, eachProductObject]);
                 });
             });
         });
@@ -91,7 +91,7 @@ const RelatedProduct = () => {
       .then(product => {
         getRelatedProducts('products', product.id, 'related')
           .then(res => {
-            return setRelatedProducts(res.data);
+            return setRelatedProducts(Array.from(new Set(res.data)));
           });
       });
   };
@@ -105,7 +105,7 @@ const RelatedProduct = () => {
     setOutfitList(outfitList.filter(item => item !== productId));
   };
 
-  /* ** USE EFFECT CALLS ** */
+  /* USE EFFECT CALLS ** */
   useEffect(() => {
     getFeaturedProduct('products', 19092);
   }, []);
@@ -122,15 +122,18 @@ const RelatedProduct = () => {
   return (
     <div>
       <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
-      <Carousel relatedProductList={relatedProductList} changeFeaturedProduct={changeFeaturedProduct} />
+      <Carousel
+        relatedProductList={relatedProductList}
+        changeFeaturedProduct={changeFeaturedProduct}
+        featuredProduct={featuredProduct} />
       <h2>Welcome to the Your Outfit section</h2>
       <YourOutfitList
         yourOutfitList={yourOutfitList}
         setOutfitList={setOutfitList}
         featuredProduct={featuredProduct}
         getRelatedProductsList={getRelatedProductsList}
-        removeOutfit={removeOutfit}
-        outfitList={outfitList} />
+        outfitList={outfitList}
+        removeOutfit={removeOutfit} />
     </div>
   );
 };
