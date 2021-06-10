@@ -3,17 +3,15 @@ import axios from 'axios';
 
 /* ** IMPORTS ** */
 import GET from '../../../../lib/related.js';
-import GIT_TOKEN from './config.js';
 import ProductCard from './ProductCard.jsx';
 import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
-const RelatedProduct = () => {
+const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
   let localStorage = window.localStorage;
 
   /* ** STATE(s) FOR DATA ** */
-  const [featuredProduct, setFeaturedProduct] = useState({}); // Object
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
   const [relatedProductList, setRelatedProductList] = useState([]); // Array of Objects
   const [outfitList, setOutfitList] = useState(JSON.parse(localStorage.getItem('myOutfit')) || []); // Array
@@ -42,13 +40,6 @@ const RelatedProduct = () => {
   };
 
   /* USE EFFECT CALLS ** */
-  useEffect(() => {
-    GET.featuredProduct(19850)
-      .then(res => {
-        setFeaturedProduct(res.data);
-      });
-  }, []);
-
   useEffect(() => {
     GET.relatedProducts(featuredProduct.id)
       .then(res => {
