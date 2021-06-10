@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 /* ** IMPORT COMPONENT(s) ** */
 import StarRating from './StarRating.jsx';
-import PreviewImage from './PreviewImage.jsx';
 import '../../styles/productCard.css';
 
 const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct }) => {
-  product = product.product;
 
+  /* ** COMPONENT VARIABLE(s) ** */
+  product = product.product;
   let defaultStyle;
   let DisplayPrice;
 
+  /* ** ADDTIONAL FUNCTION(s) ** */
   product.styles.results.forEach(style => {
     style['default?'] ? defaultStyle = style : null;
     defaultStyle = defaultStyle || product.styles.results[0];
@@ -36,7 +37,6 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating />
       {defaultStyle.sale_price ? <span className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></span> : <span className={'productPrice'}><h5>{defaultStyle.original_price}</h5></span>}
-      {/* <span className={'productPrice'}><h5>{product.details.default_price}</h5></span> */}
       <div className={'actionButton'} onClick={() => {
         setComparedProduct(product);
         setToggleModal(true);

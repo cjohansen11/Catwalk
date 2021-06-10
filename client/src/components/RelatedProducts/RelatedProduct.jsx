@@ -1,7 +1,8 @@
+/* ** LIBRARY(s) ** */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-/* ** IMPORTS ** */
+/* ** ADDTIONAL IMPORT(s) ** */
 import GET from '../../../../lib/related.js';
 import ProductCard from './ProductCard.jsx';
 import Carousel from './Carousel.jsx';
@@ -9,15 +10,17 @@ import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
 const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
+
+  /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
 
-  /* ** STATE(s) FOR DATA ** */
+  /* ** STATE(s) ** */
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
   const [relatedProductList, setRelatedProductList] = useState([]); // Array of Objects
   const [outfitList, setOutfitList] = useState(JSON.parse(localStorage.getItem('myOutfit')) || []); // Array
   const [yourOutfitList, setYourOutfitList] = useState([]); // Array of Objects
 
-  /* ** ADDTIONAL FUNCTIONS ** */
+  /* ** ADDTIONAL FUNCTION(s) ** */
   const getRelatedProductsList = (array, type) => {
     array.length && type === 'related' ? setRelatedProductList([]) : setYourOutfitList([]);
     array.forEach(productId => {
@@ -39,7 +42,7 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
     setOutfitList(outfitList.filter(item => item !== productId));
   };
 
-  /* USE EFFECT CALLS ** */
+  /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     GET.relatedProducts(featuredProduct.id)
       .then(res => {

@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
+/* ** ADDTIONAL IMPORT(s) ** */
 import ProductCard from './ProductCard.jsx';
 import Modal from './Modal.jsx';
 import '../../styles/relatedProducts.css';
 
 const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }) => {
+
+  /* ** COMPONENT VARIABLE(s) ** */
+  let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
+
+  /* ** STATE(s) ** */
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
   const [comparedProduct, setComparedProduct] = useState({});
 
-  let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
-
+  /* ** ADDTIONAL FUNCTIONS ** */
   const handleNextClick = () => {
     if (cardCount + 2 <= eachCard.length) {
       eachCard.forEach(card => {
@@ -33,6 +38,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
     }
   };
 
+  /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
     (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);

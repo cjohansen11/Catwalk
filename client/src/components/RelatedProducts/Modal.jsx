@@ -1,13 +1,17 @@
 import React from 'react';
 
+/* ** ADDTIONAL IMPORT(s) ** */
 import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
 const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
+
+  /* ** COMPONENT VARIABLE(s) ** */
   let similarValues = [];
   let similarFeatures = [];
   let differentFeatures = [];
 
+  /* ** ADDTIONAL FUNCTIONS ** */
   featuredProduct.features.forEach(feature => {
     comparedProduct.details.features.forEach(item => {
       if (item.value === feature.value) {
