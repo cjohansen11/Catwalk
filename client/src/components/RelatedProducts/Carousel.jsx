@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
+/* ** ADDTIONAL IMPORT(s) ** */
 import ProductCard from './ProductCard.jsx';
 import Modal from './Modal.jsx';
 import '../../styles/relatedProducts.css';
 
 const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }) => {
+
+  /* ** COMPONENT VARIABLE(s) ** */
+  let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
+
+  /* ** STATE(s) ** */
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
   const [toggleModal, setToggleModal] = useState(false);
   const [comparedProduct, setComparedProduct] = useState({});
 
-
-  let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
-
+  /* ** ADDTIONAL FUNCTIONS ** */
   const handleNextClick = () => {
-    // cardCount + 2 >= eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
-    // cardCount - 2 <= eachCard.length ? setHideLeftArrow(true) : setHideLeftArrow(false);
-
     if (cardCount + 2 <= eachCard.length) {
       eachCard.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
@@ -28,9 +29,6 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   };
 
   const handlePrevClick = () => {
-    // cardCount + 2 >= eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
-    // cardCount - 2 <= eachCard.length ? setHideLeftArrow(true) : setHideLeftArrow(false);
-
     if (cardCount > 1) {
       eachCard.forEach(card => {
         card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
@@ -40,11 +38,17 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
     }
   };
 
+  /* ** USE EFFECT CALLS ** */
+  useEffect(() => {
+    cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
+    (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [cardCount]);
+
   return (
     <>
-      <div className={`${'left_arrow'}
-      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
       <div className={`${'container'} ${'carousel'}`}>
+        <div className={`${'left_arrow'}
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
         {relatedProductList.map(product => {
           return <ProductCard
             key={product.details.id + product.details.name}
@@ -53,9 +57,9 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
             setToggleModal={setToggleModal}
             setComparedProduct={setComparedProduct} />;
         })}
+        <div className={`${'right_arrow'}
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
       </div>
-      <div className={`${'right_arrow'}
-      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
       {toggleModal ? <Modal
         setToggleModal={setToggleModal}
         featuredProduct={featuredProduct}

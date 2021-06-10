@@ -49,6 +49,8 @@
   grid-row-start: 5;
   grid-row-end: 6;
   margin: auto;
+  top: 12px;
+  left: 6px;
 }
 
 .productPrice {
@@ -58,6 +60,16 @@
   grid-row-start: 6;
   grid-row-end: 7;
   margin: auto;
+}
+
+.sale-price {
+  margin: 0%;
+}
+
+.default-price {
+  margin: 0%;
+  color: darkred;
+  text-decoration: line-through;
 }
 
 .actionButton {

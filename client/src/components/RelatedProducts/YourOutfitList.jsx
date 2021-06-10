@@ -4,13 +4,16 @@ import OutfitCard from './OutfitCard.jsx';
 import '../../styles/relatedProducts.css';
 
 const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRelatedProductsList, removeOutfit, outfitList }) => {
+
+  /* ** COMPONENT VARIABLE(s) ** */
+  let outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
+
+  /* ** STATE(s) ** */
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
 
-
-  let outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
-
+  /* ** ADDTIONAL FUNCTION(s) ** */
   const handleNextClickOutfit = () => {
     if (cardCount + 2 <= outfitCards.length) {
       outfitCards.forEach(card => {
@@ -35,12 +38,18 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
     !outfitList.includes(featuredProduct.id) ? setOutfitList(prev => [...prev, featuredProduct.id]) : null;
   };
 
+  /* ** USE EFFECT CALLS ** */
+  useEffect(() => {
+    cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
+    (cardCount + 1) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [cardCount]);
+
   return (
     <>
-      <div className={`${'left_arrow'}
-      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
-      onClick={() => handlePrevClickOutfit()}>❮</div>
-      <div className={`${'container'} ${'carousel'}`}>
+      <div className={`${'container'} ${'carousel'} ${'outfit-container'}`}>
+        <div className={`${'left_arrow'}
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
+        onClick={() => handlePrevClickOutfit()}>❮</div>
         <div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
           onClick={() => handleAddToOutfit()} >
           <div className={'plus-sign'}>+</div>
@@ -52,9 +61,9 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
             product={{product}}
             removeOutfit={removeOutfit} />;
         })}
+        <div className={`${'right_arrow'}
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClickOutfit()}>❯</div>
       </div>
-      <div className={`${'right_arrow'}
-      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClickOutfit()}>❯</div>
     </>
   );
 };
