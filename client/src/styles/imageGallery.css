@@ -1,0 +1,22 @@
+.galleryContainer {
+background-color: red;
+width: 500px;
+}
+
+
+
+.gallerytitle {
+  font-size: larger;
+}
+
+.photodiv {
+  width: 500px;
+  height: 500px;
+
+}
+.photo{
+
+  width: auto;
+  height:auto;
+}
+

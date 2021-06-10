@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import '../../styles/productInformation.css';
 
 
 class Productinformation extends React.Component {

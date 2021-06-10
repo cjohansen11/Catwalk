@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-const config = require('./config.js');
+import config from './config.js';
+import '../../styles/styleselectaddtocart.css';
 
 class Addtocart extends React.Component {
   constructor(props) {
@@ -71,6 +72,9 @@ class Addtocart extends React.Component {
       selectedSize: event.target.value,
 
     });
+    this.getStock()
+  }
+  getStock() {
     var search = Object.entries(this.props.currentStyle.skus);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === event.target.value) {
@@ -101,7 +105,6 @@ class Addtocart extends React.Component {
       availableStockArray: stockArray,
       dash: dashValue,
     });
-
   }
 
   dashValue(num) {
@@ -182,21 +185,61 @@ class Addtocart extends React.Component {
           cart: data.data
         });
         this.props.updateOverCart(data.data);
-        this.props.updateStyleArray();
+
       })
       .catch((error) => {
         console.log('cart error', error);
       });
+
+    this.props.updateStyleArray();
+
   }
+
+
+  updateStyle(style) {
+    this.setState({
+      availableStockArray: [],
+    })
+
+    this.props.updateStyleArray(style);
+    this.props.updateCurrentStyle(style);
+    this.setState({
+      dash: '-',
+
+    });
+
+
+
+  }
+
 
   render() {
     if (!this.props.currentStyle) {
       return <span>Loading...</span>;
     }
     return (
+
       <div>
-        <div className="size_dropdown">
-          <select placeholder='none' onChange={this.selectedSize}>
+          <div className='stylethumbnails'>
+        <h4>Style:{this.props.currentStyle.name}</h4>
+
+          {this.props.currentStyles.results.map(style => {
+            return <div className='thumbnail' key={style.name} onClick={() => { this.updateStyle(style); }}>
+              <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
+            </div>;
+          })}
+
+          {/* have the map push the image url/data into a component , same comp renders over nd over but withbthe new data  */}
+
+        </div>
+
+
+
+
+
+          <div className='addtocartcontainer'>
+        <div className="size_dropdowndiv">
+          <select className="size_dropdown"placeholder='none' onChange={this.selectedSize}>
             <option>{this.conditionalDrop()}</option>
 
             {/* need to map the options from state */}
@@ -212,25 +255,24 @@ class Addtocart extends React.Component {
           </select>
         </div>
 
-        <div className="quantity_dropdown">
+        <div className="quantity_dropdowndiv">
 
-          <select placeholder='none' onChange={this.selectedQuantity}>
+          <select className="quantity_dropdown" placeholder='none' onChange={this.selectedQuantity}>
             <option>{this.state.dash}</option>
             {this.state.availableStockArray.map(num => {
 
               return <option key={num}>{num}</option>;
 
             })}
-
-
-
-
           </select>
         </div>
 
-        <button onClick={() => this.addedToCart(this.state.selectedSize)}>Add To Cart</button>
+        <button className='addtocartbutton' onClick={() => this.addedToCart(this.state.selectedSize)}>Add To Cart</button>
 
       </div>
+      </div>
+
+
     );
   }
 }

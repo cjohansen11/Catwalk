@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import Productinformation from './Productinformation.jsx';
-import Styleselector from './Styleselector.jsx';
+import ImageGallaryComponent from './corosel.jsx';
 import Addtocart from './Addtocart.jsx';
-import Imagegallery from './Imagegallery.jsx';
-const config = require('./config.js');
+// import Imagegallery from './Imagegallery.jsx';
+import config from './config.js';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class Overview extends React.Component {
     this.updateCurrentSelectedStyle = this.updateCurrentSelectedStyle.bind(this);
     this.updateCart = this.updateCart.bind(this);
     this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
+    this.styleDropdown = this.styleDropdown.bind(this);
 
   }
 
@@ -28,18 +29,21 @@ class Overview extends React.Component {
     this.setState({
       cart: data
     });
-  }
+  };
 
-  updateStyleArayyy() {
-    this.styleDropdown();
+  updateStyleArayyy(styleObj) {
+    this.styleDropdown(styleObj);
   }
 
   updateCurrentSelectedStyle(styleObj) {
+
+
     this.setState({
-      currentSelectedStyle: styleObj
+      currentSelectedStyle: styleObj,
     });
 
-    this.styleDropdown(styleObj);
+
+
   }
 
 
@@ -115,6 +119,9 @@ class Overview extends React.Component {
 
 
   styleDropdown(styleObj) {
+    this.setState({
+      styleArray: [],
+    });
     if (styleObj === undefined) {
       var currentStyleArray = Object.entries(this.state.currentSelectedStyle.skus);
     } else {
@@ -161,10 +168,18 @@ class Overview extends React.Component {
     return (
       <div className='overview'>
         <h1>Overview Section</h1>
-        <Imagegallery />
-        <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
-        <Styleselector currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} updateStyleArray={this.updateStyleArayyy} />
-        <Addtocart currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+        <div className='galleryContainer'>
+          <ImageGallaryComponent currentStyle={this.state.currentSelectedStyle} />
+        </div>
+        {/* <Imagegallery currentStyle={this.state.currentSelectedStyle}/> */}
+
+        <div className='productContainer'>
+          <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
+        </div>
+
+        <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+
+
       </div>
     );
   }

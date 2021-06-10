@@ -1,0 +1,10 @@
+.productContainer {
+  background-color: grey;
+
+
+  position: absolute;
+  right: 50px;
+  width: 600px;
+  top: 150px;
+}
+
