@@ -12,8 +12,9 @@ import RelatedProduct from './RelatedProducts/RelatedProduct.jsx';
 const App = () => {
   const [featuredProduct, setFeaturedProduct] = useState([]);
 
+  /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19850)
+    GET.featuredProduct(19265)
       .then(res => {
         setFeaturedProduct(res.data);
       });
