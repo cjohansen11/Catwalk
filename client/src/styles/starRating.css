@@ -10,10 +10,3 @@
   height: 20px;
   position: absolute;
 }
-
-.rating-star {
-  background: -webkit-linear-gradient(left, gold 50%, #333);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* background: linear-gradient(to right, rgba(0, 0, 0, 0) 75%, white 75%); */
-}

@@ -5,16 +5,16 @@ import '../../styles/starRating.css';
 
 const StarRating = ({ ratings }) => {
 
-  console.log('ratings', ratings);
-
-  let divStyle = {
-    color: 'yellow'
-  };
+  if (!Object.keys(ratings).length) {
+    return (
+      <></>
+    );
+  }
 
   /* ** THIS NEEDS WORK ** */
   let totalScore;
   let totalVotes;
-  let rating;
+  let percentage;
 
   for (let key in ratings) {
     let score = Number(key);
@@ -23,20 +23,19 @@ const StarRating = ({ ratings }) => {
     totalVotes = (totalVotes || 0) + votes;
   }
 
-  rating = (totalScore / totalVotes).toFixed(2);
+  percentage = ((totalScore / totalVotes).toFixed(2) / 5) * 100;
 
-  console.log(rating);
+  let divStyle = {
+    background: `-webkit-linear-gradient(left, gold ${percentage}%, #333 ${percentage}%)`,
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
 
-  // if (Object.keys(product.reviews.ratings).length) {
-  //   rating = ((Number(product.reviews.ratings['1']) * 1) + (Number(product.reviews.ratings['2']) * 2) + (Number(product.reviews.ratings['3']) * 3) + (Number(product.reviews.ratings['4']) * 4) + (Number(product.reviews.ratings['5']) * 5)) / (Number(product.reviews.ratings['1']) + Number(product.reviews.ratings['2']) + Number(product.reviews.ratings['3']) + Number(product.reviews.ratings['4']) + Number(product.reviews.ratings['5']));
-  // } else {
-  //   rating = 'Not enough ratings';
-  // }
 
   return (
     <div className={`${'productRating'} ${'star'}`} >
       <div className={'dark-star'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div className={'rating-star'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div className={'rating-star'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
     </div>
   );
 };
