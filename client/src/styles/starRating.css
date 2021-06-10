@@ -1,0 +1,19 @@
+.star {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.dark-star, .rating-star {
+  color: pink;
+  width: 80px;
+  height: 20px;
+  position: absolute;
+}
+
+.rating-star {
+  background: -webkit-linear-gradient(left, gold 50%, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* background: linear-gradient(to right, rgba(0, 0, 0, 0) 75%, white 75%); */
+}
