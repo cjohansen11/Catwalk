@@ -64,7 +64,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
             removeOutfit={removeOutfit} />;
         })}
         <div className={`${'right_arrow'}
-        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClickOutfit()}>❯</div>
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={(e) => handleNextClickOutfit()}>❯</div>
       </div>
     </>
   );
