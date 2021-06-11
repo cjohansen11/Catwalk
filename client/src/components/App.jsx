@@ -1,5 +1,7 @@
-// Imports 
-import React from 'react';
+// Imports
+import React, { useState, useEffect } from 'react';
+import WithTracker from './WithTracker.jsx';
+import GET from '../../../lib/related.js';
 
 // Styles
 import AppStyle from '../styles/app.css';
@@ -8,24 +10,29 @@ import AppStyle from '../styles/app.css';
 import Overview from './Overview/Overview.jsx';
 import RelatedProduct from './RelatedProducts/RelatedProduct.jsx';
 
-class App extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
+const App = () => {
 
-    };
-  }
-  render () {
-    return (
-      <div>
-        <h1 className={AppStyle.testClass}>CATWALK</h1>
-        <Overview/>
+  /* ** STATE(s) ** */
+  const [featuredProduct, setFeaturedProduct] = useState([]);
 
-        <RelatedProduct /*props={this.state}*/ />
-      </div>
+  /* ** SETS INITIAL ** */
+  useEffect(() => {
+    GET.featuredProduct(19653)
+      .then(res => {
+        setFeaturedProduct(res.data);
+      });
+  }, []);
 
-    );
-  }
-}
+  const RelatedWithTracker = WithTracker(RelatedProduct);
+
+  return (
+    <div>
+      <h1 className={AppStyle.testClass}>CATWALK</h1>
+      <Overview/>
+      <RelatedWithTracker featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+      {/* <RelatedProduct featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} /> */}
+    </div>
+  );
+};
 
 export default App;

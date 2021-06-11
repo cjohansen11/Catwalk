@@ -37,7 +37,7 @@ module.exports = {
     19097
   ],
 
-  19089: {
+  relatedProductList: [{
     "id": 19089,
     "campus": "hr-rfe",
     "name": "Camo Onesie",
@@ -58,8 +58,7 @@ module.exports = {
       }
     ]
   },
-
-  19090: {
+  {
     "id": 19090,
     "campus": "hr-rfe",
     "name": "Bright Future Sunglasses",
@@ -84,8 +83,7 @@ module.exports = {
       }
     ]
   },
-
-  19091: {
+  {
     "id": 19091,
     "campus": "hr-rfe",
     "name": "Morning Joggers",
@@ -106,8 +104,7 @@ module.exports = {
       }
     ]
   },
-
-  19092: {
+  {
     "id": 19092,
     "campus": "hr-rfe",
     "name": "Slacker's Slacks",
@@ -128,8 +125,7 @@ module.exports = {
       }
     ]
   },
-
-  19093: {
+  {
     "id": 19093,
     "campus": "hr-rfe",
     "name": "Heir Force Ones",
@@ -158,8 +154,7 @@ module.exports = {
       }
     ]
   },
-
-  19094: {
+  {
     "id": 19094,
     "campus": "hr-rfe",
     "name": "Pumped Up Kicks",
@@ -188,8 +183,7 @@ module.exports = {
       }
     ]
   },
-
-  19095: {
+  {
     "id": 19095,
     "campus": "hr-rfe",
     "name": "Blues Suede Shoes",
@@ -214,8 +208,7 @@ module.exports = {
       }
     ]
   },
-
-  19096: {
+  {
     "id": 19096,
     "campus": "hr-rfe",
     "name": "YEasy 350",
@@ -240,8 +233,7 @@ module.exports = {
       }
     ]
   },
-
-  19097: {
+  {
     "id": 19097,
     "campus": "hr-rfe",
     "name": "Summer Shoes",
@@ -269,5 +261,5 @@ module.exports = {
         "value": "Double Stitch"
       }
     ]
-  }
+  }]
 };
