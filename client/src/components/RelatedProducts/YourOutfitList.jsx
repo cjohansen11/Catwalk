@@ -15,6 +15,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
 
   /* ** ADDTIONAL FUNCTION(s) ** */
   const handleNextClickOutfit = () => {
+    outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
     if (cardCount + 2 <= outfitCards.length) {
       outfitCards.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
@@ -25,6 +26,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
   };
 
   const handlePrevClickOutfit = () => {
+    outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
     if (cardCount > 1) {
       outfitCards.forEach(card => {
         card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;

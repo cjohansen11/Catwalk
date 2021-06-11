@@ -5,13 +5,14 @@ import '../../styles/starRating.css';
 
 const StarRating = ({ ratings }) => {
 
+  /* ** CHECKS FOR RATINGS ** */
   if (!Object.keys(ratings).length) {
     return (
       <></>
     );
   }
 
-  /* ** THIS NEEDS WORK ** */
+  /* ** CALCULATES RATINGS PERCENTAGE ** */
   let totalScore;
   let totalVotes;
   let percentage;
@@ -25,6 +26,7 @@ const StarRating = ({ ratings }) => {
 
   percentage = ((totalScore / totalVotes).toFixed(2) / 5) * 100;
 
+  /* ** STYLE TO BE ADDED WITH PERCENTAGE AMOUNT ** */
   let divStyle = {
     background: `-webkit-linear-gradient(left, gold ${percentage}%, #333 ${percentage}%)`,
     WebkitBackgroundClip: 'text',

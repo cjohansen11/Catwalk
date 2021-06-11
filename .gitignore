@@ -10,4 +10,3 @@ client/dist/app.bundle.js
 client/src/components/RelatedProducts/config.js
 client/components/Overview/config.js
 lib/config.js
-
