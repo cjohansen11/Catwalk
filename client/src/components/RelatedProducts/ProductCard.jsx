@@ -31,7 +31,7 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
       <div className={'actionButton'} onClick={() => {
         setComparedProduct(product);
         setToggleModal(true);
-      }}>☆</div>
+      }}>★</div>
     </div>
   );
 };

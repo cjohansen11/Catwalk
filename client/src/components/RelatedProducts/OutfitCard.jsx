@@ -27,7 +27,7 @@ const OutfitCard = ({ product, changeFeaturedProduct, removeOutfit }) => {
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating ratings={ratings} />
       {defaultStyle.sale_price ? <span className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></span> : <span className={'productPrice'}><h5>{defaultStyle.original_price}</h5></span>}      <div className={'actionButton'}
-        onClick={() => removeOutfit(product.details.id)}>x</div>
+        onClick={() => removeOutfit(product.details.id)}>✘</div>
     </div>
   );
 };
