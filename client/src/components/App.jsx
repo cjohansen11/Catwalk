@@ -30,7 +30,6 @@ const App = () => {
       <h1 className={AppStyle.testClass}>CATWALK</h1>
       <Overview/>
       <RelatedWithTracker featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
-      {/* <RelatedProduct featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} /> */}
     </div>
   );
 };

@@ -14,6 +14,7 @@
     "productName . rating"
     "category . price";
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .productCard > img {
@@ -88,6 +89,10 @@
 
 .currentCard {
   transform: scale(1.05);
+}
+
+.outfit-card {
+  cursor: default;
 }
 
 .add-to-outfit {
