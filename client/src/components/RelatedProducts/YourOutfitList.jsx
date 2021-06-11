@@ -16,7 +16,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
   /* ** ADDTIONAL FUNCTION(s) ** */
   const handleNextClickOutfit = () => {
     outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
-    if (cardCount + 2 <= outfitCards.length) {
+    if (cardCount + 3 <= outfitCards.length) {
       outfitCards.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
         card.style.transitionDuration = '0.5s';
@@ -43,7 +43,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 1) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 1) === (outfitCards.length - 1) ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (

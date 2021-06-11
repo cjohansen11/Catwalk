@@ -24,7 +24,10 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
       eachCard.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
         card.style.transitionDuration = '0.5s';
+        console.log(card.style.transform);
       });
+      // console.log(eachCard.length - cardCount);
+      // eachCard.length - cardCount > 3 ? null : setHideRightArrow(true);
       setCardCount(cardCount + 1);
     }
   };
