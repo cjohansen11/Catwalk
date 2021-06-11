@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 
 const WithTracker = Component => {
 
-  const ComponentWithTracker = ({ featuredProduct, setFeaturedProduct, componentName }) => {
-    const [tracker, setTracker] = useState([]);
-
+  const ComponentWithTracker = ({ setTracker, featuredProduct, setFeaturedProduct, componentName }) => {
 
     /* ** ADDITIONAL FUNCTION(s) ** */
     const clickTracker = (e) => {
