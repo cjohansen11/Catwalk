@@ -14,11 +14,10 @@ const App = () => {
 
   /* ** STATE(s) ** */
   const [featuredProduct, setFeaturedProduct] = useState([]);
-  const [tracker, setTracker] = useState([]);
 
   /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19899)
+    GET.featuredProduct(19653)
       .then(res => {
         setFeaturedProduct(res.data);
       });
@@ -30,7 +29,7 @@ const App = () => {
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
       <Overview/>
-      <RelatedWithTracker setTracker={setTracker} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+      <RelatedWithTracker featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };
