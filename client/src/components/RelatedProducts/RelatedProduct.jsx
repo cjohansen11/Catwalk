@@ -22,7 +22,7 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
 
   /* ** ADDTIONAL FUNCTION(s) ** */
   const getRelatedProductsList = (array, type) => {
-    array.length && type === 'related' ? setRelatedProductList([]) : setYourOutfitList([]);
+    array.length && type === 'related' ? setRelatedProductList([]) : null;
     array.forEach(productId => {
       axios.all([GET.featuredProduct(productId), GET.productStyles(productId), GET.productReviews(productId)])
         .then(axios.spread((...res) => {
