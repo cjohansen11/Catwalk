@@ -57,7 +57,11 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
   }, [relatedProducts]);
 
   useEffect(() => {
-    getRelatedProductsList(outfitList, 'outfit');
+    let currentOutfitIds = [];
+    yourOutfitList.forEach(product => currentOutfitIds.push(product.details.id));
+    let newOutfit = outfitList.filter(id => !currentOutfitIds.includes(id));
+    console.log('outfitList', newOutfit);
+    getRelatedProductsList(newOutfit, 'outfit');
     localStorage.setItem('myOutfit', JSON.stringify(outfitList));
   }, [outfitList]);
 
