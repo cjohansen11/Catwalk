@@ -58,7 +58,7 @@ const QuestionsAndAnswers = () => {
     <div>
       <h1>Questions & Answers</h1>
       <button onClick={() => postReq()}>postReq</button>
-      <Search />
+      <Search setListOfQuestions={setListOfQuestions}/>
       <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
       <CreateQuestion />
 

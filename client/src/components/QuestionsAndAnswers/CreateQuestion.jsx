@@ -12,23 +12,23 @@ const CreateQuestion = () => {
 
   const closeModalHandler = () => setShow(false);
   // Adds a question for the given product POST /qa/questions
-  const addQuestion = () => {
-    axios({
-      method: 'post',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
-      headers: {
-        'Authorization': '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'
-      },
-      data: {
-        body: 'hello',
-        name: 'marko',
-        email: 'm@me.com',
-        product_id: 19089
-      }
-    }).then((data) => {
-      console.log(data);
-    });
-  };
+  // const addQuestion = () => {
+  //   axios({
+  //     method: 'post',
+  //     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
+  //     headers: {
+  //       'Authorization': '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'
+  //     },
+  //     data: {
+  //       body: 'hello',
+  //       name: 'marko',
+  //       email: 'm@me.com',
+  //       product_id: 19089
+  //     }
+  //   }).then((data) => {
+  //     console.log(data);
+  //   });
+  // };
 
 
 
