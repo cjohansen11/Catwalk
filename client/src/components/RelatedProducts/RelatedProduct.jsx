@@ -3,7 +3,7 @@ import axios from 'axios';
 
 /* ** IMPORTS ** */
 import dummy from '../../../../dummy_data/related_product.js';
-import GIT_TOKEN from './config.js';
+import GIT_TOKEN from '../QuestionsAndAnswers/config.js';
 import ProductCard from './ProductCard.jsx';
 import Carousel from './Carousel.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';

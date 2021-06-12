@@ -12,7 +12,7 @@ class Productinformation extends React.Component {
 
     this.options = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19078/`,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `${config.TOKEN}`
