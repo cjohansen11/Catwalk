@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import '../../styles/productInformation.css';
+import '../../styles/rightsidecontainer.css';
 
 
 class Productinformation extends React.Component {
@@ -20,12 +20,12 @@ class Productinformation extends React.Component {
 
   render() {
     return (
-      <div className='infotext'>
+      <div className='productinfocontainer'>
 
-        <p>Category: {this.props.currentProduct.category}</p>
-        <p>Product Title: {this.props.currentProduct.name} </p>
-        <p>Price: {this.props.currentStyle.sale_price || this.props.currentStyle.original_price}</p>
-        <p>Slogan / Description / Features</p>
+        <p>{this.props.currentProduct.category}</p>
+        <h1>{this.props.currentProduct.name} </h1>
+        <p>${this.props.currentStyle.sale_price || this.props.currentStyle.original_price}</p>
+
       </div>
     );
   }

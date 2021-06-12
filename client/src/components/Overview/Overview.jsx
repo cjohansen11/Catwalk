@@ -2,11 +2,14 @@ import * as React from 'react';
 import axios from 'axios';
 import Productinformation from './Productinformation.jsx';
 import ImageGallaryComponent from './corosel.jsx';
+import Productdescription from './Productdescription.jsx';
 import Addtocart from './Addtocart.jsx';
 import SingleStarRating from './SingleStarRating.jsx';
 // import Imagegallery from './Imagegallery.jsx';
 import config from './config.js';
-import '../../styles/overview.css'
+import '../../styles/overview.css';
+import GET from '../../../../lib/related.js';
+
 
 class Overview extends React.Component {
   constructor(props) {
@@ -32,7 +35,7 @@ class Overview extends React.Component {
     this.setState({
       cart: data
     });
-  };
+  }
 
   updateStyleArayyy(styleObj) {
     this.styleDropdown(styleObj);
@@ -51,64 +54,18 @@ class Overview extends React.Component {
 
 
   componentDidMount() {
-
-
-    var optionsCart = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-
-    var optionsProduct = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-    var optionsStyle = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/styles/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-
-    var optionsRatings = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta`,
-      headers: {
-       'Authorization': `${config.TOKEN}`
-      },
-      params: {
-
-        'product_id': '19089'
-      }
-    };
-
-
-
-
-
-
-    axios(optionsProduct)
+    console.log('PLEASE HAVE THE PROPS', this.props.featuredProduct);
+    GET.featuredProduct(this.props.featuredProduct.id)
       .then((data) => {
-        // console.log('this is the product info', data.data);
+        console.log('firs set of data', data);
+
         this.setState({
           currentProductInfo: data.data
         });
-        return axios(optionsStyle);
+        return GET.productStyles(this.props.featuredProduct.id);
       })
       .then((data) => {
-        // console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
+        console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
         var currentSelected = data.data.results[0];
         for (var i = 0; i < data.data.results.length; i++) {
           if (data.data.results[i]['default?'] === true) {
@@ -121,15 +78,15 @@ class Overview extends React.Component {
           currentSelectedStyle: currentSelected
           // default could be the defualt being true
         });
-        return axios(optionsRatings);
+        return GET.productReviews(this.props.featuredProduct.id);
       })
       .then((data) => {
         // console.log('this is the current cart state', data.data);
         this.setState({
           ratings: data.data.ratings
-      });
-      return axios(optionsCart);
-    })
+        });
+        return GET.getCart();
+      })
 
       .then((data) => {
         // console.log('this is the current cart state', data.data);
@@ -137,6 +94,7 @@ class Overview extends React.Component {
           cart: data.data
         });
         this.styleDropdown();
+
       })
       .catch((error) => {
         // console.log('the data did not renderrrr', error);
@@ -193,23 +151,35 @@ class Overview extends React.Component {
 
 
   render() {
+    if (!this.props.featuredProduct) {
+      return <span>Loading...</span>;
+    }
     return (
+
       <div className='overview'>
-        <h1>Overview Section</h1>
+        {console.log('what is the passed in prop', this.props)}
+
         <div className='galleryContainer'>
           <ImageGallaryComponent currentStyle={this.state.currentSelectedStyle} />
         </div>
         {/* <Imagegallery currentStyle={this.state.currentSelectedStyle}/> */}
 
         <div className='productContainer'>
-          <SingleStarRating ratings={this.state.ratings}/>
-          <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
-        </div>
+          <div className='infocontainer'>
+            <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} ratings={this.state.ratings} />
+            <SingleStarRating ratings={this.state.ratings} />
+          </div>
 
-        <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+          <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+
+          <Productdescription currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
+        </div>
 
 
       </div>
+
+
+
     );
   }
 }

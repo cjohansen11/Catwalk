@@ -1,5 +1,6 @@
 // Imports
 import React, { useState, useEffect } from 'react';
+import WithTracker from './WithTracker.jsx';
 import GET from '../../../lib/related.js';
 
 // Styles
@@ -10,20 +11,27 @@ import Overview from './Overview/Overview.jsx';
 import RelatedProduct from './RelatedProducts/RelatedProduct.jsx';
 
 const App = () => {
-  const [featuredProduct, setFeaturedProduct] = useState([]);
 
+  /* ** STATE(s) ** */
+  const [featuredProduct, setFeaturedProduct] = useState([]);
+  const userData = []; // use $r.props.userData to access data in browser console
+
+  /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19850)
+    GET.featuredProduct(19653)
       .then(res => {
         setFeaturedProduct(res.data);
       });
   }, []);
 
+  const RelatedWithTracker = WithTracker(RelatedProduct);
+  const OverviewWithTracker = WithTracker(Overview);
+
   return (
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
-      <Overview/>
-      <RelatedProduct featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} />
+      <OverviewWithTracker componentName={'Overview'} userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
+      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };

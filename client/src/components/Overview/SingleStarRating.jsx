@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CardStyles from '../../styles/productCard.css';
-import '../../styles/starRating.css';
+import '../../styles/rightsidecontainer.css';
 
 const SingleStarRating = ({ ratings }) => {
 
@@ -34,7 +34,7 @@ const SingleStarRating = ({ ratings }) => {
 
   return (
     <div className={`${'productRating'} ${'star'}`} >
-      <p href={'#plus-sign'}>See All {Object.keys(ratings).length} Reviews</p>
+      <a href='#plus-sign'>See All {Object.keys(ratings).length} Reviews</a>
       <div className={'dark-star'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <div className={'rating-star'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
     </div>

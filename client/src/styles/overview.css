@@ -1,4 +1,6 @@
 .overview {
-  position: relative;
-  background-color: slateblue;
+  display: flex;
+  /* background-color: slateblue; */
+  height: 700px;
+
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import config from './config.js';
-import '../../styles/styleselectaddtocart.css';
+import '../../styles/rightsidecontainer.css';
+import GET from '../../../../lib/related.js';
 
 class Addtocart extends React.Component {
   constructor(props) {
@@ -24,18 +25,7 @@ class Addtocart extends React.Component {
 
 
   componentDidMount() {
-
-    var optionsCart = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-
-    axios(optionsCart)
+    GET.getCart()
       .then((data) => {
         console.log('this is the current cart state', data.data);
         this.setState({
@@ -70,7 +60,7 @@ class Addtocart extends React.Component {
       selectedSize: event.target.value,
 
     });
-    this.getStock()
+    this.getStock();
   }
   getStock() {
     var search = Object.entries(this.props.currentStyle.skus);
@@ -156,15 +146,7 @@ class Addtocart extends React.Component {
       data: { 'sku_id': `${skuId}` }
     };
 
-    var optionsCart = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
 
-    };
 
     for (var i = 0; i < quantity; i++) {
       axios(optionsAddCart)
@@ -177,7 +159,7 @@ class Addtocart extends React.Component {
         });
     }
 
-    axios(optionsCart)
+    GET.getCart()
       .then((data) => {
         console.log('this is the cart', data.data);
         this.setState({
@@ -198,7 +180,7 @@ class Addtocart extends React.Component {
   updateStyle(style) {
     this.setState({
       availableStockArray: [],
-    })
+    });
 
     this.props.updateStyleArray(style);
     this.props.updateCurrentStyle(style);
@@ -218,63 +200,60 @@ class Addtocart extends React.Component {
     }
     return (
 
-      <div>
-          <div className='stylethumbnails'>
-        <h4>Style:{this.props.currentStyle.name}</h4>
-
+      <div className='stylecontainer'>
+        <h3>Style:{this.props.currentStyle.name}</h3>
+        <div className='thumbnailcontainer'>
           {this.props.currentStyles.results.map(style => {
             let classcheck = 'thumbnail';
-            if (style.name === this.props.currentStyle.name) {
+            if (style.style_id === this.props.currentStyle.style_id) {
               classcheck = 'thumbnail check';
             }
-            return <div className={classcheck} key={style.name} onClick={() => { this.updateStyle(style); }}>
+            return <div className={classcheck} key={style.style_id} onClick={() => { this.updateStyle(style); }}>
 
               <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
 
             </div>;
           })}
 
-          {/* have the map push the image url/data into a component , same comp renders over nd over but withbthe new data  */}
-
         </div>
 
 
 
 
 
-          <div className='addtocartcontainer'>
-        <div className="size_dropdowndiv">
-          <select className="size_dropdown"placeholder='none' onChange={this.selectedSize}>
-            <option>{this.conditionalDrop()}</option>
+        <div className='addtocartcontainer'>
+          <div className="size_dropdowndiv">
+            <select className="size_dropdown" placeholder='none' onChange={this.selectedSize}>
+              <option>{this.conditionalDrop()}</option>
 
-            {/* need to map the options from state */}
+              {/* need to map the options from state */}
 
-            {Object.entries(this.props.styleArrayy).map(style => {
-              return (
+              {Object.entries(this.props.styleArrayy).map(style => {
+                return (
 
-                <option key={(style)}>{style.slice(1)}</option>
+                  <option key={(style)}>{style.slice(1)}</option>
 
-              );
-            })
-            }
-          </select>
+                );
+              })
+              }
+            </select>
+          </div>
+
+          <div className="quantity_dropdowndiv">
+
+            <select className="quantity_dropdown" placeholder='none' onChange={this.selectedQuantity}>
+              <option>{this.state.dash}</option>
+              {this.state.availableStockArray.map(num => {
+
+                return <option key={num}>{num}</option>;
+
+              })}
+            </select>
+          </div>
+
+          <button className='addtocartbutton' onClick={() => this.addedToCart(this.state.selectedSize)}>Add To Cart</button>
+
         </div>
-
-        <div className="quantity_dropdowndiv">
-
-          <select className="quantity_dropdown" placeholder='none' onChange={this.selectedQuantity}>
-            <option>{this.state.dash}</option>
-            {this.state.availableStockArray.map(num => {
-
-              return <option key={num}>{num}</option>;
-
-            })}
-          </select>
-        </div>
-
-        <button className='addtocartbutton' onClick={() => this.addedToCart(this.state.selectedSize)}>Add To Cart</button>
-
-      </div>
       </div>
 
 

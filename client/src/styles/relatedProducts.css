@@ -10,7 +10,7 @@
   width: 800px;
   height: 350px;
   overflow-x: hidden;
-  column-gap: 30px;
+  column-gap: 10px;
   margin: auto;
 }
 

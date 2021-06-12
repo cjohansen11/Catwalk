@@ -9,8 +9,8 @@ class ImageGallaryComponent extends React.Component {
       return <span>Loading...</span>;
     }
     return (
-      <div>
-        <h2 className='gallerytitle'>My Image Gallery</h2>
+      <div classname='carosel'>
+
         <Carousel autoPlay interval="5000" transitionTime="500">
 
 
@@ -30,8 +30,8 @@ class ImageGallaryComponent extends React.Component {
 
         </Carousel>
       </div>
-    )
-  };
+    );
+  }
 }
 
 export default ImageGallaryComponent;

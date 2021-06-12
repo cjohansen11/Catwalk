@@ -1,5 +1,6 @@
 .productCard {
   border: 1px solid black;
+  border-radius: 5px;
   width: 230px;
   height: 300px;
   display: grid;
@@ -13,6 +14,7 @@
     "productName . rating"
     "category . price";
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .productCard > img {
@@ -82,10 +84,15 @@
   grid-row-end: 2;
   margin: 2px 0px 0px 75px;
   cursor: pointer;
+  text-shadow: 2px 2px 6px black;
 }
 
 .currentCard {
   transform: scale(1.05);
+}
+
+.outfit-card {
+  cursor: default;
 }
 
 .add-to-outfit {
@@ -127,15 +134,18 @@
 }
 
 .outfit-card > .actionButton {
-  font-size: 24px;
-  width: 22px;
-  height: 22px;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  color: black;
-  line-height: 20px;
+  color: white;
+  line-height: 22px;
   border: 2px solid black;
   border-radius: 50%;
   cursor: pointer;
   margin: 4px 0px 0px 82px;
+  background: black;
+  text-shadow: none;
+  box-shadow: 0px 0px 8px 2px white;
 }

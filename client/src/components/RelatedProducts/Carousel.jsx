@@ -19,16 +19,21 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
 
   /* ** ADDTIONAL FUNCTIONS ** */
   const handleNextClick = () => {
+    eachCard = Array.from(document.getElementsByClassName('product-card-array'));
     if (cardCount + 2 <= eachCard.length) {
       eachCard.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
         card.style.transitionDuration = '0.5s';
+        console.log(card.style.transform);
       });
+      // console.log(eachCard.length - cardCount);
+      // eachCard.length - cardCount > 3 ? null : setHideRightArrow(true);
       setCardCount(cardCount + 1);
     }
   };
 
   const handlePrevClick = () => {
+    eachCard = Array.from(document.getElementsByClassName('product-card-array'));
     if (cardCount > 1) {
       eachCard.forEach(card => {
         card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
@@ -39,6 +44,11 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   };
 
   /* ** USE EFFECT CALLS ** */
+  useEffect(() => {
+    setHideLeftArrow(true);
+    setHideRightArrow(false);
+  }, [featuredProduct]);
+
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
     (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
