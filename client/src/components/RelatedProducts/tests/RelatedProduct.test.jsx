@@ -16,8 +16,8 @@ it('should have a div called carousel', () => {
   expect(carouselDiv).toBeTruthy();
 });
 
-it('should have a div called outfit-container', () => {
-  render(<RelatedProduct featuredProduct={GET.featuredProduct(19583)} ></RelatedProduct>);
-  const outfitContainer = document.getElementsByClassName('outfit-container');
-  expect(outfitContainer).toBeTruthy();
+// it('should have a div called outfit-container', () => {
+//   render(<RelatedProduct featuredProduct={GET.featuredProduct(19583)} ></RelatedProduct>);
+//   const outfitContainer = document.getElementsByClassName('outfit-container');
+//   expect(outfitContainer).toBeTruthy();
 });
