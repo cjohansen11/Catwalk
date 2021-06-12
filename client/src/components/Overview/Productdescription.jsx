@@ -30,7 +30,7 @@ class Productdescription extends React.Component {
         <div>
           <h3>Features</h3>
           <p>{this.props.currentProduct.features[0].feature}:{this.props.currentProduct.features[0].value}</p>
-          <p>{this.props.currentProduct.features[1].feature}:{this.props.currentProduct.features[1].value}</p>
+
 
 
 
