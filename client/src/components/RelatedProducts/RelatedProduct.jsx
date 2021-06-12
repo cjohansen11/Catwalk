@@ -2,14 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-<<<<<<< HEAD
-/* ** IMPORTS ** */
-import dummy from '../../../../dummy_data/related_product.js';
-import GIT_TOKEN from '../QuestionsAndAnswers/config.js';
-=======
 /* ** ADDTIONAL IMPORT(s) ** */
 import GET from '../../../../lib/related.js';
->>>>>>> 47b370665cadef10ed472892f8cf610d36474df9
 import ProductCard from './ProductCard.jsx';
 import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';

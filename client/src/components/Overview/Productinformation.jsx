@@ -6,20 +6,9 @@ import axios from 'axios';
 class Productinformation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    // this.state = {
 
-<<<<<<< HEAD
-    this.options = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19078/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-      // //params:
-=======
->>>>>>> 47b370665cadef10ed472892f8cf610d36474df9
-    };
+    // };
 
 
 

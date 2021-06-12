@@ -30,9 +30,9 @@ const App = () => {
   return (
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
-      <Overview/>
+       <Overview/>
       <QuestionsAndAnswers />
-      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+     <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };
