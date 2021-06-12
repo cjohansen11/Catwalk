@@ -71,13 +71,13 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
 
 
   return (
-    <div>
-      <h2 className={RelatedStyles.h2}> Welcome to the Related Products section</h2>
+    <div className={'related-container'}>
+      <div className={'related'}><h2 className={'title'}>RELATED PRODUCTS</h2></div>
       <Carousel
         relatedProductList={relatedProductList}
         changeFeaturedProduct={changeFeaturedProduct}
         featuredProduct={featuredProduct} />
-      <h2>Welcome to the Your Outfit section</h2>
+      <div className={'outfit'}><h2 className={'title'}>YOUR OUTFIT</h2></div>
       <YourOutfitList
         handleAddToOutfit={handleAddToOutfit}
         yourOutfitList={yourOutfitList}
