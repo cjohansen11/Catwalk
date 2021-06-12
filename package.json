@@ -20,10 +20,11 @@
   },
   "homepage": "https://github.com/hr-rfe-Sequoia/catwalk#readme",
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/preset-react": "^7.13.13",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
     "@testing-library/react": "^11.2.7",
+    "@types/jest": "^26.0.23",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
@@ -38,11 +39,21 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@testing-library/jest-dom": "^5.13.0",
     "axios": "^0.21.1",
+    "babel-jest": "^27.0.2",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.7",
+    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
