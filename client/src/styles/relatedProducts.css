@@ -1,8 +1,30 @@
-.h2 {
+.related-container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: auto;
+}
+
+.title {
+  position: absolute;
   color: black;
+  font-weight: 100;
+  font-family: sans-serif;
+  margin: auto;
+}
+
+.related {
+  order: 1;
+  margin: 10px 0px;
+}
+
+.outfit {
+  order: 3;
+  margin: 10px 0px;
 }
 
 .container {
+  order: 2;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -15,6 +37,7 @@
 }
 
 .outfit-container {
+  order: 4;
   justify-content: start;
 }
 
