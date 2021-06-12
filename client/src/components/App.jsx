@@ -11,6 +11,7 @@ import Overview from './Overview/Overview.jsx';
 import RelatedProduct from './RelatedProducts/RelatedProduct.jsx';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
 
+
 const App = () => {
 
   /* ** STATE(s) ** */
@@ -18,6 +19,7 @@ const App = () => {
   const userData = []; // use $r.props.userData to access data in browser console
 
   /* ** SETS INITIAL ** */
+
   useEffect(() => {
     GET.featuredProduct(19653)
       .then(res => {
@@ -31,7 +33,8 @@ const App = () => {
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
        <Overview/>
-      <QuestionsAndAnswers />
+      <QuestionsAndAnswers featuredProduct={featuredProduct}/>
+
      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );

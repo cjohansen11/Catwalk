@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 
-const Answers = ( {listOfAnswers} ) => {
+const Answers = ( {test} ) => {
 
 
 
-  // console.log('ANSWERS: listOfAnswers', listOfAnswers);
+  console.log('TEST: listOfAnswers', test);
   return (
     <div>
       <section>
         <h3>A:</h3>
-        {listOfAnswers.results ?
-          listOfAnswers.results.map(answer => {
+        {test ?
+          test.map(answer => {
             return (
-              <React.Fragment key={answer.body}>
+              <div>
                 <div> {answer.body}</div>
                 <div>by {answer.answerer_name}, {answer.date} | Helpful? Yes {`(${answer.helpfulness})`}| Report</div>
-              </React.Fragment>
+              </div>
             );
-          }) : null}
+          }) : ''}
       </section>
     </div>
   );

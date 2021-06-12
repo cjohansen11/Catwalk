@@ -10,16 +10,15 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
   // FILTER FOR SEARCH RESULTS
   // NEEDS TO UPDATE STATE-- MAYBE SET EQUAL TO THE WHOLE LIST AND CHANGE ACCORDINGLY?
-  if (listOfQuestions.results) {
-    const filtered = listOfQuestions.results.filter(list => {
-      // console.log('list', list)
-      if (list.question_body.includes('who')) {
-        // console.log('filtered:  ', list.question_body)
-      }
-    });
-  }
 
-
+  // if (listOfQuestions.results) {
+  //   const filtered = listOfQuestions.results.filter(list => {
+  //     // console.log('list', list)
+  //     if (list.question_body.includes('who')) {
+  //       // console.log('filtered:  ', list.question_body)
+  //     }
+  //   });
+  // }
   return (
     <div>
       <section>

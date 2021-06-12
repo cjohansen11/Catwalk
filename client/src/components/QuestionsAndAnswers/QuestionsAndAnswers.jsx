@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Questions from './Questions.jsx';
 import Search from './Search.jsx';
 import Answers from './Answers.jsx';
-import CreateQuestion from './createQuestion.jsx';
+import CreateQuestion from './CreateQuestion.jsx';
 import axios from 'axios';
 import { TOKEN } from './config.js';
+import featured from '../App.jsx';
+import ModalQuestion from './ModalQuestion.jsx';
 
 const QuestionsAndAnswers = () => {
 
@@ -12,7 +14,7 @@ const QuestionsAndAnswers = () => {
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
 
-
+  // console.log('stateListOfAnswers: ', listOfAnswers)
   // GET For currrent product
 
   const firstCall = () => {
@@ -43,63 +45,12 @@ const QuestionsAndAnswers = () => {
       });
   };
 
-  const postReq = () => {
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
-      {headers: {
-        'Authorization': `${TOKEN}`
-      },
-      data: {
-        body: 'test for question post',
-        name: 'Johnny',
-        email: 'hognnyapples@gmail.com',
-        product_id: 19089
-      }
-      })
-      .then((res) => {
-      // console.log('setListOfQuestions:  ', res.data);
-        // setListOfQuestions(res.data);
-      // postReq();
-        console.log('this post worked');
-      })
-      .catch((error)=> {
-        console.log('this failed big timmmmmme');
-      });
-  };
-
-  // var optionsQ = {
-  //   method: post,
-  //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
-  //   headers: {
-  //     'Authorization': `${TOKEN}`
-  //   },
-  //   params: {
-  //     'text': 'test for question post',
-  //     'name': 'Johnny',
-  //     'email': 'hognnyapples@gmail.com',
-  //     'product_id': '19089'
-  //   }
-  // };
-
-
+  // useEffect(() => {
+  // }, [listOfAnswers])
 
   useEffect(() => {
     firstCall();
-
   }, []);
-
-  // should be set with feature product questionid??
-  // useEffect(() => {
-  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/183056/answers',
-  //     {headers: {
-  //       'Authorization': `${TOKEN}`
-  //     },
-  //     }
-  //   )
-  //     .then((res) => {
-  //       console.log('setListOfAnswers:  ', res.data);
-  //       setListOfAnswers(res.data);
-  //     });
-  // }, [featuredProduct]);
 
 
 
@@ -110,6 +61,7 @@ const QuestionsAndAnswers = () => {
       <Search />
       <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
       <CreateQuestion />
+
     </div>
   );
 };
