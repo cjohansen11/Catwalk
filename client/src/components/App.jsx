@@ -18,7 +18,7 @@ const App = () => {
 
   /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19653)
+    GET.featuredProduct(19910)
       .then(res => {
         setFeaturedProduct(res.data);
       });
@@ -30,7 +30,7 @@ const App = () => {
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
       <Overview/>
-      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+      <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };

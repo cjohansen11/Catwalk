@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct }) => {
+const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct, setCardCount }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;
@@ -22,7 +22,10 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
 
   return (
     <div className={`${'productCard'} ${'product-card-array'}`}
-      onClick={() => changeFeaturedProduct(product.details.id)}>
+      onClick={() => {
+        setCardCount(1);
+        changeFeaturedProduct(product.details.id);
+      }}>
       <img className={'image'} src={defaultStyle.photos[0].thumbnail_url} alt="" className="previewImage"></img>
       <h5 className={'productName'} >{product.details.name}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
