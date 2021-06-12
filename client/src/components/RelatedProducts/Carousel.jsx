@@ -51,7 +51,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
 
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 2) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (

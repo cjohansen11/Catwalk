@@ -18,7 +18,7 @@ const App = () => {
 
   /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19653)
+    GET.featuredProduct(19910)
       .then(res => {
         setFeaturedProduct(res.data);
       });
