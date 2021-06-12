@@ -43,12 +43,12 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     setHideLeftArrow(true);
-    setHideRightArrow(false);
-  }, [featuredProduct]);
+    relatedProductList.length <= 3 ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [relatedProductList]);
 
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 2) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (

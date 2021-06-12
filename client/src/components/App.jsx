@@ -14,10 +14,11 @@ const App = () => {
 
   /* ** STATE(s) ** */
   const [featuredProduct, setFeaturedProduct] = useState([]);
+  const userData = []; // use $r.props.userData to access data in browser console
 
   /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19653)
+    GET.featuredProduct(19910)
       .then(res => {
         setFeaturedProduct(res.data);
       });
@@ -29,8 +30,7 @@ const App = () => {
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
       <Overview/>
-      <RelatedWithTracker featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
-      {/* <RelatedProduct featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} /> */}
+      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 const WithTracker = Component => {
 
-  const ComponentWithTracker = ({ featuredProduct, setFeaturedProduct, componentName }) => {
-    const [tracker, setTracker] = useState([]);
+  const ComponentWithTracker = ({ userData, featuredProduct, setFeaturedProduct, componentName }) => {
 
+    const [tracker, setTracker] = useState([]);
 
     /* ** ADDITIONAL FUNCTION(s) ** */
     const clickTracker = (e) => {
@@ -13,12 +13,15 @@ const WithTracker = Component => {
         'timeClicked': new Date(),
         'module': componentName
       };
-      setTracker(prev => [...prev, trackerObject]);
+      // setTracker(prev => [...prev, trackerObject]);
+      userData.push(trackerObject);
     };
 
     return (
-      <div onClick={(e) => clickTracker(e)}>
-        <Component featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} clickTracker={clickTracker} />
+      <div onClick={(e) => {
+        clickTracker(e);
+      }}>
+        <Component featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} />
       </div>
     );
   };
