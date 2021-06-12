@@ -1,0 +1,11 @@
+.ratingsReviewsContainer {
+  display: flex
+}
+
+.ratingsContainer {
+  flex: 25%
+}
+
+.reviewsContainer {
+  flex: 70%
+}
