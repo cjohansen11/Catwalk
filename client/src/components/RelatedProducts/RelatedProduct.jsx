@@ -22,7 +22,7 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
 
   /* ** ADDTIONAL FUNCTION(s) ** */
   const getRelatedProductsList = (array, type) => {
-    array.length && type === 'related' ? setRelatedProductList([]) : setYourOutfitList([]);
+    array.length && type === 'related' ? setRelatedProductList([]) : null;
     array.forEach(productId => {
       axios.all([GET.featuredProduct(productId), GET.productStyles(productId), GET.productReviews(productId)])
         .then(axios.spread((...res) => {
@@ -38,8 +38,13 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
       });
   };
 
+  const handleAddToOutfit = () => {
+    !outfitList.includes(featuredProduct.id) ? setOutfitList(prev => [...prev, featuredProduct.id]) : null;
+  };
+
   const removeOutfit = (productId) => {
     setYourOutfitList(yourOutfitList.filter(outfit => outfit.details.id !== productId));
+    setOutfitList(outfitList.filter(id => id !== productId));
     let updateStorage = JSON.parse(localStorage.getItem('myOutfit')).filter(id => id !== productId);
     localStorage.setItem('myOutfit', JSON.stringify(updateStorage));
   };
@@ -57,9 +62,13 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
   }, [relatedProducts]);
 
   useEffect(() => {
-    getRelatedProductsList(outfitList, 'outfit');
+    let currentOutfitIds = [];
+    yourOutfitList.forEach(product => currentOutfitIds.push(product.details.id));
+    let newOutfit = outfitList.filter(id => !currentOutfitIds.includes(id));
+    getRelatedProductsList(newOutfit, 'outfit');
     localStorage.setItem('myOutfit', JSON.stringify(outfitList));
   }, [outfitList]);
+
 
   return (
     <div>
@@ -70,10 +79,9 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
         featuredProduct={featuredProduct} />
       <h2>Welcome to the Your Outfit section</h2>
       <YourOutfitList
+        handleAddToOutfit={handleAddToOutfit}
         yourOutfitList={yourOutfitList}
         setOutfitList={setOutfitList}
-        featuredProduct={featuredProduct}
-        getRelatedProductsList={getRelatedProductsList}
         outfitList={outfitList}
         removeOutfit={removeOutfit} />
     </div>

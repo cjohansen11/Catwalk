@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const OutfitCard = ({ product, changeFeaturedProduct, removeOutfit }) => {
+const OutfitCard = ({ product, removeOutfit }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;
