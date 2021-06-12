@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import OutfitCard from './OutfitCard.jsx';
 import '../../styles/relatedProducts.css';
 
-const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRelatedProductsList, removeOutfit, outfitList }) => {
+const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, removeOutfit, outfitList }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
@@ -36,10 +36,6 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
     }
   };
 
-  const handleAddToOutfit = () => {
-    !outfitList.includes(featuredProduct.id) ? setOutfitList(prev => [...prev, featuredProduct.id]) : null;
-  };
-
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     yourOutfitList.length < 3 ? setHideRightArrow(true) : setHideRightArrow(false);
@@ -55,9 +51,9 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
       <div className={`${'container'} ${'carousel'} ${'outfit-container'}`}>
         <div className={`${'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
-        onClick={() => handlePrevClickOutfit()}>❮</div>
+        onClick={handlePrevClickOutfit}>❮</div>
         <div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
-          onClick={() => handleAddToOutfit()} >
+          onClick={handleAddToOutfit} >
           <div className={'plus-sign'}>+</div>
           <div className={'add-to-outfit-text'}>Add to Outfit</div>
         </div>
@@ -68,7 +64,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
             removeOutfit={removeOutfit} />;
         })}
         <div className={`${'right_arrow'}
-        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={(e) => handleNextClickOutfit()}>❯</div>
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={handleNextClickOutfit}>❯</div>
       </div>
     </>
   );
