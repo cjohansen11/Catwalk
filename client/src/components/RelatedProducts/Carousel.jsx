@@ -62,7 +62,8 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
             product={{product}}
             changeFeaturedProduct={changeFeaturedProduct}
             setToggleModal={setToggleModal}
-            setComparedProduct={setComparedProduct} />;
+            setComparedProduct={setComparedProduct}
+            setCardCount={setCardCount} />;
         })}
         <div className={`${'right_arrow'}
         ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
