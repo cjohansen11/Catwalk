@@ -43,7 +43,7 @@ const config = {
 		new ESLintPlugin(ESLintConfig)
 	],
 	output: {
-		path: path.resolve(__dirname, './client/dist'),
+		path: path.resolve(__dirname, './client/dt'),
 		filename: 'app.bundle.js'
 	}
 }

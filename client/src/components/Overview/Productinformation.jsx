@@ -20,12 +20,12 @@ class Productinformation extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4>Star Rating:</h4>
-        <h4>Category: {this.props.currentProduct.category}</h4>
-        <h4>Product Title: {this.props.currentProduct.name} </h4>
-        <h4>Price: {this.props.currentStyle.sale_price || this.props.currentStyle.original_price}</h4>
-        <h4>Slogan / Description / Features</h4>
+      <div className='infotext'>
+
+        <p>Category: {this.props.currentProduct.category}</p>
+        <p>Product Title: {this.props.currentProduct.name} </p>
+        <p>Price: {this.props.currentStyle.sale_price || this.props.currentStyle.original_price}</p>
+        <p>Slogan / Description / Features</p>
       </div>
     );
   }

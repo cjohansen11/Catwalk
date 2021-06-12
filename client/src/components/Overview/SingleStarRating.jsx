@@ -3,7 +3,7 @@ import React from 'react';
 import CardStyles from '../../styles/productCard.css';
 import '../../styles/starRating.css';
 
-const StarRating = ({ ratings }) => {
+const SingleStarRating = ({ ratings }) => {
 
   if (!Object.keys(ratings).length) {
     return (
@@ -34,10 +34,11 @@ const StarRating = ({ ratings }) => {
 
   return (
     <div className={`${'productRating'} ${'star'}`} >
+      <p href={'#plus-sign'}>See All {Object.keys(ratings).length} Reviews</p>
       <div className={'dark-star'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <div className={'rating-star'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
     </div>
   );
 };
 
-export default StarRating;
+export default SingleStarRating;

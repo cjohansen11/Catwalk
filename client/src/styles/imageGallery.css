@@ -20,3 +20,12 @@ width: 500px;
   height:auto;
 }
 
+
+.thumbs-wrapper.axis-vertical {
+  background-color: grey;
+
+}
+
+.thumbs-wrapper {
+top:400px;
+}

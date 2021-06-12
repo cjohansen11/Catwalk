@@ -3,8 +3,10 @@ import axios from 'axios';
 import Productinformation from './Productinformation.jsx';
 import ImageGallaryComponent from './corosel.jsx';
 import Addtocart from './Addtocart.jsx';
+import SingleStarRating from './SingleStarRating.jsx';
 // import Imagegallery from './Imagegallery.jsx';
 import config from './config.js';
+import '../../styles/overview.css'
 
 class Overview extends React.Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class Overview extends React.Component {
       styleArray: '',
       cart: '',
       updateS: [],
+      ratings: '',
     };
 
     this.updateCurrentSelectedStyle = this.updateCurrentSelectedStyle.bind(this);
@@ -79,16 +82,33 @@ class Overview extends React.Component {
 
     };
 
+    var optionsRatings = {
+      method: 'get',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta`,
+      headers: {
+       'Authorization': `${config.TOKEN}`
+      },
+      params: {
+
+        'product_id': '19089'
+      }
+    };
+
+
+
+
+
+
     axios(optionsProduct)
       .then((data) => {
-        console.log('this is the product info', data.data);
+        // console.log('this is the product info', data.data);
         this.setState({
           currentProductInfo: data.data
         });
         return axios(optionsStyle);
       })
       .then((data) => {
-        console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
+        // console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
         var currentSelected = data.data.results[0];
         for (var i = 0; i < data.data.results.length; i++) {
           if (data.data.results[i]['default?'] === true) {
@@ -101,17 +121,25 @@ class Overview extends React.Component {
           currentSelectedStyle: currentSelected
           // default could be the defualt being true
         });
-        return axios(optionsCart);
+        return axios(optionsRatings);
       })
       .then((data) => {
-        console.log('this is the current cart state', data.data);
+        // console.log('this is the current cart state', data.data);
+        this.setState({
+          ratings: data.data.ratings
+      });
+      return axios(optionsCart);
+    })
+
+      .then((data) => {
+        // console.log('this is the current cart state', data.data);
         this.setState({
           cart: data.data
         });
         this.styleDropdown();
       })
       .catch((error) => {
-        console.log('the data did not renderrrr', error);
+        // console.log('the data did not renderrrr', error);
       });
   }
 
@@ -174,6 +202,7 @@ class Overview extends React.Component {
         {/* <Imagegallery currentStyle={this.state.currentSelectedStyle}/> */}
 
         <div className='productContainer'>
+          <SingleStarRating ratings={this.state.ratings}/>
           <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
         </div>
 

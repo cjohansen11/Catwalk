@@ -11,6 +11,7 @@
   border-radius: 75px;
   width: 75px;
   height:75px;
+  display: block;
 }
 
 
@@ -18,9 +19,22 @@
 
 .thumbnail {
   display: inline-block;
- padding: 5px;
+  padding: 5px;
+
+
 
 }
+.check {
+  background-image: url('https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png');
+  background-position: top left;
+  background-size: 100% 100%;
+
+}
+
+
+
+
+
 
 
 
@@ -29,7 +43,7 @@
   width: 300px;
   position: absolute;
   right: 350px;
-  top: 620px;
+  top: 720px;
 }
 
 .size_dropdown {

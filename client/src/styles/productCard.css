@@ -49,6 +49,8 @@
   grid-row-start: 5;
   grid-row-end: 6;
   margin: auto;
+  top: 12px;
+  left: 6px;
 }
 
 .productPrice {
@@ -60,6 +62,16 @@
   margin: auto;
 }
 
+.sale-price {
+  margin: 0%;
+}
+
+.default-price {
+  margin: 0%;
+  color: darkred;
+  text-decoration: line-through;
+}
+
 .actionButton {
   color: goldenrod;
   font-size: 30px;
@@ -69,6 +81,7 @@
   grid-row-start: 1;
   grid-row-end: 2;
   margin: 2px 0px 0px 75px;
+  cursor: pointer;
 }
 
 .currentCard {

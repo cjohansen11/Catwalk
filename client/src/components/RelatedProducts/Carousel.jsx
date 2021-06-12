@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
+/* ** ADDTIONAL IMPORT(s) ** */
 import ProductCard from './ProductCard.jsx';
+import Modal from './Modal.jsx';
 import '../../styles/relatedProducts.css';
 
-const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
+const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }) => {
+
+  /* ** COMPONENT VARIABLE(s) ** */
+  let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
+
+  /* ** STATE(s) ** */
   const [cardCount, setCardCount] = useState(1);
   const [hideLeftArrow, setHideLeftArrow] = useState(false);
   const [hideRightArrow, setHideRightArrow] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [comparedProduct, setComparedProduct] = useState({});
 
-
-  let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
-
+  /* ** ADDTIONAL FUNCTIONS ** */
   const handleNextClick = () => {
     if (cardCount + 2 <= eachCard.length) {
       eachCard.forEach(card => {
@@ -31,17 +38,32 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct }) => {
     }
   };
 
+  /* ** USE EFFECT CALLS ** */
+  useEffect(() => {
+    cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
+    (cardCount + 1) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [cardCount]);
+
   return (
     <>
-      <div className={`${'left_arrow'}
-      ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
       <div className={`${'container'} ${'carousel'}`}>
+        <div className={`${'left_arrow'}
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
         {relatedProductList.map(product => {
-          return <ProductCard key={product.details.id + product.details.name} product={{product}} changeFeaturedProduct={changeFeaturedProduct} />;
+          return <ProductCard
+            key={product.details.id + product.details.name}
+            product={{product}}
+            changeFeaturedProduct={changeFeaturedProduct}
+            setToggleModal={setToggleModal}
+            setComparedProduct={setComparedProduct} />;
         })}
+        <div className={`${'right_arrow'}
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
       </div>
-      <div className={`${'right_arrow'}
-      ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
+      {toggleModal ? <Modal
+        setToggleModal={setToggleModal}
+        featuredProduct={featuredProduct}
+        comparedProduct={comparedProduct} /> : null}
     </>
   );
 };

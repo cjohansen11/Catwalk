@@ -4,16 +4,23 @@
 
 .container {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
   width: 800px;
   height: 350px;
-  display: flex;
   overflow-x: hidden;
   column-gap: 30px;
   margin: auto;
 }
 
+.outfit-container {
+  justify-content: start;
+}
+
 .productCard {
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 div.container > div:first-child {
@@ -25,33 +32,33 @@ div.container > div:last-child {
 }
 
 .right_arrow {
-  width: 40px;
-  position: relative;
+  position: absolute;
   font-size: 60px;
   text-align: center;
-  bottom: 213px;
-  left: 1115px;
   z-index: 6;
+  background-color: rgba(255, 255, 255, 0.4);
+  top: 125px;
+  right: -30px;
 }
 
 .left_arrow {
-  width: 40px;
-  position: relative;
+  position: absolute;
   font-size: 60px;
   text-align: center;
-  top: 206px;
-  left: 285px;
   z-index: 6;
+  background-color: rgba(255, 255, 255, 0.2);
+  top: 125px;
+  left: -30px;
 }
 
 .hideLeftArrow {
   cursor: default;
-  color: grey;
+  display: none;
 }
 
 .hideRightArrow {
   cursor: default;
-  color: grey;
+  display: none;
 }
 
 .activeArrow {

@@ -15,8 +15,6 @@ class Addtocart extends React.Component {
       availableStock: '',
       availableStockArray: [],
       dash: '-',
-
-
     };
 
     this.selectedSize = this.selectedSize.bind(this);
@@ -78,7 +76,7 @@ class Addtocart extends React.Component {
     var search = Object.entries(this.props.currentStyle.skus);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === event.target.value) {
-        console.log('is this loop working?');
+        // console.log('is this loop working?');
         var sku = Number(search[i][0]);
         var styleStock = search[i][1]['quantity'];
         this.setState({
@@ -157,6 +155,7 @@ class Addtocart extends React.Component {
       },
       data: { 'sku_id': `${skuId}` }
     };
+
     var optionsCart = {
       method: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
@@ -188,7 +187,7 @@ class Addtocart extends React.Component {
 
       })
       .catch((error) => {
-        console.log('cart error', error);
+        // console.log('cart error', error);
       });
 
     this.props.updateStyleArray();
@@ -224,8 +223,14 @@ class Addtocart extends React.Component {
         <h4>Style:{this.props.currentStyle.name}</h4>
 
           {this.props.currentStyles.results.map(style => {
-            return <div className='thumbnail' key={style.name} onClick={() => { this.updateStyle(style); }}>
+            let classcheck = 'thumbnail';
+            if (style.name === this.props.currentStyle.name) {
+              classcheck = 'thumbnail check';
+            }
+            return <div className={classcheck} key={style.name} onClick={() => { this.updateStyle(style); }}>
+
               <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
+
             </div>;
           })}
 
