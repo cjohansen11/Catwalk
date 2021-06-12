@@ -43,7 +43,7 @@ const YourOutfitList = ({ yourOutfitList, setOutfitList, featuredProduct, getRel
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 1) === (outfitCards.length - 1) ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 2) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (
