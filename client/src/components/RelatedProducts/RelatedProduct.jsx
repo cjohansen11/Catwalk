@@ -39,7 +39,9 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
   };
 
   const removeOutfit = (productId) => {
-    setOutfitList(outfitList.filter(item => item !== productId));
+    setYourOutfitList(yourOutfitList.filter(outfit => outfit.details.id !== productId));
+    let updateStorage = JSON.parse(localStorage.getItem('myOutfit')).filter(id => id !== productId);
+    localStorage.setItem('myOutfit', JSON.stringify(updateStorage));
   };
 
   /* ** USE EFFECT CALLS ** */

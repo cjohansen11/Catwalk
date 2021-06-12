@@ -24,10 +24,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
       eachCard.forEach(card => {
         card.style.transform = `translateX(${cardCount * -230}px)`;
         card.style.transitionDuration = '0.5s';
-        console.log(card.style.transform);
       });
-      // console.log(eachCard.length - cardCount);
-      // eachCard.length - cardCount > 3 ? null : setHideRightArrow(true);
       setCardCount(cardCount + 1);
     }
   };
@@ -46,8 +43,8 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     setHideLeftArrow(true);
-    setHideRightArrow(false);
-  }, [featuredProduct]);
+    relatedProductList.length <= 3 ? setHideRightArrow(true) : setHideRightArrow(false);
+  }, [relatedProductList]);
 
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
