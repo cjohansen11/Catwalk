@@ -32,6 +32,7 @@ h5 {
   height: 200px;
   object-fit: cover;
   overflow: hidden;
+  z-index: -1;
 }
 
 .previewImage {
@@ -111,7 +112,7 @@ h5 {
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
-  margin: 2px 0px 0px 75px;
+  margin: 2px 0px 0px 56px;
   cursor: pointer;
   text-shadow: 2px 2px 6px black;
   z-index: 1;
@@ -123,6 +124,7 @@ h5 {
 
 .outfit-card {
   cursor: default;
+  overflow: hidden;
 }
 
 .add-to-outfit {
@@ -173,7 +175,7 @@ h5 {
   border: 2px solid black;
   border-radius: 50%;
   cursor: pointer;
-  margin: 4px 0px 0px 82px;
+  margin: 4px 0px 0px 65px;
   background: black;
   text-shadow: none;
   box-shadow: 0px 0px 8px 2px white;

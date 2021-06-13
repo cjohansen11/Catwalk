@@ -39,7 +39,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
         body: values.answer,
         name: values.nickname,
         email: values.email,
-        product_id: `${question_id}`
+        'product_id': `${question_id}`
       }
     })
       .then((data) => {

@@ -53,7 +53,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
 
   return (
     <>
-      <div className={`${'container'} ${'carousel'}`}>
+      <div className={`${'container'} ${'related-carousel'}`}>
         <div className={`${'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
         {relatedProductList.map(product => {
