@@ -4,13 +4,15 @@ import Search from './Search.jsx';
 import Answers from './Answers.jsx';
 import CreateQuestion from './CreateQuestion.jsx';
 import axios from 'axios';
-// import { TOKEN } from './config.js';
+import GIT_TOKEN from '../../../../lib/config.js';
 import featured from '../App.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
 import ModalAnswer from './ModalQuestion.jsx';
 import CreateAnswer from './CreateAnswer.jsx';
 import App from '../App.jsx';
 import './QuestionsAndAnswers.css';
+
+
 
 const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
 
@@ -32,7 +34,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
   const firstCall = (id) => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
       {headers: {
-        'Authorization': `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`
+        'Authorization': `${GIT_TOKEN}`
       },
       params: {
         product_id: id
