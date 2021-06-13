@@ -26,7 +26,7 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
         setCardCount(1);
         changeFeaturedProduct(product.details.id);
       }}>
-      <img className={'image'} src={defaultStyle.photos[0].thumbnail_url} alt="" className="previewImage"></img>
+      <div className={'image-container'}><img className={'image'} src={defaultStyle.photos[0].thumbnail_url} alt="" className="previewImage"></img></div>
       <h5 className={'productName'} >{product.details.name.toUpperCase()}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating ratings={ratings} />

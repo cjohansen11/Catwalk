@@ -22,7 +22,7 @@ const OutfitCard = ({ product, removeOutfit }) => {
 
   return (
     <div className={`${'productCard'} ${'outfit-card'}`}>
-      <img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img>
+      <div className={'image-container'}><img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img></div>
       <h5 className={'productName'}>{product.details.name.toUpperCase()}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating ratings={ratings} />
