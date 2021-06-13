@@ -27,7 +27,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
   };
 
   const closeModalHandler = () =>
-  setShow(false)
+    setShow(false);
   console.log(show);
 
   // GET For currrent product
