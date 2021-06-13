@@ -1,0 +1,127 @@
+/* CONTAINER SECTION */
+
+.productContainer {
+  /* background-color: grey; */
+display: flex;
+flex-direction: column;
+height: 100%;
+
+  padding: 20px;
+}
+
+.infocontainer {
+  /* background-color: brown; */
+  display: flex;
+}
+
+/*
+PRODUCT INFO SECTION */
+
+.productinfocontainer {
+  font-size: large;
+}
+
+
+
+
+
+
+/*
+STAR RATING SECTION */
+.ratingsReviewsContainer {
+  display: flex
+}
+
+.ratingsContainer {
+  flex: 25%
+}
+
+.reviewsContainer {
+  flex: 70%
+}
+
+
+.star {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+
+.dark-star, .rating-star {
+  color: pink;
+  width: 80px;
+  height: 20px;
+  position: absolute;
+}
+
+
+
+/* STYLE THUMBNAIL SECTION */
+.thumbnailcontainer {
+
+  width: 350px;
+
+  /* background-color:white ; */
+}
+
+.stylecontainer {
+  /* background-color: green; */
+}
+
+.thumbnailimg {
+  border-radius: 75px;
+  width: 75px;
+  height:75px;
+  display: block;
+}
+
+.thumbnail {
+  display: inline-block;
+  padding: 5px;
+
+
+
+}
+.check {
+  background-image: url('https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png');
+  background-position: top left;
+  background-size: 100% 100%;
+
+}
+
+
+
+
+
+
+/*
+ADD TO CART SECTION */
+
+.addtocartcontainer {
+  /* background-color: sandybrown; */
+  display: flex;
+  width: 300px;
+
+  right: 350px;
+
+}
+
+.size_dropdown {
+  color: black;
+  /* background-color: skyblue; */
+  height: 40px;
+  width: 160px;
+}
+
+.quantity_dropdown {
+  color: black;
+  /* background-color: skyblue; */
+  height: 40px;
+  width: 75px;
+}
+.addtocartbutton {
+  color:black;
+  height: 40px;
+  width: 200px;
+}
