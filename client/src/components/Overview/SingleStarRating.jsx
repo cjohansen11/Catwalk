@@ -34,7 +34,7 @@ const SingleStarRating = ({ ratings }) => {
 
   return (
     <div className={`${'productRating'} ${'starr'}`} >
-      <a href='#reviewsContainer'>See All {Object.keys(ratings).length} Reviews</a>
+      <a href='#route'>See All {Object.keys(ratings).length} Reviews</a>
       <div className={'dark-starr'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <div className={'rating-starr'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
     </div>
