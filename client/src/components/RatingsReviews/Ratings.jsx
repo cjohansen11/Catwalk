@@ -4,7 +4,9 @@ import _ from 'lodash';
 
 import Requests from '../../../../lib/RatingsReviews.js';
 // import Bar from './Bar.jsx';
-// import Characteristics from './Characteristics.jsx';
+import StarRating from './StarRating.jsx';
+import StarRatingBars from './StarRatingBars.jsx';
+import CharacteristicsBars from './CharacteristicsBars.jsx';
 
 import data from '../../../../dummy_data/ratings.js';
 
@@ -25,8 +27,17 @@ const Ratings = ({ productId }) => {
   return (
     <div className='ratingsContainer'>
       <h1>Ratings</h1>
-      {/* <Bar data = {data}/>
-      <Characteristics data={data} /> */}
+      <div>Number&Rating
+        <StarRating numberOfStars={4} />
+      </div>
+
+      <div>
+        <StarRatingBars />
+      </div>
+
+      <div>
+        <CharacteristicsBars />
+      </div>
     </div>
   );
 };
