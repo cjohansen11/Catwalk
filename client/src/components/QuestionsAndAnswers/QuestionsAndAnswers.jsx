@@ -25,14 +25,14 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
   };
 
   const closeModalHandler = () =>
-  setShow(false)
+    setShow(false);
   console.log(show);
 
   // GET For currrent product
   const firstCall = (id) => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
       {headers: {
-        'Authorization': `${TOKEN}`
+        'Authorization': `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`
       },
       params: {
         product_id: id

@@ -12,7 +12,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
       {headers: {
-        'Authorization': `${TOKEN}`
+        'Authorization': `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`
       },
       }
     )
@@ -39,7 +39,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
         body: values.answer,
         name: values.nickname,
         email: values.email,
-        product_id: `${question_id}`
+        'product_id': `${question_id}`
       }
     })
       .then((data) => {
