@@ -55,7 +55,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    console.log('overview CDM ran');
+
     GET.featuredProduct(this.props.featuredProduct.id)
       .then((data) => {
 
@@ -98,59 +98,62 @@ class Overview extends React.Component {
 
       })
       .catch((error) => {
-        console.log('the data did not renderrrr', error);
+        console.log('the data did not render', error);
       });
   }
 
 
-  // componentDidUpdate(prevProps) {
-  //   console.log('overview CDU ran');
-  //   GET.featuredProduct(this.props.featuredProduct.id)
-  //     .then((data) => {
-  //       console.log('first set of data', data);
+  componentDidUpdate(prevProps) {
+    if (this.props.featuredProduct !== prevProps.featuredProduct) {
 
-  //       this.setState({
-  //         currentProductInfo: data.data
-  //       });
-  //       return GET.productStyles(this.props.featuredProduct.id);
-  //     })
-  //     .then((data) => {
 
-  //       var currentSelected = data.data.results[0];
-  //       for (var i = 0; i < data.data.results.length; i++) {
-  //         if (data.data.results[i]['default?'] === true) {
-  //           currentSelected = data.data.results[i];
-  //         }
-  //       }
 
-  //       this.setState({
-  //         currentProductStylesInfo: data.data,
-  //         currentSelectedStyle: currentSelected
-  //         // default could be the defualt being true
-  //       });
-  //       return GET.productReviews(this.props.featuredProduct.id);
-  //     })
-  //     .then((data) => {
-  //       console.log('this is the current cart state', data.data);
-  //       this.setState({
-  //         ratings: data.data.ratings
-  //       });
-  //       return GET.getCart();
-  //     })
+      GET.featuredProduct(this.props.featuredProduct.id)
+        .then((data) => {
 
-  //     .then((data) => {
-  //       console.log('this is the current cart state', data.data);
-  //       this.setState({
-  //         cart: data.data
-  //       });
-  //       this.styleDropdown();
 
-  //     })
-  //     .catch((error) => {
-  //       console.log('the data did not renderrrr', error);
-  //     });
-  // }
+          this.setState({
+            currentProductInfo: data.data
+          });
+          return GET.productStyles(this.props.featuredProduct.id);
+        })
+        .then((data) => {
 
+          var currentSelected = data.data.results[0];
+          for (var i = 0; i < data.data.results.length; i++) {
+            if (data.data.results[i]['default?'] === true) {
+              currentSelected = data.data.results[i];
+            }
+          }
+
+          this.setState({
+            currentProductStylesInfo: data.data,
+            currentSelectedStyle: currentSelected
+            // default could be the defualt being true
+          });
+          return GET.productReviews(this.props.featuredProduct.id);
+        })
+        .then((data) => {
+
+          this.setState({
+            ratings: data.data.ratings
+          });
+          return GET.getCart();
+        })
+
+        .then((data) => {
+
+          this.setState({
+            cart: data.data
+          });
+          this.styleDropdown();
+
+        })
+        .catch((error) => {
+          console.log('the data did not render', error);
+        });
+    }
+  }
 
 
 
