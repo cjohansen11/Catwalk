@@ -58,7 +58,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
     <div>
       <div className="questions-and-answers">
         <h3>Questions & Answers</h3>
-        <Search setListOfQuestions={setListOfQuestions} listOfQuestions={listOfQuestions} />
+
         <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
         <CreateQuestion modalState={modalState} setModalState={setModalState} show={show} setShow={setShow} />
         <CreateAnswer />
