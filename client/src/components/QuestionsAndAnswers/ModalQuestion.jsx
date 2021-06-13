@@ -21,7 +21,7 @@ const ModalQuestion = ({ show, close }) => {
         body: values.question,
         name: values.nickname,
         email: values.email,
-        product_id: 19089
+        product_id: 19653
       }
     })
       .then((data) => {

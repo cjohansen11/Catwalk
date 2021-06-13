@@ -40,33 +40,6 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
       });
   };
 
-  // const firstCall = () => {
-  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/',
-  //     {headers: {
-  //       'Authorization': `${TOKEN}`
-  //     }
-  //     })
-  //     .then((res) => {
-  //       console.log('featuredProduct:  ', res.data);
-  //       setFeaturedProduct(res.data);
-  //       return res.data;
-  //     })
-  //     .then((res) => {
-  //       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
-  //         {headers: {
-  //           'Authorization': `${TOKEN}`
-  //         },
-  //         params: {
-  //           product_id: 19090
-  //         }
-  //         })
-  //         .then((res) => {
-  //           // console.log('setListOfQuestions:  ', res.data);
-  //           setListOfQuestions(res.data);
-  //           // postReq();
-  //         });
-  //     });
-  // };
 
   useEffect(() => {
     firstCall(featuredProduct.id);
@@ -128,3 +101,33 @@ export default QuestionsAndAnswers;
 // GET /qa/questions/:question_id/answers Retrieves a list of ANSWERS for a particular product
 
 
+/*
+
+  // const firstCall = () => {
+  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/',
+  //     {headers: {
+  //       'Authorization': `${TOKEN}`
+  //     }
+  //     })
+  //     .then((res) => {
+  //       console.log('featuredProduct:  ', res.data);
+  //       setFeaturedProduct(res.data);
+  //       return res.data;
+  //     })
+  //     .then((res) => {
+  //       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
+  //         {headers: {
+  //           'Authorization': `${TOKEN}`
+  //         },
+  //         params: {
+  //           product_id: 19090
+  //         }
+  //         })
+  //         .then((res) => {
+  //           // console.log('setListOfQuestions:  ', res.data);
+  //           setListOfQuestions(res.data);
+  //           // postReq();
+  //         });
+  //     });
+  // };
+  */

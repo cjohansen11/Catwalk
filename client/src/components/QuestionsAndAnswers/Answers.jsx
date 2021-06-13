@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-const Answers = ( {test} ) => {
+const Answers = ( {answerList} ) => {
 
 
 
-  // console.log('TEST: listOfAnswers', test);
+  // console.log('answerList: listOfAnswers', answerList);
   return (
     <div>
       <section>
         <h3>A:</h3>
-        {test ?
-          test.map(answer => {
+        {answerList ?
+          answerList.map(answer => {
             return (
               <div>
                 <div> {answer.body}</div>

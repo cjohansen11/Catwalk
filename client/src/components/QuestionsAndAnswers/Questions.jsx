@@ -4,7 +4,7 @@ import Answers from './Answers.jsx';
 
 const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
-  // console.log('QUESTIONS: listOfQs', listOfQuestions);
+  console.log('QUESTIONS: listOfQs', listOfQuestions);
   // const [index, setIndex] = useState(0);
   // const [endIndex, setEndIndex] = useState(2);
 

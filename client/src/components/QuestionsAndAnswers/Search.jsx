@@ -4,13 +4,17 @@ const Search = ( {listOfQuestions} ) => {
 
   const [items, setItems] = useState(listOfQuestions);
 
-  const filterResults = () => setItems(items.filter(x => x.includes('who')));
+// Needs to filter the listOfQuestions and update to questions without changing listOfQuestions state?
+
   return (
     <div>
-      {
-        items.map(item => <p key={item}>{item}</p>)
-      }
-      <button onClick={filterResults}>Filter</button>
+      <div className="search-input">
+        <input
+          type="text"
+          placeholder="Have a Question? Searchfor answers..."
+        />
+      </div>
+      <button >Search</button>
     </div>
   );
 
@@ -90,6 +94,27 @@ export default Search;
 
 
 
-*/
 
+
+import React, { useState, useEffect } from 'react';
+
+const Search = ( {listOfQuestions} ) => {
+
+  const [items, setItems] = useState(listOfQuestions);
+
+  const filterResults = () => setItems(items.filter(x => x.includes('who')));
+  return (
+    <div>
+      {
+        items.map(item => <p key={item}>{item}</p>)
+      }
+      <button onClick={filterResults}>Filter</button>
+    </div>
+  );
+
+};
+
+export default Search;
+
+*/
 

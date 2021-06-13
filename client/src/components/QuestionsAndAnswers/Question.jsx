@@ -7,7 +7,7 @@ import { TOKEN } from './config.js';
 
 const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
 
-const [test, setTest] = useState(null);
+const [answerList, setAnswerList] = useState(null);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
@@ -19,13 +19,13 @@ const [test, setTest] = useState(null);
       .then((res) => {
         // console.log('setListOfAnswers:  ', res.data);
         setListOfAnswers(res.data);
-        setTest(res.data.results);
+        setAnswerList(res.data.results);
       });
   }, [question.question_id]);
 
   useEffect(() => {
-    // console.log('TEST:',   test)
-  }, [test]);
+
+  }, [answerList]);
 
 
   const addHelpful = (values) => {
@@ -59,7 +59,7 @@ const [test, setTest] = useState(null);
     <div>
       <h3>Q: {question.question_body}</h3>
       <div> Helpful? Yes {`(${question.question_helpfulness})`} | Report</div>
-      <Answers test={test}/>
+      <Answers answerList={answerList}/>
     </div>
   );
 };
