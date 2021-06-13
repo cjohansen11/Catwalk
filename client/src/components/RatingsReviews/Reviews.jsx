@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import Requests from '../../../../lib/RatingsReviews.js';
+
 import Review from './Review.jsx';
 import AddReviewForm from './AddReviewForm.jsx';
 
@@ -10,8 +11,7 @@ import data from '../../../../dummy_data/data.js';
 
 const Reviews = ({ productId }) => {
   const [loading, setLoading] = useState(false);
-
-  const [reviews, setReviews] = useState(data);
+  const [reviews, setReviews] = useState([]);
   const [shownReview, setShownReview] = useState(2);
 
   const [showMoreButton, setShowMoreButton] = useState(true);
@@ -19,12 +19,11 @@ const Reviews = ({ productId }) => {
 
   const [currentSortingOption, setCurrentSortingOption] = useState('relevant');
 
+
   useEffect(() => {
-    setLoading(true);
     Requests.getReviews(productId, currentSortingOption) // 19653
       .then((data) => {
         setReviews(data.data.results);
-        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
