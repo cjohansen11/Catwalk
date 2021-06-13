@@ -19,6 +19,7 @@ const Reviews = ({ productId }) => {
 
   const [currentSortingOption, setCurrentSortingOption] = useState('relevant');
 
+
   useEffect(() => {
     Requests.getReviews(productId, currentSortingOption) // 19653
       .then((data) => {
