@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ModalQuestion.css';
 import axios from 'axios';
+import { GIT_TOKEN } from '../../../.././lib/config.js';
 
 const ModalQuestion = ({ show, close }) => {
 
@@ -15,7 +16,7 @@ const ModalQuestion = ({ show, close }) => {
       method: 'post',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
       headers: {
-        'Authorization': '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'
+        'Authorization': `${GIT_TOKEN}`
       },
       data: {
         body: values.question,

@@ -47,7 +47,6 @@ const App = () => {
       <h1 className={AppStyle.testClass}>CATWALK</h1>
       <Overview/>
       <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
-      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <RatingsReviews productId = {productId} reviews = {reviews} />
     </div>

@@ -5,7 +5,6 @@ import './CreateQuestion.css';
 const CreateQuestion = ( {modalState, setModalState, show, setShow} ) => {
 
 
-
   return (
     <div>
       <button onClick={() => setShow(true)}>Add a Question</button>

@@ -9,8 +9,5 @@ package-lock.json
 client/dist/app.bundle.js
 client/src/components/RelatedProducts/config.js
 client/components/Overview/config.js
-<<<<<<< HEAD
 client/src/components/QuestionsAndAnswers/config.js
-=======
->>>>>>> 06c6fe8d26620003eff37a276717577616317132
 lib/config.js
