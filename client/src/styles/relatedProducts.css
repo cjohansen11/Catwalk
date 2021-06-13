@@ -31,7 +31,7 @@
   justify-content: start;
   width: 800px;
   height: 350px;
-  overflow-x: hidden;
+  overflow: hidden;
   column-gap: 10px;
   margin: auto;
 }
