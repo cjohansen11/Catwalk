@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import './Question.css';
-import { TOKEN } from './config.js';
+// import { TOKEN } from './config.js';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 
 const Question = ( {question, listOfAnswers, setListOfAnswers}) => {

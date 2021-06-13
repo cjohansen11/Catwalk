@@ -1,0 +1,44 @@
+.galleryContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+/* background-color: red; */
+height: 100%;
+}
+
+
+
+.carosel {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width:200px;
+  background-color: brown;
+}
+
+.gallerytitle {
+  font-size: larger;
+}
+
+.photodiv {
+  width: 500px;
+  height: 500px;
+
+}
+.photo{
+
+  width: auto;
+  height:auto;
+}
+
+
+.thumbs-wrapper.axis-vertical {
+  /* background-color: grey; */
+
+}
+
+.thumbs-wrapper {
+top:400px;
+}

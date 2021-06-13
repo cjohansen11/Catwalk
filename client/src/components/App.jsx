@@ -41,18 +41,17 @@ const App = () => {
   }, [productId]);
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
+  const OverviewWithTracker = WithTracker(Overview);
 
-  return (
+  return !featuredProduct.id ? <div>loading...</div> : (
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
-      <Overview/>
-<<<<<<< HEAD
-      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
-      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
-=======
+
+      <Overview featuredProduct={featuredProduct} />
+      {/* <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} /> */}
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
-      <RatingsReviews productId = {productId} reviews = {reviews} />
->>>>>>> 06c6fe8d26620003eff37a276717577616317132
+      <RatingsReviews productId={productId} reviews={reviews} />
+
     </div>
   );
 };

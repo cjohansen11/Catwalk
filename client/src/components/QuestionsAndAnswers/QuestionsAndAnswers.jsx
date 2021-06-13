@@ -4,7 +4,7 @@ import Search from './Search.jsx';
 import Answers from './Answers.jsx';
 import CreateQuestion from './CreateQuestion.jsx';
 import axios from 'axios';
-import { TOKEN } from './config.js';
+// import { TOKEN } from './config.js';
 import featured from '../App.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
 import ModalAnswer from './ModalQuestion.jsx';
