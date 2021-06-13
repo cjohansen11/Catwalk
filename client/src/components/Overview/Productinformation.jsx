@@ -6,9 +6,9 @@ import '../../styles/rightsidecontainer.css';
 class Productinformation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    // this.state = {
 
-    };
+    // };
 
 
 
