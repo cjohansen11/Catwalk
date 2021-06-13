@@ -46,12 +46,10 @@ const App = () => {
   return !featuredProduct.id ? <div>loading...</div> : (
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
-
-      <Overview featuredProduct={featuredProduct} />
-      {/* <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} /> */}
+      <Overview featuredProduct={featuredProduct}/>
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
-      <RatingsReviews productId={productId} reviews={reviews} />
-
+      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
+      <RatingsReviews productId = {productId} reviews = {reviews} />
     </div>
   );
 };
