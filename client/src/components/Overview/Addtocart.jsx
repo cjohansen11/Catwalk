@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import config from './config.js';
+
 import '../../styles/rightsidecontainer.css';
 import GET from '../../../../lib/related.js';
+import GIT_TOKEN from '../../../../lib/config.js';
 
 class Addtocart extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Addtocart extends React.Component {
   componentDidMount() {
     GET.getCart()
       .then((data) => {
-        console.log('this is the current cart state', data.data);
+        // console.log('this is the current cart state', data.data);
         this.setState({
           cart: data.data
         });
@@ -121,7 +122,8 @@ class Addtocart extends React.Component {
 
 
 
-  addedToCart(click) {
+  addedToCart(e, click) {
+    e.preventDefault();
     console.log('on click what', click);
     var search = Object.entries(this.props.currentStyle.skus);
     var skuId = '';
@@ -141,7 +143,7 @@ class Addtocart extends React.Component {
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart`,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
+        'Authorization': GIT_TOKEN,
       },
       data: { 'sku_id': `${skuId}` }
     };
@@ -161,7 +163,7 @@ class Addtocart extends React.Component {
 
     GET.getCart()
       .then((data) => {
-        console.log('this is the cart', data.data);
+
         this.setState({
           cart: data.data
         });
@@ -177,7 +179,8 @@ class Addtocart extends React.Component {
   }
 
 
-  updateStyle(style) {
+  updateStyle(e, style) {
+    e.preventDefault();
     this.setState({
       availableStockArray: [],
     });
@@ -196,7 +199,7 @@ class Addtocart extends React.Component {
 
   render() {
     if (!this.props.currentStyle) {
-      return <span>Loading...</span>;
+      return <span>Loading...AC</span>;
     }
     return (
 
@@ -208,7 +211,7 @@ class Addtocart extends React.Component {
             if (style.style_id === this.props.currentStyle.style_id) {
               classcheck = 'thumbnail check';
             }
-            return <div className={classcheck} key={style.style_id} onClick={() => { this.updateStyle(style); }}>
+            return <div className={classcheck} key={style.style_id} onClick={(event) => { this.updateStyle(event, style); }}>
 
               <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
 
@@ -251,7 +254,7 @@ class Addtocart extends React.Component {
             </select>
           </div>
 
-          <button className='addtocartbutton' onClick={() => this.addedToCart(this.state.selectedSize)}>Add To Cart</button>
+          <button className='addtocartbutton' onClick={(event) => this.addedToCart(event, this.state.selectedSize)}>Add To Cart</button>
 
         </div>
       </div>

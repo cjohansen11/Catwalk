@@ -18,7 +18,7 @@ const App = () => {
 
   /* ** SETS INITIAL ** */
   useEffect(() => {
-    GET.featuredProduct(19653)
+    GET.featuredProduct(19910)
       .then(res => {
         setFeaturedProduct(res.data);
       });
@@ -27,11 +27,11 @@ const App = () => {
   const RelatedWithTracker = WithTracker(RelatedProduct);
   const OverviewWithTracker = WithTracker(Overview);
 
-  return (
+  return !featuredProduct.id ? <div>loading...</div> : (
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
-      <OverviewWithTracker componentName={'Overview'} userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
-      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+      <Overview featuredProduct={featuredProduct}/>
+      <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };

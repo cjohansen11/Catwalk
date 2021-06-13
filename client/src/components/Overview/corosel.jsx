@@ -9,7 +9,7 @@ class ImageGallaryComponent extends React.Component {
       return <span>Loading...</span>;
     }
     return (
-      <div classname='carosel'>
+      <div>
 
         <Carousel autoPlay interval="5000" transitionTime="500">
 

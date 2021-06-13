@@ -20,7 +20,7 @@ class Productdescription extends React.Component {
 
   render() {
     if (!this.props.currentProduct) {
-      return <span>Loading...</span>;
+      return <span>Loading...Desc</span>;
     }
     return (
       <div className='productinfocontainer'>

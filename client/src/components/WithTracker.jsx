@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const WithTracker = Component => {
 
-  const ComponentWithTracker = ({ userData, featuredProduct, setFeaturedProduct, componentName }) => {
+  const ComponentWithTracker = ({ userData, componentName }) => {
 
     const [tracker, setTracker] = useState([]);
 
@@ -21,7 +21,7 @@ const WithTracker = Component => {
       <div onClick={(e) => {
         clickTracker(e);
       }}>
-        <Component featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} />
+        <Component/>
       </div>
     );
   };

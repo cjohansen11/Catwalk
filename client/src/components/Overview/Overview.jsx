@@ -29,6 +29,8 @@ class Overview extends React.Component {
     this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
     this.styleDropdown = this.styleDropdown.bind(this);
 
+
+
   }
 
   updateCart(data) {
@@ -52,12 +54,11 @@ class Overview extends React.Component {
 
   }
 
-
   componentDidMount() {
-    console.log('PLEASE HAVE THE PROPS', this.props.featuredProduct);
+    console.log('overview CDM ran');
     GET.featuredProduct(this.props.featuredProduct.id)
       .then((data) => {
-        console.log('firs set of data', data);
+
 
         this.setState({
           currentProductInfo: data.data
@@ -65,7 +66,7 @@ class Overview extends React.Component {
         return GET.productStyles(this.props.featuredProduct.id);
       })
       .then((data) => {
-        console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
+
         var currentSelected = data.data.results[0];
         for (var i = 0; i < data.data.results.length; i++) {
           if (data.data.results[i]['default?'] === true) {
@@ -81,7 +82,7 @@ class Overview extends React.Component {
         return GET.productReviews(this.props.featuredProduct.id);
       })
       .then((data) => {
-        // console.log('this is the current cart state', data.data);
+
         this.setState({
           ratings: data.data.ratings
         });
@@ -89,7 +90,7 @@ class Overview extends React.Component {
       })
 
       .then((data) => {
-        // console.log('this is the current cart state', data.data);
+
         this.setState({
           cart: data.data
         });
@@ -97,9 +98,58 @@ class Overview extends React.Component {
 
       })
       .catch((error) => {
-        // console.log('the data did not renderrrr', error);
+        console.log('the data did not renderrrr', error);
       });
   }
+
+
+  // componentDidUpdate(prevProps) {
+  //   console.log('overview CDU ran');
+  //   GET.featuredProduct(this.props.featuredProduct.id)
+  //     .then((data) => {
+  //       console.log('first set of data', data);
+
+  //       this.setState({
+  //         currentProductInfo: data.data
+  //       });
+  //       return GET.productStyles(this.props.featuredProduct.id);
+  //     })
+  //     .then((data) => {
+
+  //       var currentSelected = data.data.results[0];
+  //       for (var i = 0; i < data.data.results.length; i++) {
+  //         if (data.data.results[i]['default?'] === true) {
+  //           currentSelected = data.data.results[i];
+  //         }
+  //       }
+
+  //       this.setState({
+  //         currentProductStylesInfo: data.data,
+  //         currentSelectedStyle: currentSelected
+  //         // default could be the defualt being true
+  //       });
+  //       return GET.productReviews(this.props.featuredProduct.id);
+  //     })
+  //     .then((data) => {
+  //       console.log('this is the current cart state', data.data);
+  //       this.setState({
+  //         ratings: data.data.ratings
+  //       });
+  //       return GET.getCart();
+  //     })
+
+  //     .then((data) => {
+  //       console.log('this is the current cart state', data.data);
+  //       this.setState({
+  //         cart: data.data
+  //       });
+  //       this.styleDropdown();
+
+  //     })
+  //     .catch((error) => {
+  //       console.log('the data did not renderrrr', error);
+  //     });
+  // }
 
 
 
@@ -151,18 +201,16 @@ class Overview extends React.Component {
 
 
   render() {
-    if (!this.props.featuredProduct) {
-      return <span>Loading...</span>;
-    }
+
     return (
 
       <div className='overview'>
-        {console.log('what is the passed in prop', this.props)}
+
 
         <div className='galleryContainer'>
           <ImageGallaryComponent currentStyle={this.state.currentSelectedStyle} />
         </div>
-        {/* <Imagegallery currentStyle={this.state.currentSelectedStyle}/> */}
+
 
         <div className='productContainer'>
           <div className='infocontainer'>
