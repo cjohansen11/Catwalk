@@ -33,10 +33,10 @@ const SingleStarRating = ({ ratings }) => {
 
 
   return (
-    <div className={`${'productRating'} ${'star'}`} >
-      <a href='#plus-sign'>See All {Object.keys(ratings).length} Reviews</a>
-      <div className={'dark-star'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div className={'rating-star'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <div className={`${'productRating'} ${'starr'}`} >
+      <a href='#reviewsContainer'>See All {Object.keys(ratings).length} Reviews</a>
+      <div className={'dark-starr'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div className={'rating-starr'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
     </div>
   );
 };
