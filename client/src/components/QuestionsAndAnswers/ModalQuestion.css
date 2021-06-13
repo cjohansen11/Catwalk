@@ -1,19 +1,15 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+
 
 .modal-wrapper {
   background-color: white;
   width: 60%;
   max-width: 400px;
   margin: 4rem auto;
-  position: relative;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%)
 }
 
 .modal-header {

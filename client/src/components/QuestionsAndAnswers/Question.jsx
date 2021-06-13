@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
-
+import './Question.css';
 import { TOKEN } from './config.js';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 
 const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
 
-const [answerList, setAnswerList] = useState(null);
+  const [answerList, setAnswerList] = useState(null);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
@@ -56,9 +56,13 @@ const [answerList, setAnswerList] = useState(null);
   // const [currentId, setCurrentId] = useState({});
 
   return (
-    <div>
-      <h3>Q: {question.question_body}</h3>
-      <div> Helpful? Yes {`(${question.question_helpfulness})`} | Report</div>
+    <div className="question-and-answer-container">
+      <div className="question">
+        <h3 className="question__text">Q: {question.question_body}</h3>
+        <div className="question__right">
+          <div className=""> Helpful? Yes {`(${question.question_helpfulness})`} | Report</div>
+        </div>
+      </div>
       <Answers answerList={answerList}/>
     </div>
   );

@@ -10,15 +10,24 @@ import ModalQuestion from './ModalQuestion.jsx';
 import ModalAnswer from './ModalQuestion.jsx';
 import CreateAnswer from './CreateAnswer.jsx';
 import App from '../App.jsx';
+import './QuestionsAndAnswers.css';
 
 const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
 
-
-  // const [featuredProduct, setFeaturedProduct] = useState({});
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
+  const [modalState, setModalState] = useState(false);
+  const [show, setShow] = useState(false);
 
-  // console.log('stateListOfAnswers: ', listOfAnswers)
+
+  const addClick = () => {
+    console.log('add clicked');
+  };
+
+  const closeModalHandler = () =>
+  setShow(false)
+  console.log(show);
+
   // GET For currrent product
   const firstCall = (id) => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
@@ -35,7 +44,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
         // postReq();
       })
       .catch((err) => {
-        console.log('featuredProduct', featuredProduct)
+        console.log('featuredProduct', featuredProduct);
         console.log(err);
       });
   };
@@ -47,11 +56,14 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
 
   return (
     <div>
-      <h1>Questions & Answers</h1>
-      <Search setListOfQuestions={setListOfQuestions} listOfQuestions={listOfQuestions} />
-      <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
-      <CreateQuestion />
-      <CreateAnswer />
+      <div className="questions-and-answers">
+        <h3>Questions & Answers</h3>
+        <Search setListOfQuestions={setListOfQuestions} listOfQuestions={listOfQuestions} />
+        <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
+        <CreateQuestion modalState={modalState} setModalState={setModalState} show={show} setShow={setShow} />
+        <CreateAnswer />
+      </div>
+      <ModalQuestion className="modal-question" close={closeModalHandler} show={show}/>
     </div>
   );
 };

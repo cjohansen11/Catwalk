@@ -1,0 +1,19 @@
+.question-and-answer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.question {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.question__text {
+  width: 70%;
+}
+
+.question__right {
+  width: 30%;
+}
+

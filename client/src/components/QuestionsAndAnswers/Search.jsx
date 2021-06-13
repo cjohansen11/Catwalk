@@ -14,7 +14,6 @@ const Search = ( {listOfQuestions} ) => {
           placeholder="Have a Question? Searchfor answers..."
         />
       </div>
-      <button >Search</button>
     </div>
   );
 

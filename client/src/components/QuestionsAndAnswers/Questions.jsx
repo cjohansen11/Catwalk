@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Question from './Question.jsx';
 import Answers from './Answers.jsx';
+import './Questions.css';
 
 const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
   console.log('QUESTIONS: listOfQs', listOfQuestions);
   // const [index, setIndex] = useState(0);
   // const [endIndex, setEndIndex] = useState(2);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(2);
 
 
   return (
-    <div>
-      <section>
+    <div className="questions">
+      <div>
         {listOfQuestions.results ?
-          listOfQuestions.results.map(q => {
+          listOfQuestions.results.slice(0, numberOfQuestions).map(q => {
             return (
               <Question key={q.id} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
             );
           }) : null}
-      </section>
-      <button>More Questions</button>
+      </div>
+      <button onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
     </div>
   );
 };

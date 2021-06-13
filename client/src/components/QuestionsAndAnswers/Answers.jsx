@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
+import './Answers.css';
 
 const Answers = ( {answerList} ) => {
 
-
-
   // console.log('answerList: listOfAnswers', answerList);
   return (
-    <div>
-      <section>
-        <h3>A:</h3>
+    <div className="answers">
+      <h3 className="answers-title">A:</h3>
+      <div className="answer-container">
         {answerList ?
           answerList.map(answer => {
             return (
-              <div>
-                <div> {answer.body}</div>
-                <div>by {answer.answerer_name}, {answer.date} | Helpful? Yes {`(${answer.helpfulness})`}| Report</div>
+              <div className="answer">
+                <div className="answer-body"> {answer.body}</div>
+                <div className="answer__user">by {answer.answerer_name}, {answer.date} | Helpful? Yes {`(${answer.helpfulness})`}| Report</div>
               </div>
             );
           }) : ''}
-      </section>
+      </div>
     </div>
   );
 };
