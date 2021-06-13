@@ -6,13 +6,13 @@ import Reviews from './Reviews.jsx';
 
 import '../../styles/ratingsReviews.css';
 
-const RatingsReviews = ({ productId }) => {
+const RatingsReviews = ({ productId, reviews }) => {
   return (
     <div>
       <h1>RatingsReviews</h1>
       <div className='ratingsReviewsContainer'>
         <Ratings productId = {productId} />
-        <Reviews productId = {productId} />
+        <Reviews productId = {productId} reviews = {reviews} />
       </div>
     </div>
   );
