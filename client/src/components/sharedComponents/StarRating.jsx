@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+import './stars.css';
+
 const StarRating = ({ numberOfStars }) => {
   const full = '*';
   const empty = '0';
@@ -22,7 +24,7 @@ const StarRating = ({ numberOfStars }) => {
   };
 
   return (
-    <div>
+    <div className = 'starRow'>
       {
         _.map([1, 2, 3, 4, 5], (value, idx) => {
           return (
