@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Requests from '../../../../lib/RatingsReviews.js';
-import StarRating from './StarRating.jsx';
+import StarRating from '../sharedComponents/StarRating.jsx';
 import StarC from './StarC.jsx';
 
 const AddReviewForm = () => {
@@ -47,9 +47,11 @@ const AddReviewForm = () => {
   const onMouseEnter = (index) => {
     setHoverRating(index);
   };
+
   const onMouseLeave = () => {
     setHoverRating(0);
   };
+
   const onSaveRating = (index) => {
     setRating(index);
   };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import ModalPhotoWindow from './ModalPhotoWindow.jsx';
-import StarRating from './StarRating.jsx';
+import StarRating from '../sharedComponents/StarRating.jsx';
 
 import Requests from '../../../../lib/RatingsReviews.js';
 

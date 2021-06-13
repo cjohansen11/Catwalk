@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-const StarRating = ({ numberOfStars, setRatingWrapper }) => {
+const StarRating = ({ numberOfStars }) => {
   const full = '*';
   const empty = '0';
   const partial = '0.5';
