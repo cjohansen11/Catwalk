@@ -1,5 +1,5 @@
 .starRow {
   display: flex;
   flex-direction: row;
-  color: red;
+  /* color: red; */
 }

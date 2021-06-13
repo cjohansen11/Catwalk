@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
+
 import './stars.css';
 
 const StarRating = ({ numberOfStars }) => {
-  const full = '*';
-  const empty = '0';
-  const partial = '0.5';
+  const full = <BsStarFill />;
+  const empty = <BsStar />;
+  const partial = <BsStarHalf />;
 
   var num = numberOfStars % 2 ? numberOfStars : Math.floor(numberOfStars);
   var decimal = Math.floor(numberOfStars % 1 * 10);
