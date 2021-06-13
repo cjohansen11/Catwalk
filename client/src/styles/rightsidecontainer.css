@@ -28,27 +28,17 @@ PRODUCT INFO SECTION */
 
 /*
 STAR RATING SECTION */
-.ratingsReviewsContainer {
-  display: flex
-}
-
-.ratingsContainer {
-  flex: 25%
-}
-
-.reviewsContainer {
-  flex: 70%
-}
 
 
-.star {
+
+.starr {
   width: 100px;
   height: 100px;
   position: relative;
 }
 
 
-.dark-star, .rating-star {
+.dark-starr, .rating-starr {
   color: pink;
   width: 80px;
   height: 20px;

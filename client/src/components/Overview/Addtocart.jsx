@@ -28,7 +28,7 @@ class Addtocart extends React.Component {
   componentDidMount() {
     GET.getCart()
       .then((data) => {
-        // console.log('this is the current cart state', data.data);
+
         this.setState({
           cart: data.data
         });
@@ -67,7 +67,7 @@ class Addtocart extends React.Component {
     var search = Object.entries(this.props.currentStyle.skus);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === event.target.value) {
-        // console.log('is this loop working?');
+
         var sku = Number(search[i][0]);
         var styleStock = search[i][1]['quantity'];
         this.setState({
@@ -88,7 +88,7 @@ class Addtocart extends React.Component {
     var availStock = styleStock - purchased;
     var stockArray = this.stockArray(availStock);
     var dashValue = this.dashValue(availStock);
-    console.log(availStock, stockArray);
+
     this.setState({
       availableStock: availStock,
       availableStockArray: stockArray,
@@ -124,13 +124,13 @@ class Addtocart extends React.Component {
 
   addedToCart(e, click) {
     e.preventDefault();
-    console.log('on click what', click);
+
     var search = Object.entries(this.props.currentStyle.skus);
     var skuId = '';
     var id = this.state.currentskuId;
     var quantity = this.state.selectedQuantity;
     var stock = this.state.currentStock;
-    console.log(search);
+
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === this.state.selectedSize) {
 
