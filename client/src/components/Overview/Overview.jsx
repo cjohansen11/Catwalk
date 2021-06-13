@@ -6,7 +6,7 @@ import Productdescription from './Productdescription.jsx';
 import Addtocart from './Addtocart.jsx';
 import SingleStarRating from './SingleStarRating.jsx';
 // import Imagegallery from './Imagegallery.jsx';
-import config from './config.js';
+// import config from './config.js';
 import '../../styles/overview.css';
 import GET from '../../../../lib/related.js';
 
