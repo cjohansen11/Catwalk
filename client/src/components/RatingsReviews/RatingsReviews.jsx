@@ -9,10 +9,11 @@ import '../../styles/ratingsReviews.css';
 const RatingsReviews = ({ productId, reviews }) => {
   return (
     <div>
+      <a id='route'></a>
       <h1>RatingsReviews</h1>
       <div className='ratingsReviewsContainer'>
-        <Ratings productId = {productId} />
-        <Reviews productId = {productId} reviews = {reviews} />
+        <Ratings productId={productId} />
+        <Reviews productId={productId} reviews={reviews} />
       </div>
     </div>
   );
