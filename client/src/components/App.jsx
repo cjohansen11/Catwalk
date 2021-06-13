@@ -11,6 +11,8 @@ import AppStyle from '../styles/app.css';
 /* ** IMPORT COMPONENT FILES ** */
 import Overview from './Overview/Overview.jsx';
 import RelatedProduct from './RelatedProducts/RelatedProduct.jsx';
+import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers.jsx';
+
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 
 const App = () => {
@@ -23,6 +25,7 @@ const App = () => {
   const userData = [];
 
   /* ** SETS INITIAL ** */
+
   useEffect(() => {
     GET.featuredProduct(productId)
       .then(res => {
@@ -43,8 +46,13 @@ const App = () => {
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
       <Overview/>
+<<<<<<< HEAD
+      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
+      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+=======
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <RatingsReviews productId = {productId} reviews = {reviews} />
+>>>>>>> 06c6fe8d26620003eff37a276717577616317132
     </div>
   );
 };

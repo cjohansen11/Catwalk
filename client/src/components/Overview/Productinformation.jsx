@@ -6,9 +6,9 @@ import axios from 'axios';
 class Productinformation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    // this.state = {
 
-    };
+    // };
 
 
 
