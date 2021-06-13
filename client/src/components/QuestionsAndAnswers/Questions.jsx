@@ -8,17 +8,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
   // const [index, setIndex] = useState(0);
   // const [endIndex, setEndIndex] = useState(2);
 
-  // FILTER FOR SEARCH RESULTS
-  // NEEDS TO UPDATE STATE-- MAYBE SET EQUAL TO THE WHOLE LIST AND CHANGE ACCORDINGLY?
 
-  // if (listOfQuestions.results) {
-  //   const filtered = listOfQuestions.results.filter(list => {
-  //     // console.log('list', list)
-  //     if (list.question_body.includes('who')) {
-  //       // console.log('filtered:  ', list.question_body)
-  //     }
-  //   });
-  // }
   return (
     <div>
       <section>
@@ -29,6 +19,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
             );
           }) : null}
       </section>
+      <button>More Questions</button>
     </div>
   );
 };

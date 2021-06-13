@@ -32,10 +32,9 @@ const App = () => {
   return (
     <div>
       <h1 className={AppStyle.testClass}>CATWALK</h1>
-       <Overview/>
-      <QuestionsAndAnswers featuredProduct={featuredProduct}/>
-
-     <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
+      <Overview/>
+      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
+      <RelatedWithTracker userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
     </div>
   );
 };

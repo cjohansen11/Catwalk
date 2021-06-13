@@ -7,61 +7,78 @@ import axios from 'axios';
 import { TOKEN } from './config.js';
 import featured from '../App.jsx';
 import ModalQuestion from './ModalQuestion.jsx';
+import ModalAnswer from './ModalQuestion.jsx';
+import CreateAnswer from './CreateAnswer.jsx';
+import App from '../App.jsx';
 
-const QuestionsAndAnswers = () => {
+const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
 
-  const [featuredProduct, setFeaturedProduct] = useState({});
+
+  // const [featuredProduct, setFeaturedProduct] = useState({});
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
 
   // console.log('stateListOfAnswers: ', listOfAnswers)
   // GET For currrent product
-
-  const firstCall = () => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/',
+  const firstCall = (id) => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
       {headers: {
         'Authorization': `${TOKEN}`
+      },
+      params: {
+        product_id: id
       }
       })
       .then((res) => {
-        console.log('featuredProduct:  ', res.data);
-        setFeaturedProduct(res.data);
-        return res.data;
+        // console.log('setListOfQuestions:  ', res.data);
+        setListOfQuestions(res.data);
+        // postReq();
       })
-      .then((res) => {
-        axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
-          {headers: {
-            'Authorization': `${TOKEN}`
-          },
-          params: {
-            product_id: 19090
-          }
-          })
-          .then((res) => {
-            // console.log('setListOfQuestions:  ', res.data);
-            setListOfQuestions(res.data);
-            // postReq();
-          });
+      .catch((err) => {
+        console.log('featuredProduct', featuredProduct)
+        console.log(err);
       });
   };
 
-  // useEffect(() => {
-  // }, [listOfAnswers])
+  // const firstCall = () => {
+  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/',
+  //     {headers: {
+  //       'Authorization': `${TOKEN}`
+  //     }
+  //     })
+  //     .then((res) => {
+  //       console.log('featuredProduct:  ', res.data);
+  //       setFeaturedProduct(res.data);
+  //       return res.data;
+  //     })
+  //     .then((res) => {
+  //       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions',
+  //         {headers: {
+  //           'Authorization': `${TOKEN}`
+  //         },
+  //         params: {
+  //           product_id: 19090
+  //         }
+  //         })
+  //         .then((res) => {
+  //           // console.log('setListOfQuestions:  ', res.data);
+  //           setListOfQuestions(res.data);
+  //           // postReq();
+  //         });
+  //     });
+  // };
 
   useEffect(() => {
-    firstCall();
-  }, []);
-
-
+    firstCall(featuredProduct.id);
+  }, [featuredProduct]);
 
   return (
     <div>
       <h1>Questions & Answers</h1>
-      <button onClick={() => postReq()}>postReq</button>
-      <Search setListOfQuestions={setListOfQuestions}/>
+      <Search setListOfQuestions={setListOfQuestions} listOfQuestions={listOfQuestions} />
       <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
       <CreateQuestion />
-
+      <CreateAnswer />
     </div>
   );
 };

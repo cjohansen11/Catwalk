@@ -4,7 +4,7 @@ const Answers = ( {test} ) => {
 
 
 
-  console.log('TEST: listOfAnswers', test);
+  // console.log('TEST: listOfAnswers', test);
   return (
     <div>
       <section>

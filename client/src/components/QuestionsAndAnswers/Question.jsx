@@ -7,7 +7,7 @@ import { TOKEN } from './config.js';
 
 const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
 
-const [test, setTest] = useState(null)
+const [test, setTest] = useState(null);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
@@ -19,13 +19,37 @@ const [test, setTest] = useState(null)
       .then((res) => {
         // console.log('setListOfAnswers:  ', res.data);
         setListOfAnswers(res.data);
-        setTest(res.data.results)
+        setTest(res.data.results);
       });
   }, [question.question_id]);
 
   useEffect(() => {
     // console.log('TEST:',   test)
-  }, [test])
+  }, [test]);
+
+
+  const addHelpful = (values) => {
+    axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${quetion_id}/helpful`,
+      headers: {
+        'Authorization': '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'
+      },
+      data: {
+        body: values.answer,
+        name: values.nickname,
+        email: values.email,
+        product_id: `${question_id}`
+      }
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  };
   // if (listOfAnswers.results) {
   // console.log('listOfAnswers', listOfAnswers.results)
   // }
