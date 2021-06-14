@@ -8,8 +8,6 @@ html {
 	width: 1000px;
 	margin: auto;
 	padding: 0 40px 0 40px;
-	/* border-left: 2px solid	rgba(117, 137, 163, 0.8);
-	border-right: 2px solid	rgba(117, 137, 163, 0.8); */
 	border: 2px solid	rgba(117, 137, 163, 0.8);
 	background-color: white;
 }
