@@ -3,13 +3,15 @@ import './Answers.css';
 
 const Answers = ( {answerList} ) => {
 
+  const [numberOfAnswers, setNumberOfAnswers] = useState(2);
+
   // console.log('answerList: listOfAnswers', answerList);
   return (
     <div className="answers">
       <h3 className="answers-title">A:</h3>
       <div className="answer-container">
         {answerList ?
-          answerList.map((answer, index) => {
+          answerList.slice(0, numberOfAnswers).map((answer, index) => {
             return (
               <div className="answer" key={index}>
                 <div className="answer-body"> {answer.body}</div>
@@ -18,6 +20,7 @@ const Answers = ( {answerList} ) => {
             );
           }) : ''}
       </div>
+      <button className="answer-button" onClick={() => setNumberOfAnswers(numberOfAnswers + 2)}>More Answers</button>
     </div>
   );
 };

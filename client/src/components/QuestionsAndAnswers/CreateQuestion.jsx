@@ -6,8 +6,8 @@ const CreateQuestion = ( {modalState, setModalState, show, setShow} ) => {
 
 
   return (
-    <div>
-      <button onClick={() => setShow(true)}>Add a Question</button>
+    <div className="bottom-buttons-container">
+      <button className="bottom-buttons" onClick={() => setShow(true)}>Add a Question</button>
 
     </div>
   );

@@ -55,7 +55,7 @@ const ModalQuestion = ({ show, close }) => {
       email: ''
     });
   };
-  console.log('show', show);
+
   if (show === true) {
     return (
       <div className="modal-wrapper"
@@ -69,7 +69,6 @@ const ModalQuestion = ({ show, close }) => {
         </div>
         <div className="modal-content">
           <div className="modal-body">
-            <h3>Modal</h3>
             <div className="modal-form">
               <div className="modal-input">
                 <input

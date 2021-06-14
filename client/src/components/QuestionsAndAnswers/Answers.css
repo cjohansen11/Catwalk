@@ -32,3 +32,15 @@
   margin-bottom: 2%;
   font-size: 13px;
 }
+
+.answer-button {
+  width: 120px;
+  display: flex;
+  margin-right: 15%;
+  margin-bottom: 2%;
+  font-size: 13px;
+  justify-content: center;
+  background-color: whitesmoke;
+  border: whitesmoke;
+  cursor: pointer;
+}
