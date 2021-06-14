@@ -5,7 +5,6 @@ import './Questions.css';
 
 const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
-
   const [numberOfQuestions, setNumberOfQuestions] = useState(2);
   const [query, setQuery] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
@@ -21,7 +20,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
         }
       }
     }
-    console.log('filtered:  ', filteredResults)
+    // console.log('filtered:  ', filteredResults);
   };
 
 

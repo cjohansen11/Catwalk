@@ -19,6 +19,7 @@ PRODUCT INFO SECTION */
 
 .productinfocontainer {
   font-size: large;
+  font-family: sans-serif;
 }
 
 
@@ -35,6 +36,7 @@ STAR RATING SECTION */
   width: 100px;
   height: 100px;
   position: relative;
+  font-family: sans-serif;
 }
 
 
@@ -57,6 +59,7 @@ STAR RATING SECTION */
 
 .stylecontainer {
   /* background-color: green; */
+  font-family: sans-serif;
 }
 
 .thumbnailimg {
@@ -94,7 +97,7 @@ ADD TO CART SECTION */
   width: 300px;
 
   right: 350px;
-
+  font-family: sans-serif;
 }
 
 .size_dropdown {
@@ -102,6 +105,7 @@ ADD TO CART SECTION */
   /* background-color: skyblue; */
   height: 40px;
   width: 160px;
+  font-family: sans-serif;
 }
 
 .quantity_dropdown {
@@ -109,9 +113,11 @@ ADD TO CART SECTION */
   /* background-color: skyblue; */
   height: 40px;
   width: 75px;
+  font-family: sans-serif;
 }
 .addtocartbutton {
   color:black;
   height: 40px;
   width: 200px;
+  font-family: sans-serif;
 }

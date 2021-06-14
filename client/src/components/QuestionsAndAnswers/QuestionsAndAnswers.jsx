@@ -43,7 +43,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
         // postReq();
       })
       .catch((err) => {
-        console.log('featuredProduct', featuredProduct);
+        // console.log('featuredProduct', featuredProduct);
         console.log(err);
       });
   };
@@ -60,7 +60,6 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
 
         <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
         <CreateQuestion modalState={modalState} setModalState={setModalState} show={show} setShow={setShow} />
-        <CreateAnswer />
       </div>
       <ModalQuestion className="modal-question" close={closeModalHandler} show={show}/>
     </div>
