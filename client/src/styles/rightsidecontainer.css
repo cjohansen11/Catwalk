@@ -61,17 +61,22 @@ STAR RATING SECTION */
 
 .ratingContainer {
   width: 50%;
-
+align-content: left;
 }
 
 .seeAll {
-  width: 80px;
+  width: 150px;
   font-family: sans-serif;
   font-size: small;
-  position: right;
+  margin-left: 70px;
+  margin-top: -20px;
 
 }
 
+.socialButtons {
+
+  margin-top: 30px;
+}
 
 /*SOCIAL MEDIA BUTTONS */
 .fB {
@@ -143,7 +148,7 @@ ADD TO CART SECTION */
   /* background-color: sandybrown; */
   display: flex;
   width: 300px;
-
+margin-top: 20px;
   right: 350px;
   font-family: sans-serif;
 }

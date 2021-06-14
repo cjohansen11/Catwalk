@@ -34,15 +34,13 @@ const SingleStarRating = ({ ratings }) => {
 
   return (
     <div className='ratingContainer'>
-      <a className='seeAll' href='#route'>See All {Object.keys(ratings).length} Reviews</a>
+
       <div className={`${'productRating'} ${'starr'}`} >
         <div className={'dark-starr'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <div className={'rating-starr'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       </div>
-      <div className='socialButtons'>
-        <a href='https://www.facebook.com/'className='fB'>FB</a>
-        <a href='https://instagram.com/'className='iG'>IG</a>
-        <a href='https://twitter.com/'className='tW'>Twitter</a>
+      <div className='seeAll'>
+        <a href='#route'>See All {Object.keys(ratings).length} Reviews</a>
       </div>
     </div>
   );

@@ -30,10 +30,11 @@ class Productdescription extends React.Component {
         <div>
           <h3>Features</h3>
           <p>{this.props.currentProduct.features[0].feature}:{this.props.currentProduct.features[0].value}</p>
-
-
-
-
+        </div>
+        <div className='socialButtons'>
+          <a href='https://www.facebook.com/' className='fB'>FB</a>
+          <a href='https://instagram.com/' className='iG'>IG</a>
+          <a href='https://twitter.com/' className='tW'>Twitter</a>
         </div>
       </div>
     );
