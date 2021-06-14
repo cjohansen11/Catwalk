@@ -43,8 +43,8 @@ const App = () => {
   const OverviewWithTracker = WithTracker(Overview);
 
   return !featuredProduct.id ? <div>loading...</div> : (
-    <div>
-      <h1 className={AppStyle.testClass}>CATWALK</h1>
+    <div className={'catwalk'}>
+      <h1 className={'page-title'}>FOREVER 31</h1>
       <Overview featuredProduct={featuredProduct}/>
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
