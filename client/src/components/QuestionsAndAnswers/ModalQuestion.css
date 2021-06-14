@@ -2,7 +2,7 @@
 
 
 .modal-wrapper {
-  background-color: white;
+  background-color: rgb(243, 243, 243);
   width: 60%;
   max-width: 400px;
   margin: 4rem auto;
@@ -13,28 +13,38 @@
 }
 
 .modal-header {
-  background: #2c2c2c;
+  background: #bbbbbb;
   color: white;
-  padding: 1rem;
+  padding: .5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .modal-header span {
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
 .modal-content {
   padding: 1.5rem 1rem;
+
 }
 
 .modal-body {
   margin-bottom: 1rem;
+
 }
 
 .modal-body h3 {
   font-size: 1.8rem;
   color: palevioletred;
+}
+
+.modal-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
