@@ -4,7 +4,6 @@ import './Answers.css';
 const Answers = ( {answerList} ) => {
 
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
-
   // console.log('answerList: listOfAnswers', answerList);
   return (
     <div className="answers">
@@ -12,10 +11,11 @@ const Answers = ( {answerList} ) => {
       <div className="answer-container">
         {answerList ?
           answerList.slice(0, numberOfAnswers).map((answer, index) => {
+            let date = new Date(answer.date).toDateString().split(' ').slice(1).join(', ');
             return (
               <div className="answer" key={index}>
                 <div className="answer-body"> {answer.body}</div>
-                <div className="answer__user">by {answer.answerer_name}, {answer.date} | Helpful?  Yes {`(${answer.helpfulness})`} | Report</div>
+                <div className="answer__user">by {answer.answerer_name}, {date} | Helpful?  Yes {`(${answer.helpfulness})`} | Report</div>
               </div>
             );
           }) : ''}
