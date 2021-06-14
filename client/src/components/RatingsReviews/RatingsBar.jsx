@@ -10,7 +10,7 @@ const RatingsBar = ({ rating, value }) => {
 
   /* Individual bars */
   const bar = {
-    width: `${!Number(rating) ? rating : 0 }%`,
+    width: `${Number(rating) ? rating : 0 }%`,
     height: '5px',
     backgroundColor: 'grey'
   };

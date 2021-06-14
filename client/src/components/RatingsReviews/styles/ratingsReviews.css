@@ -44,3 +44,7 @@
 .ok {
   display: inline-flex;
 }
+
+button {
+  align-content: space-around;
+}

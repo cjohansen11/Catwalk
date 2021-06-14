@@ -70,7 +70,6 @@ const RatingsReviews = ({ productId }) => {
     avarage = ((avarage / reviews.length)).toFixed(0);
     // avarage = (avarage / reviews.length).toFixed(2);
     if (Number(avarage)) {
-      // console.log(avarage);
       setAvarageRating(Number(avarage));
     }
   }, [reviews]);
@@ -136,7 +135,9 @@ const RatingsReviews = ({ productId }) => {
             }
             <button onClick = { () => { setShowCreateReviewForm(!showCreateReviewForm); } }>Add Review</button>
             {
-              showCreateReviewForm && <AddReviewForm />
+              showCreateReviewForm && <AddReviewForm characteristics2 = {characteristics}
+                productId = {productId}
+              />
             }
 
           </div>
