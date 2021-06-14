@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import './Question.css';
-// import { TOKEN } from './config.js';
+import GIT_TOKEN from '../../../../lib/config.js';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 
 const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
@@ -12,7 +12,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
       {headers: {
-        'Authorization': `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`
+        'Authorization': `${GIT_TOKEN}`
       },
       }
     )
@@ -33,7 +33,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${quetion_id}/helpful`,
       headers: {
-        'Authorization': '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'
+        'Authorization': `${GIT_TOKEN}`
       },
       data: {
         body: values.answer,
