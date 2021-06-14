@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Search.css';
 
 const Search = ( {listOfQuestions} ) => {
 
@@ -7,9 +8,10 @@ const Search = ( {listOfQuestions} ) => {
 // Needs to filter the listOfQuestions and update to questions without changing listOfQuestions state?
 
   return (
-    <div>
+    <div className="search-container">
       <div className="search-input">
         <input
+          className="search-form"
           type="text"
           placeholder="Have a Question? Searchfor answers..."
         />

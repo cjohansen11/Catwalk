@@ -3,7 +3,6 @@ import './ModalAnswer.css';
 import axios from 'axios';
 import GIT_TOKEN from '../../../../lib/config.js';
 
-
 const ModalAnswer = ({ show, close }) => {
 
   const [values, setValues] = useState({
@@ -57,48 +56,54 @@ const ModalAnswer = ({ show, close }) => {
     });
   };
 
-  return (
-    <div className="modal-wrapper"
-      style={{
-        opacity: show ? '1' : '0'
-      }}
-    >
-      <div className="modal-header">
-        <p>Add a Question</p>
-        <span onClick={close} className="close-modal-btn">x</span>
-      </div>
-      <div className="modal-content">
-        <div className="modal-body">
-          <h3>Modal</h3>
-          <div className="modal-form">
-            <div className="modal-input">
-              <input
-                value={values.answer}
-                type="text"
-                placeholder="Answer"
-                onChange={handleAnswerText}
-              />
-              <input
-                value={values.nickname}
-                type="text"
-                placeholder="Nickname"
-                onChange={handleNickname}
-              />
-              <input
-                value={values.email}
-                type="text"
-                placeholder="Email"
-                onChange={handleEmail}
-              />
+  if (show === true) {
+    return (
+      <div className="modal-wrapper"
+        style={{
+          opacity: show ? '1' : '0'
+        }}
+      >
+        <div className="modal-header">
+          <p>Add Answer</p>
+          <span onClick={close} className="close-modal-btn">x</span>
+        </div>
+        <div className="modal-content">
+          <div className="modal-body">
+            <div className="modal-form">
+              <div className="modal-input">
+                <input
+                  value={values.answer}
+                  type="text"
+                  placeholder="Answer"
+                  onChange={handleAnswerText}
+                />
+                <input
+                  value={values.nickname}
+                  type="text"
+                  placeholder="Nickname"
+                  onChange={handleNickname}
+                />
+                <input
+                  value={values.email}
+                  type="text"
+                  placeholder="Email"
+                  onChange={handleEmail}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="modal-footer">
-          <button className="btn-submit" onClick={handleSubmit} >Submit</button>
+          <div className="modal-footer">
+            <button className="btn-submit" onClick={handleSubmit} >Submit</button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+      </div>
+    );
+  }
 };
 
 export default ModalAnswer;

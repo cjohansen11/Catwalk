@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ModalAnswer from './ModalAnswer.jsx';
+import './CreateAnswer.css';
 
 const CreateAnswer = () => {
 
@@ -14,7 +15,7 @@ const CreateAnswer = () => {
 
   return (
     <div>
-      <button onClick={() => setShow(true)}>Add Answer</button>
+       <button className="add-answer-button" onClick={() => setShow(true)}>Add Answer</button>
       <ModalAnswer close={closeModalHandler} show={show}/>
     </div>
   );
