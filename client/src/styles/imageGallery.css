@@ -1,12 +1,13 @@
 .galleryContainer {
   padding: 20px;
-  display: flex;
-  flex-direction: row;
-/* background-color: red; */
-height: 100%;
+  /* background:lightgray; */
+  border-radius: 10px;
+
 }
 
+.carousel-root {
 
+}
 
 
 
@@ -16,13 +17,18 @@ height: 100%;
 
 .photodiv {
   width: 500px;
-  height: 500px;
-
+  height: 600px;
+position: relative;
 }
-.photo{
 
+.photo{
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
   width: auto;
-  height:auto;
+  height:auto; */
 }
 
 
@@ -33,4 +39,24 @@ height: 100%;
 
 .thumbs-wrapper {
 top:400px;
+}
+
+.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+
+}
+
+.expandedphoto {
+  height: 100vh;
+  width:auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
