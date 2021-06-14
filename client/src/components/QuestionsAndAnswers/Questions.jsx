@@ -5,7 +5,7 @@ import './Questions.css';
 
 const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
-  console.log('QUESTIONS: listOfQs', listOfQuestions);
+  // console.log('QUESTIONS: listOfQs', listOfQuestions);
   // const [index, setIndex] = useState(0);
   // const [endIndex, setEndIndex] = useState(2);
   const [numberOfQuestions, setNumberOfQuestions] = useState(2);
@@ -42,7 +42,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
           {listOfQuestions.results ?
             listOfQuestions.results.slice(0, numberOfQuestions).map(q => {
               return (
-                <Question key={q.id} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
+                <Question key={q.question_id} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
               );
             }) : null}
         </div>

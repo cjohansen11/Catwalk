@@ -1,2 +1,2 @@
-dummy_data/
-lib
+dummy_data/*
+client/lib/*
