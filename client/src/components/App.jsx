@@ -41,7 +41,7 @@ const App = () => {
       <Overview featuredProduct={featuredProduct}/>
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
-      <RatingsReviews productId = {productId} />
+      <RatingsReviews productId = {featuredProduct.id} />
     </div>
   );
 };
