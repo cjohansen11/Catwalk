@@ -5,48 +5,54 @@ import './Questions.css';
 
 const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
-  // console.log('QUESTIONS: listOfQs', listOfQuestions);
-  // const [index, setIndex] = useState(0);
-  // const [endIndex, setEndIndex] = useState(2);
   const [numberOfQuestions, setNumberOfQuestions] = useState(2);
   const [query, setQuery] = useState('');
+  const [filteredResults, setFilteredResults] = useState([]);
 
-  let str = 'et';
-  let filteredResults = [];
-  // useEffect(() => {
+  const filteredQuestions = () => {
+    if (query.length < 3) {
+      setFilteredResults(listOfQuestions.results);
+    } else {
+      setFilteredResults([]);
+      for (let i = 0; i < listOfQuestions.results.length; i++) {
+        if (listOfQuestions.results[i].question_body.toLowerCase().includes(query)) {
+          setFilteredResults(prev => [...prev, listOfQuestions.results[i]]);
+        }
+      }
+    }
+    // console.log('filtered:  ', filteredResults);
+  };
+
 
   useEffect(() => {
-    if (listOfQuestions.results) {
-      const filteredQuestions = () => {
-        for (let i = 0; i < listOfQuestions.results.length; i++) {
-          if (listOfQuestions.results[i].question_body.includes(query)) {
-            filteredResults.push(listOfQuestions.results[i].question_body);
-          }
-        }
-      };
-      filteredQuestions();
-      console.log(filteredResults);
-    }
+    filteredQuestions();
+  }, [listOfQuestions]);
+
+  useEffect(() => {
+    filteredQuestions();
   }, [query]);
+
 
   return (
     <div>
       <input
+        className="input-search"
         type="text"
-        placeholder="Have a Question? Searchfor answers..."
+        placeholder=" Have a Question? Search for answers..."
         value={query}
         onChange={e => setQuery(e.target.value)}
       />
       <div className="questions">
         <div>
-          {listOfQuestions.results ?
-            listOfQuestions.results.slice(0, numberOfQuestions).map(q => {
+          {filteredResults ?
+            filteredResults.slice(0, numberOfQuestions).map((q, i) => {
+              console.log(q);
               return (
-                <Question key={q.question_id} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
+                <Question key={i} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
               );
             }) : null}
         </div>
-        <button onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
+        <button className="bottom-buttons" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
       </div>
     </div>
   );
