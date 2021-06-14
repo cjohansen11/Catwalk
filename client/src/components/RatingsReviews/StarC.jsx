@@ -2,32 +2,34 @@ import React from 'react';
 
 import Star from './Star.jsx';
 
-const StarC = (props) => {
-  const {
-    index,
-    rating,
-    hoverRating,
-    onMouseEnter,
-    onMouseLeave,
-    onSaveRating,
-  } = props;
+import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs';
 
+const StarC = ({
+  index,
+  rating,
+  hoverRating,
+  onMouseEnter,
+  onMouseLeave,
+  onSaveRating,
+}) => {
   const fill = React.useMemo(() => {
     if (hoverRating >= index) {
       return 'yellow';
     } else if (!hoverRating && rating >= index) {
       return 'yellow';
     }
-    return 'none';
+    return null;
   }, [rating, hoverRating, index]);
 
   return (
     <div
+
       className="cursor-pointer"
       onMouseEnter={() => onMouseEnter(index)}
       onMouseLeave={() => onMouseLeave()}
       onClick={() => onSaveRating(index)}>
-      <Star fill={fill} />
+      { fill ? <BsStarFill /> : <BsStar />}
+      {/* <Star fill={fill} /> */}
     </div>
   );
 };
