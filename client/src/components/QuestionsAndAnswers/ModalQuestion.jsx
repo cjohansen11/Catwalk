@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ModalQuestion.css';
 import axios from 'axios';
-import { GIT_TOKEN } from '../../../.././lib/config.js';
+import GIT_TOKEN from '../../../../lib/config.js';
 
 const ModalQuestion = ({ show, close }) => {
 
