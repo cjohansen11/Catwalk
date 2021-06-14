@@ -11,7 +11,7 @@ const Answers = ( {answerList} ) => {
         {answerList ?
           answerList.map(answer => {
             return (
-              <div className="answer">
+              <div className="answer" key={answer.answer_id}>
                 <div className="answer-body"> {answer.body}</div>
                 <div className="answer__user">by {answer.answerer_name}, {answer.date} | Helpful? Yes {`(${answer.helpfulness})`}| Report</div>
               </div>
