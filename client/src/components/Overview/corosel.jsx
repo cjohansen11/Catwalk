@@ -36,10 +36,10 @@ class ImageGallaryComponent extends React.Component {
       return <span>Loading...</span>;
     }
     return (
-      <div className ='galleryContainer'>
+      <div className='imageContainer'>
 
         <Carousel autoPlay interval="5000" transitionTime="500" >
-
+          {/* <div className ='photocontainer'> */}
 
           {this.props.currentStyle.photos.map(photo => {
             return <div className='photodiv' key={photo.url} onClick={(event) => { this.toggle(event, true, photo.url); }}>
@@ -48,6 +48,7 @@ class ImageGallaryComponent extends React.Component {
 
             </div>;
           })}
+          {/* </div> */}
 
         </Carousel>
 
