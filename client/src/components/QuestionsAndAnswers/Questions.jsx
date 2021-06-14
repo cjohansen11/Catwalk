@@ -15,7 +15,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
     } else {
       setFilteredResults([]);
       for (let i = 0; i < listOfQuestions.results.length; i++) {
-        if (listOfQuestions.results[i].question_body.includes(query)) {
+        if (listOfQuestions.results[i].question_body.toLowerCase().includes(query)) {
           setFilteredResults(prev => [...prev, listOfQuestions.results[i]]);
         }
       }
