@@ -1,0 +1,13 @@
+.questions-and-answers {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.modal-question {
+  position: fixed;
+  top: 0;
+  left: 0;
+}

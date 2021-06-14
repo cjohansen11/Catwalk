@@ -1,10 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import Productinformation from './Productinformation.jsx';
-import Styleselector from './Styleselector.jsx';
+import ImageGallaryComponent from './corosel.jsx';
+import Productdescription from './Productdescription.jsx';
 import Addtocart from './Addtocart.jsx';
-import Imagegallery from './Imagegallery.jsx';
-const config = require('./config.js');
+import SingleStarRating from './SingleStarRating.jsx';
+// import Imagegallery from './Imagegallery.jsx';
+// import config from './config.js';
+import '../../styles/overview.css';
+import GET from '../../../../lib/related.js';
+
 
 class Overview extends React.Component {
   constructor(props) {
@@ -16,11 +21,15 @@ class Overview extends React.Component {
       styleArray: '',
       cart: '',
       updateS: [],
+      ratings: '',
     };
 
     this.updateCurrentSelectedStyle = this.updateCurrentSelectedStyle.bind(this);
     this.updateCart = this.updateCart.bind(this);
     this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
+    this.styleDropdown = this.styleDropdown.bind(this);
+
+
 
   }
 
@@ -30,61 +39,34 @@ class Overview extends React.Component {
     });
   }
 
-  updateStyleArayyy() {
-    this.styleDropdown();
-  }
-
-  updateCurrentSelectedStyle(styleObj) {
-    this.setState({
-      currentSelectedStyle: styleObj
-    });
-
+  updateStyleArayyy(styleObj) {
     this.styleDropdown(styleObj);
   }
 
+  updateCurrentSelectedStyle(styleObj) {
+
+
+    this.setState({
+      currentSelectedStyle: styleObj,
+    });
+
+
+
+  }
 
   componentDidMount() {
 
-
-    var optionsCart = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-
-    var optionsProduct = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-    var optionsStyle = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/19089/styles/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-
-    axios(optionsProduct)
+    GET.featuredProduct(this.props.featuredProduct.id)
       .then((data) => {
-        // console.log('this is the product info', data.data);
+
+
         this.setState({
           currentProductInfo: data.data
         });
-        return axios(optionsStyle);
+        return GET.productStyles(this.props.featuredProduct.id);
       })
       .then((data) => {
-        // console.log('this is the styles info', data.data, 'this is default access', data.data.results[0]['default?']);
+
         var currentSelected = data.data.results[0];
         for (var i = 0; i < data.data.results.length; i++) {
           if (data.data.results[i]['default?'] === true) {
@@ -97,24 +79,88 @@ class Overview extends React.Component {
           currentSelectedStyle: currentSelected
           // default could be the defualt being true
         });
-        return axios(optionsCart);
+        return GET.productReviews(this.props.featuredProduct.id);
       })
       .then((data) => {
-        // console.log('this is the current cart state', data.data);
+
+        this.setState({
+          ratings: data.data.ratings
+        });
+        return GET.getCart();
+      })
+
+      .then((data) => {
+
         this.setState({
           cart: data.data
         });
         this.styleDropdown();
+
       })
       .catch((error) => {
-        // console.log('the data did not renderrrr', error);
+        console.log('the data did not render', error);
       });
   }
 
 
+  componentDidUpdate(prevProps) {
+    if (this.props.featuredProduct !== prevProps.featuredProduct) {
+
+
+
+      GET.featuredProduct(this.props.featuredProduct.id)
+        .then((data) => {
+
+
+          this.setState({
+            currentProductInfo: data.data
+          });
+          return GET.productStyles(this.props.featuredProduct.id);
+        })
+        .then((data) => {
+
+          var currentSelected = data.data.results[0];
+          for (var i = 0; i < data.data.results.length; i++) {
+            if (data.data.results[i]['default?'] === true) {
+              currentSelected = data.data.results[i];
+            }
+          }
+
+          this.setState({
+            currentProductStylesInfo: data.data,
+            currentSelectedStyle: currentSelected
+            // default could be the defualt being true
+          });
+          return GET.productReviews(this.props.featuredProduct.id);
+        })
+        .then((data) => {
+
+          this.setState({
+            ratings: data.data.ratings
+          });
+          return GET.getCart();
+        })
+
+        .then((data) => {
+
+          this.setState({
+            cart: data.data
+          });
+          this.styleDropdown();
+
+        })
+        .catch((error) => {
+          console.log('the data did not render', error);
+        });
+    }
+  }
+
 
 
   styleDropdown(styleObj) {
+    this.setState({
+      styleArray: [],
+    });
     if (styleObj === undefined) {
       var currentStyleArray = Object.entries(this.state.currentSelectedStyle.skus);
     } else {
@@ -158,14 +204,33 @@ class Overview extends React.Component {
 
 
   render() {
+
     return (
+
       <div className='overview'>
-        <h1>Overview Section</h1>
-        <Imagegallery />
-        <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
-        <Styleselector currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} updateStyleArray={this.updateStyleArayyy} />
-        <Addtocart currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+
+
+        <div className='galleryContainer'>
+          <ImageGallaryComponent currentStyle={this.state.currentSelectedStyle} />
+        </div>
+
+
+        <div className='productContainer'>
+          <div className='infocontainer'>
+            <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} ratings={this.state.ratings} />
+            <SingleStarRating ratings={this.state.ratings} />
+          </div>
+
+          <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+
+          <Productdescription currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
+        </div>
+
+
       </div>
+
+
+
     );
   }
 }

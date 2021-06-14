@@ -1,0 +1,58 @@
+.ratingsReviews {
+  width: 1000px;
+  margin: auto;
+}
+
+.ratingsReviewsContainer {
+  display: flex;
+  padding: 10px;
+}
+
+.ratingsContainer {
+  flex: 30%
+}
+
+.reviewsContainer {
+  flex: 70%;
+  display: flex;
+  width: 800px;
+  flex-direction: column;
+}
+
+.row,
+.photoThumbsnail {
+  display: inline-flex;
+  flex-direction: row;
+  margin: 5px;
+  width: 100%;
+
+  /* flex-flow: row nowrap; */
+}
+.response {
+  background-color: gray;
+}
+
+.nameData,
+.report {
+  align-content: flex-end;
+}
+
+.ok {
+  display: inline-flex;
+}
+
+button {
+  align-content: space-around;
+}
+
+.reviews,
+.review {
+  max-width: 500px;
+  padding: 20px;
+
+}
+
+.photoThumbsnail img {
+  height: 100px;
+  width: 100px;
+}

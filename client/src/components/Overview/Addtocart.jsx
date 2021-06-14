@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-const config = require('./config.js');
+
+import '../../styles/rightsidecontainer.css';
+import GET from '../../../../lib/related.js';
+import GIT_TOKEN from '../../../../lib/config.js';
 
 class Addtocart extends React.Component {
   constructor(props) {
@@ -14,8 +17,6 @@ class Addtocart extends React.Component {
       availableStock: '',
       availableStockArray: [],
       dash: '-',
-
-
     };
 
     this.selectedSize = this.selectedSize.bind(this);
@@ -25,27 +26,16 @@ class Addtocart extends React.Component {
 
 
   componentDidMount() {
-
-    var optionsCart = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
-
-    };
-
-    axios(optionsCart)
+    GET.getCart()
       .then((data) => {
-        // console.log('this is the current cart state', data.data);
+
         this.setState({
           cart: data.data
         });
 
       })
       .catch((error) => {
-        // console.log('cart error', error);
+        console.log('cart error', error);
       });
 
   }
@@ -71,10 +61,13 @@ class Addtocart extends React.Component {
       selectedSize: event.target.value,
 
     });
+    this.getStock();
+  }
+  getStock() {
     var search = Object.entries(this.props.currentStyle.skus);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === event.target.value) {
-        // console.log('is this loop working?');
+
         var sku = Number(search[i][0]);
         var styleStock = search[i][1]['quantity'];
         this.setState({
@@ -95,13 +88,12 @@ class Addtocart extends React.Component {
     var availStock = styleStock - purchased;
     var stockArray = this.stockArray(availStock);
     var dashValue = this.dashValue(availStock);
-    // console.log(availStock, stockArray);
+
     this.setState({
       availableStock: availStock,
       availableStockArray: stockArray,
       dash: dashValue,
     });
-
   }
 
   dashValue(num) {
@@ -130,14 +122,15 @@ class Addtocart extends React.Component {
 
 
 
-  addedToCart(click) {
-    // console.log('on click what', click);
+  addedToCart(e, click) {
+    e.preventDefault();
+
     var search = Object.entries(this.props.currentStyle.skus);
     var skuId = '';
     var id = this.state.currentskuId;
     var quantity = this.state.selectedQuantity;
     var stock = this.state.currentStock;
-    // console.log(search);
+
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === this.state.selectedSize) {
 
@@ -150,87 +143,123 @@ class Addtocart extends React.Component {
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart`,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
+        'Authorization': GIT_TOKEN,
       },
       data: { 'sku_id': `${skuId}` }
     };
-    var optionsCart = {
-      method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/cart/`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${config.TOKEN}`
-      }
 
-    };
+
 
     for (var i = 0; i < quantity; i++) {
       axios(optionsAddCart)
         .then((data) => {
-          // console.log('added to cart!');
+          console.log('added to cart!');
         })
 
         .catch((error) => {
-          // console.log('cart error', error);
+          console.log('cart error', error);
         });
     }
 
-    axios(optionsCart)
+    GET.getCart()
       .then((data) => {
-        // console.log('this is the cart', data.data);
+
         this.setState({
           cart: data.data
         });
         this.props.updateOverCart(data.data);
-        this.props.updateStyleArray();
+
       })
       .catch((error) => {
         // console.log('cart error', error);
       });
+
+    this.props.updateStyleArray();
+
   }
+
+
+  updateStyle(e, style) {
+    e.preventDefault();
+    this.setState({
+      availableStockArray: [],
+    });
+
+    this.props.updateStyleArray(style);
+    this.props.updateCurrentStyle(style);
+    this.setState({
+      dash: '-',
+
+    });
+
+
+
+  }
+
 
   render() {
     if (!this.props.currentStyle) {
-      return <span>Loading...</span>;
+      return <span>Loading...AC</span>;
     }
     return (
-      <div>
-        <div className="size_dropdown">
-          <select placeholder='none' onChange={this.selectedSize}>
-            <option>{this.conditionalDrop()}</option>
 
-            {/* need to map the options from state */}
-
-            {Object.entries(this.props.styleArrayy).map(style => {
-              return (
-
-                <option key={(style)}>{style.slice(1)}</option>
-
-              );
-            })
+      <div className='stylecontainer'>
+        <h3>Style:{this.props.currentStyle.name}</h3>
+        <div className='thumbnailcontainer'>
+          {this.props.currentStyles.results.map(style => {
+            let classcheck = 'thumbnail';
+            if (style.style_id === this.props.currentStyle.style_id) {
+              classcheck = 'thumbnail check';
             }
-          </select>
+            return <div className={classcheck} key={style.style_id} onClick={(event) => { this.updateStyle(event, style); }}>
+
+              <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
+
+            </div>;
+          })}
+
         </div>
 
-        <div className="quantity_dropdown">
-
-          <select placeholder='none' onChange={this.selectedQuantity}>
-            <option>{this.state.dash}</option>
-            {this.state.availableStockArray.map(num => {
-
-              return <option key={num}>{num}</option>;
-
-            })}
 
 
 
 
-          </select>
+        <div className='addtocartcontainer'>
+          <div className="size_dropdowndiv">
+            <select className="size_dropdown" placeholder='none' onChange={this.selectedSize}>
+              <option>{this.conditionalDrop()}</option>
+
+              {/* need to map the options from state */}
+
+              {Object.entries(this.props.styleArrayy).map(style => {
+                return (
+
+                  <option key={(style)}>{style.slice(1)}</option>
+
+                );
+              })
+              }
+            </select>
+          </div>
+
+          <div className="quantity_dropdowndiv">
+
+            <select className="quantity_dropdown" placeholder='none' onChange={this.selectedQuantity}>
+              <option>{this.state.dash}</option>
+              {this.state.availableStockArray.map(num => {
+
+                return <option key={num}>{num}</option>;
+
+              })}
+            </select>
+          </div>
+
+          <button className='addtocartbutton' onClick={(event) => this.addedToCart(event, this.state.selectedSize)}>Add To Cart</button>
+
         </div>
-
-        <button onClick={() => this.addedToCart(this.state.selectedSize)}>Add To Cart</button>
-
       </div>
+
+
     );
   }
 }

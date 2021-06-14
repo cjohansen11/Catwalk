@@ -1,0 +1,36 @@
+.question-and-answer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+.question {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.question__text {
+  width: 70%;
+}
+
+.question__right {
+  width: 30%;
+
+}
+
+.helpful-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  font-size: 12px;
+}
+
+.answer_button {
+  font-weight: lighter;
+  background-color: white;
+  border: none;
+  text-size: 11px;
+  text-decoration: underline;
+}

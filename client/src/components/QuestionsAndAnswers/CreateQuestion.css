@@ -1,0 +1,22 @@
+.modal-question {
+  position: fixed;
+}
+
+.bottom-buttons-container {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
+
+.bottom-buttons {
+  display: flex;
+  margin-bottom: 5px;
+  margin-left: 30px;
+  width: 30%;
+  height: 35px;
+  background-color: #ffffff;
+  border-width: 1px;
+  justify-content: center;
+  font: medium;
+  cursor: pointer;
+}
