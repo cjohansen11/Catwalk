@@ -60,7 +60,9 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
       <div className="question">
         <h3 className="question__text">Q: {question.question_body}</h3>
         <div className="question__right">
-          <div className=""> Helpful? Yes {`(${question.question_helpfulness})`} | Report</div>
+          <div className="helpful-line"> Helpful?   Yes {`(${question.question_helpfulness})`} |
+            <button className="answer_button">Add Answer</button>
+          </div>
         </div>
       </div>
       <Answers answerList={answerList}/>

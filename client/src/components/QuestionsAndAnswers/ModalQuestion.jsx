@@ -55,49 +55,57 @@ const ModalQuestion = ({ show, close }) => {
       email: ''
     });
   };
-
-  return (
-    <div className="modal-wrapper"
-      style={{
-        opacity: show ? '1' : '0'
-      }}
-    >
-      <div className="modal-header">
-        <p>Add a Question</p>
-        <span onClick={close} className="close-modal-btn">x</span>
-      </div>
-      <div className="modal-content">
-        <div className="modal-body">
-          <h3>Modal</h3>
-          <div className="modal-form">
-            <div className="modal-input">
-              <input
-                value={values.question}
-                type="text"
-                placeholder="Question"
-                onChange={handleQuestionText}
-              />
-              <input
-                value={values.nickname}
-                type="text"
-                placeholder="Nickname"
-                onChange={handleNickname}
-              />
-              <input
-                value={values.email}
-                type="text"
-                placeholder="Email"
-                onChange={handleEmail}
-              />
+  console.log('show', show);
+  if (show === true) {
+    return (
+      <div className="modal-wrapper"
+        style={{
+          opacity: show ? '1' : '0'
+        }}
+      >
+        <div className="modal-header">
+          <p>Add a Question</p>
+          <span onClick={close} className="close-modal-btn">x</span>
+        </div>
+        <div className="modal-content">
+          <div className="modal-body">
+            <h3>Modal</h3>
+            <div className="modal-form">
+              <div className="modal-input">
+                <input
+                  value={values.question}
+                  type="text"
+                  placeholder="Question"
+                  onChange={handleQuestionText}
+                />
+                <input
+                  value={values.nickname}
+                  type="text"
+                  placeholder="Nickname"
+                  onChange={handleNickname}
+                />
+                <input
+                  value={values.email}
+                  type="text"
+                  placeholder="Email"
+                  onChange={handleEmail}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="modal-footer">
-          <button className="btn-submit" onClick={handleSubmit} >Submit</button>
+          <div className="modal-footer">
+            <button className="btn-submit" onClick={handleSubmit} >Submit</button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+      </div>
+    );
+  }
+
 };
 
 export default ModalQuestion;
