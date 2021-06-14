@@ -18,7 +18,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 const App = () => {
 
   /* ** STATE(s) ** */
-  const [productId, setProductId] = useState(19653);
+  const [productId, setProductId] = useState(19089);
   const [featuredProduct, setFeaturedProduct] = useState([]);
 
   const userData = [];
@@ -30,13 +30,6 @@ const App = () => {
       .then(res => {
         setFeaturedProduct(res.data);
       });
-    // Requests.getReviews(productId, 'relevant') // 19653
-    //   .then((data) => {
-    //     setReviews(data.data.results);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
   }, [productId]);
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
