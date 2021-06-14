@@ -31,6 +31,7 @@ const AddReviewForm = ({ characteristics2, productId }) => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     let postRequestBody = {
       'product_id': Number(productId),
       'rating': Number(rating),
@@ -247,7 +248,7 @@ const AddReviewForm = ({ characteristics2, productId }) => {
           <div>AddPhotos
             <input type='file' accept='image/*' multiple onChange={handleImageSelect}>
             </input>
-            <div>
+            <div className = 'photoThumbsnail'>
               <img src={selectedFile} />
               <img src={selectedFiles[0]} />
               <img src={selectedFiles[1]} />

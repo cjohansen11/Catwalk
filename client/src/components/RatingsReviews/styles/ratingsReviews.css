@@ -1,8 +1,3 @@
-* {
-  box-sizing: border-box;
-  /* border: black 2px solid; */
-}
-
 .ratingsReviews {
   width: 1000px;
   margin: auto;
@@ -30,6 +25,7 @@
   flex-direction: row;
   margin: 5px;
   width: 100%;
+
   /* flex-flow: row nowrap; */
 }
 .response {
@@ -38,7 +34,7 @@
 
 .nameData,
 .report {
-  justify-content: flex-end;
+  align-content: flex-end;
 }
 
 .ok {
@@ -47,4 +43,16 @@
 
 button {
   align-content: space-around;
+}
+
+.reviews,
+.review {
+  max-width: 500px;
+  padding: 20px;
+
+}
+
+.photoThumbsnail img {
+  height: 100px;
+  width: 100px;
 }
