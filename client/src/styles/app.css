@@ -1,4 +1,13 @@
-.test {
-	color:red;
+.catwalk {
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
+	margin: auto;
 }
 
+h1.page-title {
+	font-family: sans-serif;
+	font-weight: 100;
+	padding: 0px;
+	margin: 10px 15px 0px 15px;
+}
