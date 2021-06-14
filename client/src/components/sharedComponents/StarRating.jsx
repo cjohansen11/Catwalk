@@ -9,22 +9,26 @@ import './stars.css';
 const StarRating = ({ numberOfStars }) => {
   const full = <BsStarFill />;
   const empty = <BsStar />;
-  const partial = <BsStarHalf />;
+  const partial = <BsStarFill />;
 
-  var num = numberOfStars % 2 ? numberOfStars : Math.floor(numberOfStars);
   var decimal = Math.floor(numberOfStars % 1 * 10);
+  var num = numberOfStars.toFixed(0);
 
   const a = (value, num, decimal) => {
     // useMemo hook could be used
     if (value <= num && decimal === 0) {
       return full;
     } else if (value === num && decimal > 0) {
-      return partial;
+      // console.log('hshshs');
+      return 'smth';
     } else {
       return empty;
     }
   };
 
+  // useEffect(() => {
+
+  // }, [numberOfStars]);
   return (
     <div className = 'starRow'>
       {
@@ -32,8 +36,6 @@ const StarRating = ({ numberOfStars }) => {
           return (
             <div
               key = {idx}
-              onClick = { () => {
-              } }
             >
               { a(value, num, decimal) }
             </div>

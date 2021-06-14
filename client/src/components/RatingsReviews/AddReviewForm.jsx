@@ -136,7 +136,12 @@ const AddReviewForm = () => {
           </div>
 
           <div>ReviewRating
-            <div className="box flex">
+            <div
+              className="ok"
+              styles = {{
+                display: 'inline-flex'
+              }}
+            >
               {[1, 2, 3, 4, 5].map((value, index) => {
                 return (
                   <StarC

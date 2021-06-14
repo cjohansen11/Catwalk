@@ -1,6 +1,6 @@
 import React from 'react';
 
-const modalWindow = ({ children }) => {
+const ModalWindow = ({ children }) => {
   return (
     <div className = 'modalWindow'>
       {children}
@@ -8,4 +8,4 @@ const modalWindow = ({ children }) => {
   );
 };
 
-export default modalWindow;
+export default ModalWindow;

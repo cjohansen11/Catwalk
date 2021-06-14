@@ -28,7 +28,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
 
   const closeModalHandler = () =>
     setShow(false);
-  console.log(show);
+  // console.log(show);
 
   // GET For currrent product
   const firstCall = (id) => {
@@ -46,7 +46,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
         // postReq();
       })
       .catch((err) => {
-        console.log('featuredProduct', featuredProduct);
+        // console.log('featuredProduct', featuredProduct);
         console.log(err);
       });
   };

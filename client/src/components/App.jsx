@@ -31,13 +31,13 @@ const App = () => {
       .then(res => {
         setFeaturedProduct(res.data);
       });
-    Requests.getReviews(productId, 'relevant') // 19653
-      .then((data) => {
-        setReviews(data.data.results);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    // Requests.getReviews(productId, 'relevant') // 19653
+    //   .then((data) => {
+    //     setReviews(data.data.results);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
   }, [productId]);
 
   const RelatedWithTracker = WithTracker(RelatedProduct);

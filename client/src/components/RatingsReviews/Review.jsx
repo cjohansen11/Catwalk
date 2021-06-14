@@ -4,8 +4,11 @@ import _ from 'lodash';
 
 import ModalPhotoWindow from './ModalPhotoWindow.jsx';
 import StarRating from '../sharedComponents/StarRating.jsx';
+import ModalWindow from '../sharedComponents/ModalWindow.jsx';
 
 import Requests from '../../../../lib/RatingsReviews.js';
+
+// import './styles/Review.css';
 
 const Review = ({ review }) => {
   const [showMoreText, setShowMoreText] = useState(false);
@@ -45,35 +48,58 @@ const Review = ({ review }) => {
   };
 
   return (
-    <div>
-      <div><StarRating numberOfStars = { rating } /></div>
-      <div>{name}{date}</div>
-      <div></div>
+    <div className = 'review'>
+      <div className = 'row'>
+        <StarRating numberOfStars = { rating } />
+        <div className = 'nameData'>{name}{date}</div>
+      </div>
+
       <div>{slicedSummary}</div>
+
       {restOfSummary.length > 0 && <div> {'...' + restOfSummary} </div>}
+
       {review.recommend && <div>I recommend this</div>}
+
       <div>{body}{review.body.length > 60 && showMoreTextButton && showMoreButton}</div>
-      {review.response && <div>{review.response}</div>}
-      { review.photos &&
-        <div>
-          {
-            _.map(review.photos, (photo) => {
-              return (
-                <ModalPhotoWindow
-                  key = { photo.id }
-                  photoURL = { photo.url }
-                />
-              );
-            })
-          }
-        </div>
-      }
+
+      {review.response && <div className = 'response'>{review.response}</div>}
+
       <div>
-        <div>Was this review helpful?
-          <u onClick = { () => { helpfulReview(id); } }>Yes</u>({review.helpfulness})
+        { review.photos &&
+          <div className = 'photoThumbsnail'>
+            {
+              _.map(review.photos, (photo) => {
+                return (
+                  <ModalPhotoWindow
+                    key = { photo.id }
+                    photoURL = { photo.url }
+                  />
+                );
+              })
+            }
+          </div>
+        }
+      </div>
+
+      <div className='row'>
+        <div className = 'helpfulness'>Was this review helpful?
+          <u onClick = {
+            () => {
+              helpfulReview(id);
+            }
+          }>Yes
+          </u>
+          ({review.helpfulness})
         </div>
 
-        <div onClick = { () => { reportReview(id); } }>Report</div>
+        <div className = 'report'>
+          <u onClick = {
+            () => {
+              reportReview(id);
+            }
+          }>Report
+          </u>
+        </div>
       </div>
     </div>
   );

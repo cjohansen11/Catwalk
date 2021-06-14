@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  /* border: black 2px solid; */
+}
+
+.ratingsReviews {
+  width: 1000px;
+  margin: auto;
+}
+
+.ratingsReviewsContainer {
+  display: flex;
+  padding: 10px;
+}
+
+.ratingsContainer {
+  flex: 30%
+}
+
+.reviewsContainer {
+  flex: 70%;
+  display: flex;
+  width: 800px;
+  flex-direction: column;
+}
+
+.row,
+.photoThumbsnail {
+  display: inline-flex;
+  flex-direction: row;
+  margin: 5px;
+  width: 100%;
+  /* flex-flow: row nowrap; */
+}
+.response {
+  background-color: gray;
+}
+
+.nameData,
+.report {
+  justify-content: flex-end;
+}
+
+.ok {
+  display: inline-flex;
+}
