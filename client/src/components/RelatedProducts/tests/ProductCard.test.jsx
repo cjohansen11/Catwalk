@@ -341,8 +341,8 @@ describe('Product Card', () => {
   }
 
   it('should render the product name onto a card', () => {
-    render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('Obie Pants')).toBeTruthy();
+    const productCard = render(<ProductCard product={sampleData} ></ProductCard>);
+    expect(screen.queryByText('OBIE PANTS')).toBeTruthy();
   });
   it('should render the product category onto a card', () => {
     render(<ProductCard product={sampleData} ></ProductCard>);
@@ -352,9 +352,26 @@ describe('Product Card', () => {
     render(<ProductCard product={sampleData} ></ProductCard>);
     expect(screen.queryByText('219.00')).toBeTruthy();
   });
-  it('should render the product rating onto a card', () => {
-    render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(productRating.lastElementChild.classList.contains('rating-star')).toBeTruthy();
+  it('should render the product image onto a card', () => {
+    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
+    const hasImage = container.getElementsByClassName('previewImage')[0];
+    expect(hasImage).toBeTruthy();
   });
-
+  it('should render the product rating onto a card', () => {
+    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
+    const hasRating = container.getElementsByClassName('productRating')[0];
+    expect(hasRating).toBeTruthy();
+  });
+  it('should render the action button onto a card', () => {
+    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
+    const hasActionButton = container.getElementsByClassName('actionButton')[0];
+    expect(hasActionButton).toBeTruthy();
+  });
+  it('should show a modal window when the action button is clicked', () => {
+    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
+    const hasActionButton = container.getElementsByClassName('actionButton')[0];
+    fireEvent.mouseUp(hasActionButton);
+    const hasModal = container.getElementsByClassName('modal');
+    expect(hasModal).toBeTruthy();
+  });
 });
