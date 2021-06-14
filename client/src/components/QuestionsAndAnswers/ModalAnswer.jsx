@@ -3,7 +3,6 @@ import './ModalAnswer.css';
 import axios from 'axios';
 import GIT_TOKEN from '../../../../lib/config.js';
 
-
 const ModalAnswer = ({ show, close }) => {
 
   const [values, setValues] = useState({
@@ -65,12 +64,11 @@ const ModalAnswer = ({ show, close }) => {
         }}
       >
         <div className="modal-header">
-          <p>Add a Question</p>
+          <p>Add Answer</p>
           <span onClick={close} className="close-modal-btn">x</span>
         </div>
         <div className="modal-content">
           <div className="modal-body">
-            <h3>Modal</h3>
             <div className="modal-form">
               <div className="modal-input">
                 <input

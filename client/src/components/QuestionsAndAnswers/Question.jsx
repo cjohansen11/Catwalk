@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import './Question.css';
+import CreateAnswer from './CreateAnswer.jsx';
 import GIT_TOKEN from '../../../../lib/config.js';
 // import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
 
@@ -61,7 +62,8 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
         <h3 className="question__text">Q: {question.question_body}</h3>
         <div className="question__right">
           <div className="helpful-line"> Helpful?   Yes {`(${question.question_helpfulness})`} |
-            <button className="answer_button">Add Answer</button>
+            <CreateAnswer className="answer_button"/>
+
           </div>
         </div>
       </div>
