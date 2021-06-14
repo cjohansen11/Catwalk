@@ -9,7 +9,8 @@ import GIT_TOKEN from '../../../../lib/config.js';
 const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
 
   const [answerList, setAnswerList] = useState(null);
-
+  const [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
+  console.log(questionHelpfulness)
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
       {headers: {
@@ -25,8 +26,8 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
   }, [question.question_id]);
 
   useEffect(() => {
+  }, [answerList, questionHelpfulness]);
 
-  }, [answerList]);
 
 
   const addHelpful = (values) => {
@@ -61,7 +62,8 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
       <div className="question">
         <h3 className="question__text">Q: {question.question_body}</h3>
         <div className="question__right">
-          <div className="helpful-line"> Helpful?   Yes {`(${question.question_helpfulness})`} |
+          <div className="helpful-line"> Helpful? &ensp;
+          <a onClick={() => setQuestionHelpfulness(questionHelpfulness + 1)}>Yes {`(${questionHelpfulness})`} </a> &ensp;| &ensp;
             <CreateAnswer className="answer_button"/>
 
           </div>
