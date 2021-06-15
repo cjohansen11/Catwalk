@@ -10,7 +10,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
 
   const [answerList, setAnswerList] = useState(null);
   const [questionHelpfulness, setQuestionHelpfulness] = useState(question.question_helpfulness);
-  console.log(questionHelpfulness)
+
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question.question_id}/answers`,
       {headers: {

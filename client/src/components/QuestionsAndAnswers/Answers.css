@@ -44,3 +44,13 @@
   border: whitesmoke;
   cursor: pointer;
 }
+
+.photo-answer {
+  display: inline-flex;
+  flex-direction: row;
+  margin: 5px;
+  width: 100%;
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+}
