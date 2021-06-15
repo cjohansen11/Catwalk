@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import '../../styles/rightsidecontainer.css';
-
+import { TiSocialTwitter } from 'react-icons/Ti';
+import { FaInstagram } from 'react-icons/Fa';
+import { IoLogoFacebook } from 'react-icons/Io';
 
 class Productdescription extends React.Component {
   constructor(props) {
@@ -32,9 +34,9 @@ class Productdescription extends React.Component {
           <p>{this.props.currentProduct.features[0].feature}:{this.props.currentProduct.features[0].value}</p>
         </div>
         <div className='socialButtons'>
-          <a href='https://www.facebook.com/' className='fB'>FB</a>
-          <a href='https://instagram.com/' className='iG'>IG</a>
-          <a href='https://twitter.com/' className='tW'>Twitter</a>
+          <a href='https://www.facebook.com/' className='fB'><IoLogoFacebook/></a>
+          <a href='https://instagram.com/' className='iG'><FaInstagram/></a>
+          <a href='https://twitter.com/' className='tW'><TiSocialTwitter/></a>
         </div>
       </div>
     );

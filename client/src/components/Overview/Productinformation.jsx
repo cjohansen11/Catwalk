@@ -26,7 +26,7 @@ class Productinformation extends React.Component {
         <h1>{this.props.currentProduct.name} </h1>
         <div className='saleContainer'>
           {this.props.currentStyle.sale_price ? <p className='saleText'> ${this.props.currentStyle.original_price} </p> : null}
-          {this.props.currentStyle.sale_price ? <p>   ${this.props.currentStyle.sale_price} </p> : <p>${this.props.currentStyle.original_price} </p>}
+          {this.props.currentStyle.sale_price ? <p>${this.props.currentStyle.sale_price} </p> : <p>${this.props.currentStyle.original_price} </p>}
         </div>
 
       </div>

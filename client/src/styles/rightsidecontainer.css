@@ -57,6 +57,11 @@ STAR RATING SECTION */
   width: 80px;
   height: 20px;
   position: absolute;
+  /* background: -webkit-linear-gradient(left, gold 60%, #333 40%);
+  -webkit-background-clip: 'text';
+  background-clip: 'text';
+    -webkit-text-fill-color: transparent; */
+
 }
 
 .ratingContainer {
@@ -68,35 +73,37 @@ align-content: left;
   width: 150px;
   font-family: sans-serif;
   font-size: small;
-  margin-left: 70px;
-  margin-top: -20px;
+  margin-left: 77px;
+  margin-top: -16px;
 
 }
 
 .socialButtons {
-
-  margin-top: 30px;
+display: flex;
 }
 
 /*SOCIAL MEDIA BUTTONS */
 .fB {
   background: #3B5998;
   color: white;
-  border-radius: 20%;
+  border-radius: 30%;
   padding: 10px;
+  margin: 2px;
 }
 
 .iG {
-  background: crimson;
+  background:crimson;
   color: white;
-  border-radius: 20%;
+  border-radius: 30%;
   padding: 10px;
+  margin: 2px;
 }
 .tW {
   background: #55ACEE;
   color: white;
   padding: 10px;
-  border-radius: 20%;
+  border-radius: 30%;
+  margin: 2px;
 }
 
 /* STYLE THUMBNAIL SECTION */
@@ -117,6 +124,7 @@ align-content: left;
   width: 75px;
   height:75px;
   display: block;
+  z-index: 0;
 }
 
 .thumbnail {
@@ -130,9 +138,10 @@ align-content: left;
 
   background-image: url('https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png');
   background-position: top left;
-  background-size: 100%;
-  z-index: 3;
-  color: black;
+  background-size: 30%;
+  z-index: 10;
+
+  background-repeat: no-repeat;
 
 }
 
