@@ -63,7 +63,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
         <h3 className="question__text">Q: {question.question_body}</h3>
         <div className="question__right">
           <div className="helpful-line"> Helpful? &ensp;
-          <a onClick={() => setQuestionHelpfulness(questionHelpfulness + 1)}>Yes {`(${questionHelpfulness})`} </a> &ensp;| &ensp;
+            <a className="helpful-click" onClick={() => setQuestionHelpfulness(questionHelpfulness + 1)}>Yes {`(${questionHelpfulness})`} </a> &ensp;| &ensp;
             <CreateAnswer className="answer_button"/>
 
           </div>
