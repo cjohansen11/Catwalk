@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import Productinformation from './Productinformation.jsx';
-import ImageGallaryComponent from './corosel.jsx';
+import ImageGallary from './ImageGallary.jsx';
 import Productdescription from './Productdescription.jsx';
 import Addtocart from './Addtocart.jsx';
 import SingleStarRating from './SingleStarRating.jsx';
@@ -28,9 +28,6 @@ class Overview extends React.Component {
     this.updateCart = this.updateCart.bind(this);
     this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
     this.styleDropdown = this.styleDropdown.bind(this);
-
-
-
   }
 
   updateCart(data) {
@@ -56,14 +53,14 @@ class Overview extends React.Component {
 
   componentDidMount() {
 
-    GET.featuredProduct(this.props.featuredProduct.id)
+    GET.featuredProduct(this.props.featuredProduct)
       .then((data) => {
 
 
         this.setState({
           currentProductInfo: data.data
         });
-        return GET.productStyles(this.props.featuredProduct.id);
+        return GET.productStyles(this.props.featuredProduct);
       })
       .then((data) => {
 
@@ -75,14 +72,14 @@ class Overview extends React.Component {
         }
 
         this.setState({
-          currentProductStylesInfo: data.data,
+          currentProductStylesInfo: data.data.results,
           currentSelectedStyle: currentSelected
           // default could be the defualt being true
         });
-        return GET.productReviews(this.props.featuredProduct.id);
+        return GET.productReviews(this.props.featuredProduct);
       })
       .then((data) => {
-        console.log('this is first data', data.data.ratings);
+
         this.setState({
           ratings: data.data.ratings
         });
@@ -108,21 +105,21 @@ class Overview extends React.Component {
 
 
 
-      GET.featuredProduct(this.props.featuredProduct.id)
+      GET.featuredProduct(this.props.featuredProduct)
         .then((data) => {
 
 
           this.setState({
             currentProductInfo: data.data
           });
-          return GET.productReviews(this.props.featuredProduct.id);
+          return GET.productReviews(this.props.featuredProduct);
         })
         .then((data) => {
-          console.log('this is second data', data.data.ratings);
+
           this.setState({
             ratings: data.data.ratings
           });
-          return GET.productStyles(this.props.featuredProduct.id);
+          return GET.productStyles(this.props.featuredProduct);
         })
         .then((data) => {
 
@@ -134,7 +131,7 @@ class Overview extends React.Component {
           }
 
           this.setState({
-            currentProductStylesInfo: data.data,
+            currentProductStylesInfo: data.data.results,
             currentSelectedStyle: currentSelected
             // default could be the defualt being true
           });
@@ -211,13 +208,13 @@ class Overview extends React.Component {
 
 
         <div className='galleryContainer'>
-          <ImageGallaryComponent currentStyle={this.state.currentSelectedStyle} />
+          <ImageGallary currentStyle={this.state.currentSelectedStyle} />
         </div>
 
 
         <div className='productContainer'>
           <div className='infocontainer'>
-            <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} ratings={this.state.ratings} />
+            <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
             <SingleStarRating ratings={this.state.ratings} />
           </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CardStyles from '../../styles/productCard.css';
+// import CardStyles from '../../styles/productCard.css';
 import '../../styles/starRating.css';
 
 const StarRating = ({ ratings }) => {
