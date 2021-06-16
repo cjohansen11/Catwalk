@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Answers.css';
 import Answer from './Answer.jsx';
 
 const Answers = ( {answerList} ) => {
 
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
+  const [toggled, setToggled] = useState(true);
   // const [answerHelpfulness, setAnswerHelpfulness] = useState(0)
   // console.log('answerList: listOfAnswers', answerList);
 
+  useEffect(() => {
+  }, [toggled, numberOfAnswers]);
 
   const photosArray = (photos) => {
     if (photos) {
@@ -40,7 +43,7 @@ const Answers = ( {answerList} ) => {
             );
           }) : ''}
         <button className="answer-button"
-          onClick={() => setNumberOfAnswers(numberOfAnswers + 2)}>More Answers</button>
+          onClick={() => {setNumberOfAnswers(toggled === true ? answerList.length : numberOfAnswers); setToggled(toggled ? false : true) }}>More Answers</button>
       </div>
 
     </div>
