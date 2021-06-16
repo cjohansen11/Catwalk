@@ -23,10 +23,10 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
   });
 
   return (
-    <div className={`${'modal'}`} onClick={() => setToggleModal(false)}>
+    <div className={`${'modal'}`} onClick={() => setToggleModal(false)} role="tooltip">
       <div className={`${'feature-table'}`}>
         <h4>Comparison Table</h4>
-        <table>
+        <table role="grid">
           <thead>
             <tr>
               <th colSpan="1">{featuredProduct.name}</th>

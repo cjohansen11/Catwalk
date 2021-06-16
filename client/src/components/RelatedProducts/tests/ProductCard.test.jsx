@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductCard from '../ProductCard.jsx';
-import GET from '../../../../../lib/related.js';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { toHaveStyle } from '@testing-library/jest-dom';
 
