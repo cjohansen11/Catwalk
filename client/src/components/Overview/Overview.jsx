@@ -82,7 +82,7 @@ class Overview extends React.Component {
         return GET.productReviews(this.props.featuredProduct);
       })
       .then((data) => {
-        console.log('this is first data', data.data.ratings);
+
         this.setState({
           ratings: data.data.ratings
         });
@@ -118,7 +118,7 @@ class Overview extends React.Component {
           return GET.productReviews(this.props.featuredProduct);
         })
         .then((data) => {
-          console.log('this is second data', data.data.ratings);
+
           this.setState({
             ratings: data.data.ratings
           });
