@@ -80,6 +80,7 @@ const RatingsReviews = ({ productId }) => {
 
   return (
     <div className = 'ratingsReviews'>
+      <a id='route'></a>
       <h1>RatingsReviews</h1>
       <div className='ratingsReviewsContainer'>
         {/* Ratings */}

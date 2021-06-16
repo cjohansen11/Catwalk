@@ -18,7 +18,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 const App = () => {
 
   /* ** STATE(s) ** */
-  const [productId, setProductId] = useState(19089);
+  const [productId, setProductId] = useState(19653);
   const [featuredProduct, setFeaturedProduct] = useState([]);
 
   const userData = [];
@@ -41,7 +41,7 @@ const App = () => {
       <Overview featuredProduct={featuredProduct}/>
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
-      <RatingsReviews productId = {productId} />
+      <RatingsReviews productId = {featuredProduct.id} />
     </div>
   );
 };

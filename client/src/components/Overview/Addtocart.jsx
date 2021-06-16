@@ -204,14 +204,14 @@ class Addtocart extends React.Component {
     return (
 
       <div className='stylecontainer'>
-        <h3>Style:{this.props.currentStyle.name}</h3>
+        <h3>Style > {this.props.currentStyle.name}</h3>
         <div className='thumbnailcontainer'>
           {this.props.currentStyles.results.map(style => {
             let classcheck = 'thumbnail';
             if (style.style_id === this.props.currentStyle.style_id) {
               classcheck = 'thumbnail check';
             }
-            return <div className={classcheck} key={style.style_id} onClick={(event) => { this.updateStyle(event, style); }}>
+            return <div className={classcheck}key={style.style_id} onClick={(event) => { this.updateStyle(event, style); }}>
 
               <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
 
