@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Answers.css';
+import Answer from './Answer.jsx';
 
 const Answers = ( {answerList} ) => {
 
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
+  const [toggled, setToggled] = useState(true);
+  // const [answerHelpfulness, setAnswerHelpfulness] = useState(0)
   // console.log('answerList: listOfAnswers', answerList);
+
+  useEffect(() => {
+  }, [toggled, numberOfAnswers]);
+
+  const photosArray = (photos) => {
+    if (photos) {
+      return photos.map((photo, i) => {
+        return <img className="photo-answer" key={i} src={photo.url} />;
+      });
+    }
+  };
+
+
   return (
     <div className="answers">
       <h3 className="answers-title">A:</h3>
@@ -12,15 +28,24 @@ const Answers = ( {answerList} ) => {
         {answerList ?
           answerList.slice(0, numberOfAnswers).map((answer, index) => {
             let date = new Date(answer.date).toDateString().split(' ').slice(1).join(', ');
+
             return (
+
               <div className="answer" key={index}>
                 <div className="answer-body"> {answer.body}</div>
-                <div className="answer__user">by {answer.answerer_name}, {date} | Helpful?  Yes {`(${answer.helpfulness})`} | Report</div>
+                <div className="answer__user">by {answer.answerer_name}&ensp; {date}
+                <Answer answerHelpfulness={answer.helpfulness}/>
+                </div>
+                <div className="answer-photos">
+                  {photosArray(answer.photos)}
+                </div>
               </div>
             );
           }) : ''}
+        <button className="answer-button"
+          onClick={() => {setNumberOfAnswers(toggled === true ? answerList.length : numberOfAnswers); setToggled(toggled ? false : true) }}>More Answers</button>
       </div>
-      <button className="answer-button" onClick={() => setNumberOfAnswers(numberOfAnswers + 2)}>More Answers</button>
+
     </div>
   );
 };

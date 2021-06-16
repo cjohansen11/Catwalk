@@ -15,7 +15,7 @@ const CreateAnswer = () => {
 
   return (
     <div>
-       <button className="add-answer-button" onClick={() => setShow(true)}>Add Answer</button>
+       <a className="add-answer-button" onClick={() => setShow(true)}>Add Answer</a>
       <ModalAnswer close={closeModalHandler} show={show}/>
     </div>
   );

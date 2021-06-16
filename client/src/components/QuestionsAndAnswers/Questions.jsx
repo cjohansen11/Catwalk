@@ -46,7 +46,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
         <div>
           {filteredResults ?
             filteredResults.slice(0, numberOfQuestions).map((q, i) => {
-              console.log(q);
+              // console.log(q);
               return (
                 <Question key={i} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
               );
