@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import ModalPhotoWindow from './ModalPhotoWindow.jsx';
 import StarRating from '../sharedComponents/StarRating.jsx';
-import ModalWindow from '../sharedComponents/ModalWindow.jsx';
+import ModalWindow from '../sharedComponents/modalWindow.jsx';
 
 import Requests from '../../../../lib/RatingsReviews.js';
 

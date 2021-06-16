@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import '../../styles/rightsidecontainer.css';
-import { TiSocialTwitter } from 'react-icons/Ti';
-import { FaInstagram } from 'react-icons/Fa';
-import { IoLogoFacebook } from 'react-icons/Io';
+import { TiSocialTwitter } from 'react-icons/ti';
+import { FaInstagram } from 'react-icons/fa';
+import { IoLogoFacebook } from 'react-icons/io';
 
 class Productdescription extends React.Component {
   constructor(props) {
