@@ -18,7 +18,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 const App = () => {
 
   /* ** STATE(s) ** */
-  const [productId, setProductId] = useState(19653);
+  const [productId, setProductId] = useState(19089);
   const [featuredProduct, setFeaturedProduct] = useState([]);
 
   const userData = [];
@@ -38,7 +38,7 @@ const App = () => {
   return !featuredProduct.id ? <div>loading...</div> : (
     <div className={'catwalk'}>
       <h1 className={'page-title'}>FOREVER 31</h1>
-      <Overview featuredProduct={featuredProduct}/>
+      <Overview featuredProduct={featuredProduct.id}/>
       <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
       <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
       <RatingsReviews productId = {featuredProduct.id} />
