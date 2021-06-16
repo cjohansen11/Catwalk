@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Carousel from '../Carousel.jsx';
+import YourOutfitList from '../YourOutfitList.jsx';
 import { render, fireEvent, screen } from '@testing-library/react';
 
-describe('Related products carousel', () => {
+describe('Your Outfit List carousel', () => {
   const relatedProductList = {
     product: {
       details: {
@@ -1662,7 +1662,7 @@ describe('Related products carousel', () => {
   };
   it('should register a click on the next button', async () => {
 
-    render(<Carousel relatedProductList={
+    render(<YourOutfitList yourOutfitList={
       [{
         "details": {
           "id": 20005,
@@ -2082,12 +2082,12 @@ describe('Related products carousel', () => {
           }
         }
       }]
-    }></Carousel>);
+    }></YourOutfitList>);
 
     const nextButton = await screen.getByText(/❯/i);
     await fireEvent.click(nextButton);
 
-    const productCard = await screen.getByRole('complementary');
+    const productCard = await screen.getByRole(/figure/);
     // console.log(productCard)
 
     const prevButton = await screen.getByText(/❮/i);

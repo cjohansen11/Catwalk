@@ -35,7 +35,7 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
         e.stopPropagation();
         setComparedProduct(product);
         setToggleModal(true);
-      }}>★</div>
+      }} role="button">★</div>
     </div>
   );
 };
