@@ -1,5 +1,5 @@
 import React from 'react';
-import Productdescription from '../Productdescription.jsx';
+import Productinformation from '../Productinformation.jsx';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { toHaveStyle } from '@testing-library/jest-dom';
 
@@ -86,24 +86,24 @@ describe('Product Information', () => {
       }
     }
   };
-  it('should render the product slogan onto page', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
-    expect(screen.queryByText('Blend in to your crowd')).toBeTruthy();
+  it('should render the product title onto page', () => {
+    render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
+    expect(screen.getByText('Camo Onesie')).toBeInTheDocument();
   });
-  it('should render the product description onto the page', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
-    expect(screen.queryByText('The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.')).toBeTruthy();
+  it('should render the product category onto the page', () => {
+    render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
+    expect(screen.queryByText('Jackets')).toBeTruthy();
   });
-  it('should render a product feature onto the page', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
-    expect(screen.queryByText('Fabric')).toBeTruthy();
+  it('should render the product price onto the page', () => {
+    render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
+    expect(screen.getByText('140.00')).toBeInTheDocument();
   });
 
 
-  it('should have a div called socialButtons', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle}> </Productdescription>);
-    const socialDiv = document.getElementsByClassName('socialButtons');
-    expect(socialDiv).toBeTruthy();
+  it('should have a div called saleContainer', () => {
+    render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle}> </Productinformation>);
+    const saleDiv = document.getElementsByClassName('saleContainer');
+    expect(saleDiv).toBeTruthy();
 
   });
 });

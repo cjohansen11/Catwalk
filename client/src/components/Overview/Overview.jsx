@@ -28,9 +28,6 @@ class Overview extends React.Component {
     this.updateCart = this.updateCart.bind(this);
     this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
     this.styleDropdown = this.styleDropdown.bind(this);
-
-
-
   }
 
   updateCart(data) {
