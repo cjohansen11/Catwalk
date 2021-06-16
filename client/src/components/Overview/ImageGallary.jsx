@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import '../../styles/imageGallery.css';
 import ExpandedView from './ExpandedView.jsx';
-class ImageGallaryComponent extends React.Component {
+class ImageGallary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,4 +64,4 @@ class ImageGallaryComponent extends React.Component {
   }
 }
 
-export default ImageGallaryComponent;
+export default ImageGallary;
