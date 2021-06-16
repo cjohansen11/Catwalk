@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 /* ** IMPORT COMPONENT(s) ** */
 import StarRating from './StarRating.jsx';
@@ -26,8 +27,11 @@ const OutfitCard = ({ product, removeOutfit }) => {
       <h5 className={'productName'}>{product.details.name.toUpperCase()}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating ratings={ratings} />
-      {defaultStyle.sale_price ? <span className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></span> : <span className={'productPrice'}><h5>{defaultStyle.original_price}</h5></span>}      <div className={'actionButton'}
-        onClick={() => removeOutfit(product.details.id)} role="button">✘</div>
+      {defaultStyle.sale_price ? <span className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></span> : <span className={'productPrice'}><h5>{defaultStyle.original_price}</h5></span>}
+      <div className={'actionButton'}
+        onClick={() => removeOutfit(product.details.id)} role="button"><IoIosCloseCircle /></div>
+      {/* <div className={'actionButton'}
+        onClick={() => removeOutfit(product.details.id)} role="button">✘</div> */}
     </div>
   );
 };

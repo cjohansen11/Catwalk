@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IoIosStar } from 'react-icons/io';
 
 /* ** IMPORT COMPONENT(s) ** */
 import StarRating from './StarRating.jsx';
@@ -35,7 +36,12 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
         e.stopPropagation();
         setComparedProduct(product);
         setToggleModal(true);
-      }} role="button">★</div>
+      }} role="button"><IoIosStar /></div>
+      {/* <div className={'actionButton'} onClick={(e) => {
+        e.stopPropagation();
+        setComparedProduct(product);
+        setToggleModal(true);
+      }} role="button">★</div> */}
     </div>
   );
 };
