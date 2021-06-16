@@ -82,7 +82,7 @@ class Overview extends React.Component {
         return GET.productReviews(this.props.featuredProduct.id);
       })
       .then((data) => {
-
+        console.log('this is first data', data.data.ratings);
         this.setState({
           ratings: data.data.ratings
         });
@@ -115,6 +115,13 @@ class Overview extends React.Component {
           this.setState({
             currentProductInfo: data.data
           });
+          return GET.productReviews(this.props.featuredProduct.id);
+        })
+        .then((data) => {
+          console.log('this is second data', data.data.ratings);
+          this.setState({
+            ratings: data.data.ratings
+          });
           return GET.productStyles(this.props.featuredProduct.id);
         })
         .then((data) => {
@@ -130,13 +137,6 @@ class Overview extends React.Component {
             currentProductStylesInfo: data.data,
             currentSelectedStyle: currentSelected
             // default could be the defualt being true
-          });
-          return GET.productReviews(this.props.featuredProduct.id);
-        })
-        .then((data) => {
-
-          this.setState({
-            ratings: data.data.ratings
           });
           return GET.getCart();
         })

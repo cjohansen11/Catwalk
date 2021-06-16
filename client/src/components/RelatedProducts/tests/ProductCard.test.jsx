@@ -367,11 +367,4 @@ describe('Product Card', () => {
     const hasActionButton = container.getElementsByClassName('actionButton')[0];
     expect(hasActionButton).toBeTruthy();
   });
-  it('should show a modal window when the action button is clicked', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasActionButton = container.getElementsByClassName('actionButton')[0];
-    fireEvent.mouseUp(hasActionButton);
-    const hasModal = container.getElementsByClassName('modal');
-    expect(hasModal).toBeTruthy();
-  });
 });
