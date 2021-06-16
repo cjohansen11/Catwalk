@@ -52,8 +52,8 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
               );
             }) : null}
         </div>
-        <button className="bottom-buttons" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
       </div>
+      <button className="bottom-buttons" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
     </div>
   );
 };
@@ -61,14 +61,3 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 export default Questions;
 
 
-/*
-map listOfQuestions --- .question_body to a div
-
-/*
-        {listOfQuestions.results.map((x) => {
-          return (
-            <div key={x.question_body} question={x.question_body}>{x.question_body}</div>
-          );
-        })
-        };
-*/
