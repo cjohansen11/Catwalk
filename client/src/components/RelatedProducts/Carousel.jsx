@@ -55,7 +55,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
     <>
       <div className={`${'container'} ${'related-carousel'}`} role="figure">
         <div className={`${'left_arrow'}
-        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()} role="button" id="prev-button">❮</div>
         {relatedProductList.map(product => {
           return <ProductCard
             key={product.details.id + product.details.name}
@@ -66,7 +66,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
             setCardCount={setCardCount} />;
         })}
         <div className={`${'right_arrow'}
-        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()} role="button" id="next-button">❯</div>
       </div>
       {toggleModal ? <Modal
         setToggleModal={setToggleModal}
