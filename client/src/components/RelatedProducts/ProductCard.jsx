@@ -25,7 +25,7 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
       onClick={() => {
         setCardCount(1);
         changeFeaturedProduct(product.details.id);
-      }}>
+      }} role="complementary">
       <div className={'image-container'}><img className={'image'} src={defaultStyle.photos[0].thumbnail_url} alt="" className="previewImage"></img></div>
       <h5 className={'productName'} >{product.details.name.toUpperCase()}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
@@ -35,7 +35,7 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
         e.stopPropagation();
         setComparedProduct(product);
         setToggleModal(true);
-      }}>★</div>
+      }} role="button">★</div>
     </div>
   );
 };
