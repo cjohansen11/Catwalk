@@ -1,6 +1,14 @@
 .questions {
-  width: 100%;
 
+  width: 100%;
+  height: 700px;
+
+  overflow: scroll;
+
+}
+
+::-webkit-scrollbar {
+display: none;
 }
 
 .input-search {

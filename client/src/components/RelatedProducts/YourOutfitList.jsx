@@ -48,7 +48,7 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
 
   return (
     <>
-      <div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}>
+      <div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}role="figure">
         <div className={`${'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
         onClick={handlePrevClickOutfit}>❮</div>

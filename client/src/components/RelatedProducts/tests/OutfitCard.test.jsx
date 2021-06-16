@@ -1,11 +1,9 @@
 import React from 'react';
-import ProductCard from '../ProductCard.jsx';
+import OutfitCard from '../OutfitCard.jsx';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { toHaveStyle } from '@testing-library/jest-dom';
 
-describe('Product Card', () => {
-  // Contains data for product ID:19653 includes Featured Product data, Styles, and Reviews
-  const sampleData = {
+describe('Outfit card', () => {
+  const product = {
     product: {
       details: {
         "id": 19653,
@@ -337,42 +335,20 @@ describe('Product Card', () => {
         ]
       }
     }
-  }
+  };
 
-  it('should render the product name onto a card', () => {
-    const productCard = render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('OBIE PANTS')).toBeTruthy();
+  it('should create an outfit card', async () => {
+    render(<OutfitCard product={product}></OutfitCard>);
+    await screen.getByRole('complementary');
   });
-  it('should render the product category onto a card', () => {
-    render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('Pants')).toBeTruthy();
+  it('display all the appropriate information onto a card', async () => {
+    render(<OutfitCard product={product}></OutfitCard>);
+    await screen.getByText(/obie pants/i);
+    await screen.getByText(/Pants/);
+    await screen.getByText(/219/i);
   });
-  it('should render the product price onto a card', () => {
-    render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('219.00')).toBeTruthy();
-  });
-  it('should render the product image onto a card', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasImage = container.getElementsByClassName('previewImage')[0];
-    expect(hasImage).toBeTruthy();
-  });
-  it('should render the product rating onto a card', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasRating = container.getElementsByClassName('productRating')[0];
-    expect(hasRating).toBeTruthy();
-  });
-  it('should render the action button onto a card', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasActionButton = container.getElementsByClassName('actionButton')[0];
-    expect(hasActionButton).toBeTruthy();
-  });
-  it('should change the featured product when clicked', async () => {
-    render(<ProductCard product={sampleData} changeFeaturedProduct={jest.fn()} setCardCount={jest.fn()} ></ProductCard>);
-    const wholeProductCard = await screen.getByRole(/complementary/i);
-    fireEvent.click(wholeProductCard);
-  });
-  it('should change the featured product when clicked', async () => {
-    render(<ProductCard product={sampleData} setToggleModal={jest.fn()} setComparedProduct={jest.fn()}></ProductCard>);
+  it('should register a click on the action button', async () => {
+    render(<OutfitCard product={product} removeOutfit={jest.fn()} ></OutfitCard>);
     const actionButton = await screen.getByRole(/button/i);
     fireEvent.click(actionButton);
   });
