@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Answers.css';
 import Answer from './Answer.jsx';
+import './Answers.css';
 
 const Answers = ( {answerList} ) => {
 
