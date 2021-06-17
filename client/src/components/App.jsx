@@ -37,7 +37,21 @@ const App = () => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-  }
+  };
+
+  const clickTracker = (e) => {
+    console.log(window.event.srcElement)
+    let trackerObject = {
+      'element': e.target,
+      'timeClicked': new Date(),
+      'module': null
+    };
+    GET.interactions(e.target, 'Related Products')
+      .then(res => {
+        console.log('res', res.data);
+      })
+      .catch(err => console.error(err));
+  };
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
   const OverviewWithTracker = WithTracker(Overview);
@@ -45,7 +59,8 @@ const App = () => {
   return !featuredProduct.id ? <div>loading...</div> : (
     <div className={
       isDarkMode ? 'catwalk-dark' : 'catwalk'
-    }>
+    }
+    onClick={e => clickTracker(e)}>
       <button onClick={toggleDarkMode}>Toggle Display</button>
       <h1 className={'page-title'}>FOREVER 31</h1>
       <Overview featuredProduct={featuredProduct.id} />

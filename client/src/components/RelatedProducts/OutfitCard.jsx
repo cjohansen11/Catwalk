@@ -5,7 +5,7 @@ import { IoIosCloseCircle } from 'react-icons/io';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const OutfitCard = ({ product, removeOutfit, isDarkMode }) => {
+const OutfitCard = ({ product, removeOutfit, isDarkMode, componentName }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;

@@ -5,7 +5,7 @@ import ProductCard from './ProductCard.jsx';
 import Modal from './Modal.jsx';
 import '../../styles/relatedProducts.css';
 
-const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct, isDarkMode }) => {
+const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct, isDarkMode, componentName }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
@@ -64,7 +64,8 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct, 
             setToggleModal={setToggleModal}
             setComparedProduct={setComparedProduct}
             setCardCount={setCardCount}
-            isDarkMode={isDarkMode} />;
+            isDarkMode={isDarkMode}
+            componentName={'Related Product'} />;
         })}
         <div className={`${isDarkMode ? 'right_arrow-dark' :'right_arrow'}
         ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()} role="button" id="next-button">❯</div>
@@ -72,7 +73,8 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct, 
       {toggleModal ? <Modal
         setToggleModal={setToggleModal}
         featuredProduct={featuredProduct}
-        comparedProduct={comparedProduct} /> : null}
+        comparedProduct={comparedProduct}
+        componentName={'Related Product'} /> : null}
     </>
   );
 };

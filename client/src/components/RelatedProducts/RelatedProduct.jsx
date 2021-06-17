@@ -9,10 +9,11 @@ import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
-const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode }) => {
+const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, componentName }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
+  let component = 'Related Products'
 
   /* ** STATE(s) ** */
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
@@ -77,7 +78,8 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode }) => 
         relatedProductList={relatedProductList}
         changeFeaturedProduct={changeFeaturedProduct}
         featuredProduct={featuredProduct}
-        isDarkMode={isDarkMode}/>
+        isDarkMode={isDarkMode}
+        componentName={'Related Product'} />
       <div className={'outfit'}><h2 className={isDarkMode ? 'title-dark' : 'title'}>YOUR OUTFIT</h2></div>
       <YourOutfitList
         handleAddToOutfit={handleAddToOutfit}
@@ -85,7 +87,8 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode }) => 
         setOutfitList={setOutfitList}
         outfitList={outfitList}
         removeOutfit={removeOutfit}
-        isDarkMode={isDarkMode} />
+        isDarkMode={isDarkMode}
+        componentName={'Related Product'} />
     </div>
   );
 };
