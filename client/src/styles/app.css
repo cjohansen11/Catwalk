@@ -1,8 +1,8 @@
-/* $dark-jungle-green: rgba(0, 15, 8, 1);
-$outer-space-crayola: rgba(28, 55, 56, 1);
-$shadow-blue: rgba(117, 137, 163, 1);
-$mint-cream: rgba(244, 255, 248, 1);
-$honeydew: rgba(223, 248, 235, 1); */
+/* $dark-jungle-green: rgba(0, 15, 8, 1); 	// BACKGROUND
+$outer-space-crayola: rgba(28, 55, 56, 1);	// SECONDARY DARK
+$shadow-blue: rgba(117, 137, 163, 1);				// BORDER
+$mint-cream: rgba(244, 255, 248, 1);				// FONTS
+$honeydew: rgba(223, 248, 235, 1); 					// MISC light */
 
 html {
 	background-color: rgba(185, 220, 224, 0.8);

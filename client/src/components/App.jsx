@@ -39,18 +39,24 @@ const App = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const clickTracker = (e, component) => {
-    let trackerObject = {
-      'element': e.target.className,
-      'time': new Date().toTimeString(),
-      'module': component
-    };
+  /* ** GIVES ME 401 ERRORS ON THE POST REQEST ** */
+  // const clickTracker = (e, component) => {
+  //   let trackerObject = {
+  //     'element': e.target.className,
+  //     'time': new Date().toTimeString(),
+  //     'module': component
+  //   };
 
-    GET.interactions(e.target.className, new Date().toTimeString(), component)
-      .then(res => {
-        console.log('res', res);
-      });
-  };
+  //   console.log(trackerObject)
+
+  //   GET.interactions(e.target.className, new Date().toTimeString(), component)
+  //     .then(res => {
+  //       console.log('res', res);
+  //     })
+  //     .catch(err => {
+  //       console.error('click tracker', err);
+  //     });
+  // };
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
   const OverviewWithTracker = WithTracker(Overview);
