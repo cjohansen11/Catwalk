@@ -1,6 +1,7 @@
 // Imports
 import React, { useState, useEffect } from 'react';
 import WithTracker from './WithTracker.jsx';
+import { CgDarkMode } from 'react-icons/cg';
 
 import GET from '../../../lib/related.js';
 import Requests from '../../../lib/RatingsReviews.js';
@@ -65,8 +66,8 @@ const App = () => {
     <div className={
       isDarkMode ? 'catwalk-dark' : 'catwalk'
     }>
-      <button onClick={toggleDarkMode}>Toggle Display</button>
-      <h1 className={'page-title'}>FOREVER 31</h1>
+      <div onClick={toggleDarkMode} className={isDarkMode ? "toggle-mode-dark" : "toggle-mode"}><CgDarkMode /></div>
+      <h1 className={isDarkMode ? 'page-title-dark' : 'page-title'}>FOREVER 31</h1>
       <Overview featuredProduct={featuredProduct.id} isDarkMode={isDarkMode}/>
       <RelatedProduct
         userData={userData}

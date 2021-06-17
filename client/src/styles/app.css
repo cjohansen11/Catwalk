@@ -30,9 +30,38 @@ html {
 
 h1.page-title {
 	font-family: sans-serif;
-	font-size: 40px;
+	color: rgba(0, 15, 8, 1);
+	font-size: 50px;
 	letter-spacing: 10px;
 	font-weight: 100;
 	padding: 0px;
-	margin: 30px auto 10px;
+	margin: 20px auto 30px;
+}
+
+h1.page-title-dark {
+	font-family: sans-serif;
+	color: rgba(223, 248, 235, 1);
+	font-size: 50px;
+	letter-spacing: 10px;
+	font-weight: 100;
+	padding: 0px;
+	margin: 20px auto 30px;
+}
+
+.toggle-mode {
+	font-size: 34px;
+	color: rgba(0, 15, 8, 1);
+	position: relative;
+	left: 980px;
+	top: 20px;
+	cursor: pointer;
+}
+
+.toggle-mode-dark {
+	font-size: 34px;
+	color: rgba(223, 248, 235, 1);
+	position: relative;
+	left: 980px;
+	top: 20px;
+	cursor: pointer;
 }
