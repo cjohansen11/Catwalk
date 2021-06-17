@@ -37,7 +37,7 @@ const Answers = ( {answerList} ) => {
               <div className="answer" key={index}>
                 <div className="answer-body"> {answer.body}</div>
                 <div className="answer__user">by&ensp;
-                <text style={{fontWeight: "bold"}}>{answer.answerer_name}</text>&ensp; {date}
+                  <div style={{fontWeight: "bold"}}>{answer.answerer_name}, </div>&ensp; {date}
                   <Answer answerHelpfulness={answer.helpfulness}/>
                 </div>
                 <div className="answer-photos">
