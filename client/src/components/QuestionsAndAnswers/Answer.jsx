@@ -9,7 +9,7 @@ const Answer = ({answerHelpfulness, answer_id}) => {
   const [clicked, setClicked] = useState(false);
   const [reported, setReported] = useState('Report');
 
-  console.log('answerID:  ', answer_id)
+  // console.log('answerID:  ', answer_id)
   const helpfulClick = (id) => {
     console.log(id);
   };

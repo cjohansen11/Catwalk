@@ -8,7 +8,8 @@ const ModalAnswer = ({ show, close }) => {
   const [values, setValues] = useState({
     answer: '',
     nickname: '',
-    email: ''
+    email: '',
+    photos: [],
   });
 
   const addAnswer = (values) => {

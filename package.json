@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.14.5",
+    "@hookform/error-message": "^2.0.0",
     "@testing-library/jest-dom": "^5.13.0",
     "axios": "^0.21.1",
     "babel-jest": "^27.0.2",
@@ -55,7 +56,10 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["json", "html"],
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"

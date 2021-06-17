@@ -25,6 +25,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
     console.log('add clicked');
   };
 
+
   const closeModalHandler = () =>
     setShow(false);
   const firstCall = (id) => {

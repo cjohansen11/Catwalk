@@ -56,6 +56,8 @@ const ModalQuestion = ({ show, close }) => {
     });
   };
 
+
+
   if (show === true) {
     return (
       <div className="modal-wrapper"
@@ -73,7 +75,7 @@ const ModalQuestion = ({ show, close }) => {
           <div className="modal-body">
             <div className="modal-form">
               <div className="modal-input">
-              <label>Your Question</label>
+                <label>Your Question</label>
                 <textarea
                   value={values.question}
                   type="textarea"
@@ -85,6 +87,16 @@ const ModalQuestion = ({ show, close }) => {
                 ></textarea>
                 <label>Nickname*</label>
                 <input
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: 'You must enter your name'
+                    },
+                    minLength: {
+                      value: 2,
+                      message: 'Your name must be at least 2 characters'
+                    }
+                  })}
                   value={values.nickname}
                   type="text"
                   placeholder="Example: jackson11!"
