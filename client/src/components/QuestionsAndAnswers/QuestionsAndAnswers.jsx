@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Questions from './Questions.jsx';
-import Search from './Search.jsx';
 import Answers from './Answers.jsx';
 import CreateQuestion from './CreateQuestion.jsx';
 import axios from 'axios';
@@ -57,7 +56,6 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
     <div>
       <div className="questions-and-answers">
         <h3>Questions & Answers</h3>
-
         <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
         <CreateQuestion modalState={modalState} setModalState={setModalState} show={show} setShow={setShow} />
       </div>
