@@ -43,8 +43,7 @@ class Overview extends React.Component {
     });
   }
 
-  componentDidMount() {
-
+  renderPage() {
     GET.featuredProduct(this.props.featuredProduct)
       .then((data) => {
         this.setState({
@@ -85,48 +84,14 @@ class Overview extends React.Component {
         console.log('the data did not render', error);
       });
   }
+  componentDidMount() {
+    this.renderPage();
+  }
+
 
   componentDidUpdate(prevProps) {
     if (this.props.featuredProduct !== prevProps.featuredProduct) {
-
-      GET.featuredProduct(this.props.featuredProduct)
-        .then((data) => {
-          this.setState({
-            currentProductInfo: data.data
-          });
-          return GET.productReviews(this.props.featuredProduct);
-        })
-        .then((data) => {
-          this.setState({
-            ratings: data.data.ratings
-          });
-          return GET.productStyles(this.props.featuredProduct);
-        })
-        .then((data) => {
-
-          var currentSelected = data.data.results[0];
-          for (var i = 0; i < data.data.results.length; i++) {
-            if (data.data.results[i]['default?'] === true) {
-              currentSelected = data.data.results[i];
-            }
-          }
-
-          this.setState({
-            currentProductStylesInfo: data.data.results,
-            currentSelectedStyle: currentSelected
-
-          });
-          return GET.getCart();
-        })
-        .then((data) => {
-          this.setState({
-            cart: data.data
-          });
-          this.styleDropdown();
-        })
-        .catch((error) => {
-          console.log('the data did not render', error);
-        });
+      this.renderPage();
     }
   }
 
@@ -181,7 +146,7 @@ class Overview extends React.Component {
 
           <div className='infocontainer'>
             <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
-            <SingleStarRating ratings={this.state.ratings} isDark={this.props.isDarkMode}/>
+            <SingleStarRating ratings={this.state.ratings} isDark={this.props.isDarkMode} />
           </div>
           <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArray={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArray} />
           <Productdescription currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
