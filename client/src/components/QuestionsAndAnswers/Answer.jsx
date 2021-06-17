@@ -1,50 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import Answers from './Answers.jsx';
+import axios from 'axios';
+import GIT_TOKEN from '../../../../lib/config.js';
 
-const Answer = ({answerHelpfulness}) => {
+const Answer = ({answerHelpfulness, answer_id}) => {
 
   const [answerHelpNum, setAnswerHelpNum] = useState(answerHelpfulness);
   const [clicked, setClicked] = useState(false);
   const [reported, setReported] = useState('Report');
 
-  console.log('answerHelpfulness:  ', answerHelpfulness)
-  const helpfulClick = () => {
-    console.log('hello');
+  console.log('answerID:  ', answer_id)
+  const helpfulClick = (id) => {
+    console.log(id);
   };
 
-  const addHelpfulAnswer = () => {
+  const addHelpfulAnswer = (id) => {
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${quetion_id}/helpful`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${id}/helpful`,
       headers: {
         'Authorization': `${GIT_TOKEN}`
       },
-      data: {
-        'product_id': `${question_id}`
+      params: {
+        answer_id: `${id}`
       }
     })
       .then((data) => {
         // console.log(data);
       })
       .catch((err) => {
+        // console.log(id)
         console.log(err);
       });
 
   };
 
-  const report = () => {
+  const report = (id) => {
     axios({
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${quetion_id}/report`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${id}/report`,
       headers: {
         'Authorization': `${GIT_TOKEN}`
       },
       params: {
-        'question_id': `${question_id}`
+        'answer_id': `${id}`
       }
     })
       .then((data) => {
-        // console.log(data);
+        console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -60,13 +63,13 @@ const Answer = ({answerHelpfulness}) => {
   return (
     <div>
       {!clicked ? (
-        <a className="helpful-answer" onClick={() => { setAnswerHelpNum(answerHelpNum + 1); setClicked(true); }}>&ensp;| &ensp; Helpful? Yes {`(${answerHelpNum})`} </a>
+        <a className="helpful-answer" onClick={() => { setAnswerHelpNum(answerHelpNum + 1); setClicked(true); addHelpfulAnswer(answer_id); }}>&ensp;| &ensp; Helpful? Yes {`(${answerHelpNum})`} </a>
 
       ) : (
         <a className="helpful-answer">&ensp;| &ensp; Helpful? Yes {`(${answerHelpNum})`} </a>
       )}
     &ensp;| &ensp;
-      <a className="report-answer" onClick={() =>setReported('Reported')}>{reported}</a>
+      <a className="report-answer" onClick={() => { setReported('Reported'); report(answer_id); }}>{reported}</a>
     </div>
 
   );
