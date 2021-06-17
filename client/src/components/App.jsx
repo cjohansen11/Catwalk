@@ -45,6 +45,7 @@ const App = () => {
       'time': new Date().toTimeString(),
       'module': component
     };
+
     GET.interactions(e.target.className, new Date().toTimeString(), component)
       .then(res => {
         console.log('res', res);
