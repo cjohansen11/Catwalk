@@ -23,7 +23,7 @@ const ModalWindow = ({
 ModalWindow.propTypes = {
   shown: PropTypes.bool.isRequired,
   closeFunc: PropTypes.func.isRequired,
-  children: PropTypes.any.isRequired
+  children: PropTypes.element.isRequired
 };
 
 export default ModalWindow;
