@@ -40,7 +40,7 @@ const App = () => {
   };
 
   /* ** GIVES ME 401 ERRORS ON THE POST REQEST ** */
-  // const clickTracker = (e, component) => {
+  const clickTracker = (e, component) => {
   //   let trackerObject = {
   //     'element': e.target.className,
   //     'time': new Date().toTimeString(),
@@ -56,7 +56,7 @@ const App = () => {
   //     .catch(err => {
   //       console.error('click tracker', err);
   //     });
-  // };
+  };
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
   const OverviewWithTracker = WithTracker(Overview);
