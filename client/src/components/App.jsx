@@ -61,7 +61,7 @@ const App = () => {
     }>
       <button onClick={toggleDarkMode}>Toggle Display</button>
       <h1 className={'page-title'}>FOREVER 31</h1>
-      <Overview featuredProduct={featuredProduct.id} />
+      <Overview featuredProduct={featuredProduct.id} isDarkMode={isDarkMode}/>
       <RelatedProduct
         userData={userData}
         featuredProduct={featuredProduct}
