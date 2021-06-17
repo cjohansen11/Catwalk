@@ -4,6 +4,8 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { toHaveStyle } from '@testing-library/jest-dom';
 
 describe('Cart and Style Thumbs', () => {
+  const sampleStyleArray = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+
   const sampleCurrentStyles = [
     {
       "style_id": 103466,
@@ -424,20 +426,20 @@ describe('Cart and Style Thumbs', () => {
 
 
   it('should have a div called stylecontainer', () => {
-    render(<Addtocart currentStyles={sampleCurrentStyles} currentStyle={sampleCurrentSelectedStyle}> </Addtocart>);
+    render(<Addtocart currentStyles={sampleCurrentStyles} currentStyle={sampleCurrentSelectedStyle} styleArray={sampleStyleArray}> </Addtocart>);
     const styleDiv = document.getElementsByClassName('stylecontainer');
     expect(styleDiv).toBeTruthy();
 
   });
 
   it('should have a div called addtocartcontainer', () => {
-    render(<Addtocart currentStyles={sampleCurrentStyles} currentStyle={sampleCurrentSelectedStyle}> </Addtocart>);
+    render(<Addtocart currentStyles={sampleCurrentStyles} currentStyle={sampleCurrentSelectedStyle} styleArray={sampleStyleArray}> </Addtocart>);
     const cartDiv = document.getElementsByClassName('addtocartcontainer');
     expect(cartDiv).toBeTruthy();
 
   });
   it('should have a div called quantity_dropdowndiv', () => {
-    render(<Addtocart currentStyles={sampleCurrentStyles} currentStyle={sampleCurrentSelectedStyle}> </Addtocart>);
+    render(<Addtocart currentStyles={sampleCurrentStyles} currentStyle={sampleCurrentSelectedStyle} styleArray={sampleStyleArray}> </Addtocart>);
     const quantityDiv = document.getElementsByClassName('quantity_dropdowndiv');
     expect(quantityDiv).toBeTruthy();
 

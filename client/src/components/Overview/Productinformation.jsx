@@ -11,7 +11,7 @@ class Productinformation extends React.Component {
   render() {
     return (
       <div className='productinfocontainer'>
-        <p>{this.props.currentProduct.category}</p>
+        <p className='categoryText'>{this.props.currentProduct.category}</p>
         <h1>{this.props.currentProduct.name} </h1>
         <div className='saleContainer'>
           {this.props.currentStyle.sale_price ? <p className='saleText'> ${this.props.currentStyle.original_price} </p> : null}

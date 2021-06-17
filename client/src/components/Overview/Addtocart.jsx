@@ -37,7 +37,7 @@ class Addtocart extends React.Component {
   }
 
   conditionalDrop() {
-    if (this.props.styleArrayy.length === 0) {
+    if (this.props.styleArray.length === 0) {
       return 'OUT OF STOCK';
     } else {
       return 'Select Size';
@@ -186,7 +186,7 @@ class Addtocart extends React.Component {
           <div className="size_dropdowndiv">
             <select className="size_dropdown" placeholder='none' onChange={this.selectedSize}>
               <option>{this.conditionalDrop()}</option>
-              {Object.entries(this.props.styleArrayy).map(style => {
+              {Object.entries(this.props.styleArray).map(style => {
                 return (
                   <option key={(style)}>{style.slice(1)}</option>
                 );

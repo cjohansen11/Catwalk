@@ -86,20 +86,22 @@ describe('Product Information', () => {
       }
     }
   };
-  it('should render the product slogan onto page', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
-    expect(screen.getByText('Blend in to your crowd')).toBeInTheDocument();
-  });
-  it('should render the product description onto the page', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
-    expect(screen.getByText('The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.')).toBeInTheDocument();
-  });
-  it('should render a product feature onto the page', () => {
-    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
-    expect(screen.queryByText('Fabric')).toBeTruthy();
-  });
 
 
+  it('should show the product information', async () => {
+    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
+    await screen.getByText(/Fabric/i);
+  });
+
+  it('should show the product information', async () => {
+    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
+    await screen.getByText(/The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings./);
+  });
+
+  it('should show the product information', async () => {
+    render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productdescription>);
+    await screen.getByText(/Blend in to your crowd/i);
+  });
   it('should have a div called socialButtons', () => {
     render(<Productdescription currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle}> </Productdescription>);
     const socialDiv = document.getElementsByClassName('socialButtons');

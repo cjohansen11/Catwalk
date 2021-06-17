@@ -23,7 +23,7 @@ class Overview extends React.Component {
 
     this.updateCurrentSelectedStyle = this.updateCurrentSelectedStyle.bind(this);
     this.updateCart = this.updateCart.bind(this);
-    this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
+    this.updateStyleArray = this.updateStyleArray.bind(this);
     this.styleDropdown = this.styleDropdown.bind(this);
   }
 
@@ -33,7 +33,7 @@ class Overview extends React.Component {
     });
   }
 
-  updateStyleArayyy(styleObj) {
+  updateStyleArray(styleObj) {
     this.styleDropdown(styleObj);
   }
 
@@ -182,7 +182,7 @@ class Overview extends React.Component {
             <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
             <SingleStarRating ratings={this.state.ratings} />
           </div>
-          <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
+          <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArray={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArray} />
           <Productdescription currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
         </div>
       </div>

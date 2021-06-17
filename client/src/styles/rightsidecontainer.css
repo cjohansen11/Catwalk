@@ -28,7 +28,9 @@ PRODUCT INFO SECTION */
   font-family: sans-serif;
 }
 
-
+.categoryText {
+text-transform: uppercase;
+}
 
 .saleText {
   font-family: sans-serif;

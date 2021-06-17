@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/26</span>
+                <span class='fraction'>18/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/14</span>
+                <span class='fraction'>8/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/26</span>
+                <span class='fraction'>18/26</span>
             </div>
         
             
@@ -129,25 +129,27 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -157,8 +159,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -189,7 +191,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,6 +204,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react';
+import { SiAddthis } from 'react-icons/si';
 &nbsp;
 import OutfitCard from './OutfitCard.jsx';
 import '../../styles/relatedProducts.css';
@@ -217,22 +220,22 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
   const [hideRightArrow, setHideRightArrow] = useState(false);
 &nbsp;
   /* ** ADDTIONAL FUNCTION(s) ** */
-  const handleNextClickOutfit = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    outfitCards = Array.from(document.getElementsByClassName('outfit-card'));</span>
-<span class="cstat-no" title="statement not covered" >    if (cardCount + 2 &lt;= outfitCards.length) {</span>
+  const handleNextClickOutfit = () =&gt; {
+    outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (cardCount + 2 &lt;= outfitCards.length) {
 <span class="cstat-no" title="statement not covered" >      outfitCards.forEach(<span class="fstat-no" title="function not covered" >ca</span>rd =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        card.style.transform = `translateX(${cardCount * -230}px)`;</span>
+<span class="cstat-no" title="statement not covered" >        card.style.transform = `translateX(${cardCount * -260}px)`;</span>
 <span class="cstat-no" title="statement not covered" >        card.style.transitionDuration = '0.5s';</span>
       });
 <span class="cstat-no" title="statement not covered" >      setCardCount(cardCount + 1);</span>
     }
   };
 &nbsp;
-  const handlePrevClickOutfit = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    outfitCards = Array.from(document.getElementsByClassName('outfit-card'));</span>
-<span class="cstat-no" title="statement not covered" >    if (cardCount &gt; 1) {</span>
+  const handlePrevClickOutfit = () =&gt; {
+    outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (cardCount &gt; 1) {
 <span class="cstat-no" title="statement not covered" >      outfitCards.forEach(<span class="fstat-no" title="function not covered" >ca</span>rd =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;</span>
+<span class="cstat-no" title="statement not covered" >        card.style.transform = `translateX(${((cardCount - 1) * -260) + 260}px)`;</span>
 <span class="cstat-no" title="statement not covered" >        card.style.transitionDuration = '0.5s';</span>
       });
 <span class="cstat-no" title="statement not covered" >      setCardCount(cardCount - 1);</span>
@@ -241,27 +244,27 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
 &nbsp;
   /* ** USE EFFECT CALLS ** */
   useEffect(() =&gt; {
-    yourOutfitList.length &lt; 3 ? setHideRightArrow(true) : <span class="branch-1 cbranch-no" title="branch not covered" >setHideRightArrow(false);</span>
+    yourOutfitList.length &lt; 4 ? setHideRightArrow(true) : <span class="branch-1 cbranch-no" title="branch not covered" >setHideRightArrow(false);</span>
   }, [yourOutfitList]);
 &nbsp;
   useEffect(() =&gt; {
     cardCount === 1 ? setHideLeftArrow(true) : <span class="branch-1 cbranch-no" title="branch not covered" >setHideLeftArrow(false);</span>
-    (cardCount + 2) === outfitCards.length ? <span class="branch-0 cbranch-no" title="branch not covered" >setHideRightArrow(true) </span>: setHideRightArrow(false);
+    (cardCount + 3) === outfitCards.length ? <span class="branch-0 cbranch-no" title="branch not covered" >setHideRightArrow(true) </span>: setHideRightArrow(false);
   }, [cardCount]);
 &nbsp;
   return (
     &lt;&gt;
-      &lt;div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}&gt;
+      &lt;div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}role="figure"&gt;
         &lt;div className={`${'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
         onClick={handlePrevClickOutfit}&gt;❮&lt;/div&gt;
         &lt;div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
           onClick={handleAddToOutfit} &gt;
-          &lt;div className={'plus-sign'}&gt;+&lt;/div&gt;
+          &lt;div className={'plus-sign'}&gt;&lt;SiAddthis /&gt;&lt;/div&gt;
           &lt;div className={'add-to-outfit-text'}&gt;Add to Outfit&lt;/div&gt;
         &lt;/div&gt;
-        {yourOutfitList.map(<span class="fstat-no" title="function not covered" >pr</span>oduct =&gt; {
-<span class="cstat-no" title="statement not covered" >          return &lt;OutfitCard</span>
+        {yourOutfitList.map(product =&gt; {
+          return &lt;OutfitCard
             key={product.details.id + product.details.name}
             product={{product}}
             removeOutfit={removeOutfit} /&gt;;
@@ -280,7 +283,7 @@ export default YourOutfitList;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jun 16 2021 17:49:59 GMT-0500 (Colombia Standard Time)
+                at Thu Jun 17 2021 15:02:14 GMT-0500 (Colombia Standard Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
