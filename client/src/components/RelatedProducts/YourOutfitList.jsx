@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SiAddthis } from 'react-icons/si';
 
 import OutfitCard from './OutfitCard.jsx';
 import '../../styles/relatedProducts.css';
@@ -18,7 +19,7 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
     outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
     if (cardCount + 2 <= outfitCards.length) {
       outfitCards.forEach(card => {
-        card.style.transform = `translateX(${cardCount * -230}px)`;
+        card.style.transform = `translateX(${cardCount * -260}px)`;
         card.style.transitionDuration = '0.5s';
       });
       setCardCount(cardCount + 1);
@@ -29,7 +30,7 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
     outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
     if (cardCount > 1) {
       outfitCards.forEach(card => {
-        card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
+        card.style.transform = `translateX(${((cardCount - 1) * -260) + 260}px)`;
         card.style.transitionDuration = '0.5s';
       });
       setCardCount(cardCount - 1);
@@ -38,23 +39,23 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
 
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
-    yourOutfitList.length < 3 ? setHideRightArrow(true) : setHideRightArrow(false);
+    yourOutfitList.length < 4 ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [yourOutfitList]);
 
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 2) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 3) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (
     <>
-      <div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}>
+      <div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}role="figure">
         <div className={`${'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
         onClick={handlePrevClickOutfit}>❮</div>
         <div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
           onClick={handleAddToOutfit} >
-          <div className={'plus-sign'}>+</div>
+          <div className={'plus-sign'}><SiAddthis /></div>
           <div className={'add-to-outfit-text'}>Add to Outfit</div>
         </div>
         {yourOutfitList.map(product => {

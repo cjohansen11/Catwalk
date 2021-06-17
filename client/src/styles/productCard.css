@@ -111,9 +111,9 @@ h5 {
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
-  margin: 2px 0px 0px 75px;
+  margin: 2px 0px 0px 80px;
   cursor: pointer;
-  text-shadow: 2px 2px 6px black;
+  /* text-shadow: 2px 2px 6px black; */
   z-index: 1;
 }
 
@@ -140,16 +140,19 @@ h5 {
 }
 
 .plus-sign {
-  position: absolute;
+  /* position: absolute;
   border: 1px none rgb(117, 106, 106);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   grid-area: plus;
-  text-align: center;
-  line-height: 180px;
+  text-align: center; */
+  /* line-height: 180px; */
+  /* font-weight: 100; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 200px;
   width: 200px;
-  font-size: 150px;
-  font-weight: 100;
+  font-size: 125px;
   margin-left: 15px;
 }
 
@@ -170,11 +173,11 @@ h5 {
   text-align: center;
   color: white;
   line-height: 22px;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 50%;
   cursor: pointer;
-  margin: 4px 0px 0px 82px;
+  margin: 4px 0px 0px 88px;
   background: black;
   text-shadow: none;
-  box-shadow: 0px 0px 8px 2px white;
+  /* box-shadow: 0px 0px 8px 2px white; */
 }

@@ -22,7 +22,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
     eachCard = Array.from(document.getElementsByClassName('product-card-array'));
     if (cardCount + 2 <= eachCard.length) {
       eachCard.forEach(card => {
-        card.style.transform = `translateX(${cardCount * -230}px)`;
+        card.style.transform = `translateX(${cardCount * -260}px)`;
         card.style.transitionDuration = '0.5s';
       });
       setCardCount(cardCount + 1);
@@ -33,7 +33,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
     eachCard = Array.from(document.getElementsByClassName('product-card-array'));
     if (cardCount > 1) {
       eachCard.forEach(card => {
-        card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
+        card.style.transform = `translateX(${((cardCount - 1) * -260) + 260}px)`;
         card.style.transitionDuration = '0.5s';
       });
       setCardCount(cardCount - 1);
@@ -43,19 +43,19 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
     setHideLeftArrow(true);
-    relatedProductList.length <= 3 ? setHideRightArrow(true) : setHideRightArrow(false);
+    relatedProductList.length <= 4 ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [relatedProductList]);
 
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 2) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 3) === eachCard.length ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (
     <>
-      <div className={`${'container'} ${'related-carousel'}`}>
+      <div className={`${'container'} ${'related-carousel'}`} role="figure">
         <div className={`${'left_arrow'}
-        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()}>❮</div>
+        ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()} role="button" id="prev-button">❮</div>
         {relatedProductList.map(product => {
           return <ProductCard
             key={product.details.id + product.details.name}
@@ -66,7 +66,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
             setCardCount={setCardCount} />;
         })}
         <div className={`${'right_arrow'}
-        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()}>❯</div>
+        ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()} role="button" id="next-button">❯</div>
       </div>
       {toggleModal ? <Modal
         setToggleModal={setToggleModal}
