@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.1% </span>
+                <span class="strong">55.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>23/41</span>
+                <span class='fraction'>24/43</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">42.86% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/10</span>
+                <span class='fraction'>6/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">23.81% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/20</span>
+                <span class='fraction'>5/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.7% </span>
+                <span class="strong">68.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/33</span>
+                <span class='fraction'>24/35</span>
             </div>
         
             
@@ -147,7 +147,12 @@
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,6 +166,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -220,6 +226,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,10 +258,11 @@ import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 &nbsp;
-const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) =&gt; {
+const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, componentName, clickTracker }) =&gt; {
 &nbsp;
   /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
+  let component = 'Related Products'
 &nbsp;
   /* ** STATE(s) ** */
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
@@ -310,19 +321,23 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) =&gt; {
 &nbsp;
 &nbsp;
   return (
-    &lt;div className={'related-container'}&gt;
-      &lt;div className={'related'}&gt;&lt;h2 className={'title'}&gt;RELATED PRODUCTS&lt;/h2&gt;&lt;/div&gt;
+    &lt;div className={'related-container'} onClick={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >clickTracker(e, componentName)}</span>&gt;
+      &lt;div className={'related'}&gt;&lt;h2 className={isDarkMode ? <span class="branch-0 cbranch-no" title="branch not covered" >'title-dark' </span>: 'title'}&gt;RELATED PRODUCTS&lt;/h2&gt;&lt;/div&gt;
       &lt;Carousel
         relatedProductList={relatedProductList}
         changeFeaturedProduct={changeFeaturedProduct}
-        featuredProduct={featuredProduct} /&gt;
-      &lt;div className={'outfit'}&gt;&lt;h2 className={'title'}&gt;YOUR OUTFIT&lt;/h2&gt;&lt;/div&gt;
+        featuredProduct={featuredProduct}
+        isDarkMode={isDarkMode}
+        componentName={'Related Product'} /&gt;
+      &lt;div className={'outfit'}&gt;&lt;h2 className={isDarkMode ? <span class="branch-0 cbranch-no" title="branch not covered" >'title-dark' </span>: 'title'}&gt;YOUR OUTFIT&lt;/h2&gt;&lt;/div&gt;
       &lt;YourOutfitList
         handleAddToOutfit={handleAddToOutfit}
         yourOutfitList={yourOutfitList}
         setOutfitList={setOutfitList}
         outfitList={outfitList}
-        removeOutfit={removeOutfit} /&gt;
+        removeOutfit={removeOutfit}
+        isDarkMode={isDarkMode}
+        componentName={'Related Product'} /&gt;
     &lt;/div&gt;
   );
 };
@@ -334,7 +349,7 @@ export default RelatedProduct;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 17 2021 15:02:14 GMT-0500 (Colombia Standard Time)
+                at Thu Jun 17 2021 15:44:39 GMT-0500 (Colombia Standard Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

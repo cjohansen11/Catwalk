@@ -177,10 +177,11 @@ class Overview extends React.Component {
         <div className='galleryContainer'>
           <ImageGallary currentStyle={this.state.currentSelectedStyle} />
         </div>
-        <div className='productContainer'>
+        <div className={this.props.isDarkMode ? 'productContainer-dark' : 'productContainer'}>
+
           <div className='infocontainer'>
             <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
-            <SingleStarRating ratings={this.state.ratings} />
+            <SingleStarRating ratings={this.state.ratings} isDark={this.props.isDarkMode}/>
           </div>
           <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArray={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArray} />
           <Productdescription currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
