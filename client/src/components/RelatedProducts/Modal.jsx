@@ -4,7 +4,7 @@ import React from 'react';
 import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
-const Modal = ({ setToggleModal, featuredProduct, comparedProduct, componentName }) => {
+const Modal = ({ setToggleModal, featuredProduct, comparedProduct, componentName, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let similarValues = [];
@@ -24,7 +24,7 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct, componentName
 
   return (
     <div className={`${'modal'}`} onClick={() => setToggleModal(false)} role="tooltip">
-      <div className={`${'feature-table'}`}>
+      <div className={`${isDarkMode ? 'feature-table-dark' : 'feature-table'}`}>
         <h4>Comparison Table</h4>
         <table role="grid">
           <thead>

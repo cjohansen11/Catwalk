@@ -74,7 +74,8 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct, 
         setToggleModal={setToggleModal}
         featuredProduct={featuredProduct}
         comparedProduct={comparedProduct}
-        componentName={'Related Product'} /> : null}
+        componentName={'Related Product'}
+        isDarkMode={isDarkMode} /> : null}
     </>
   );
 };
