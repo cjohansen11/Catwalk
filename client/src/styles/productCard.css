@@ -26,6 +26,28 @@ h5 {
   cursor: pointer;
 }
 
+.productCard-dark {
+  font-family: sans-serif;
+  font-weight: 100;
+  border: 1px solid rgb(223, 248, 235);
+  border-radius: 5px;
+  width: 230px;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 115px auto 115px;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px;
+  grid-template-areas:
+    "image image image"
+    "image image image"
+    "image image image"
+    "image image image"
+    "productName . rating"
+    "category . price";
+  box-shadow: 0 4px 8px 0 rgba(223, 248, 235, 0.2);
+  cursor: pointer;
+  color: rgb(223, 248, 235);
+}
+
 .image-container {
   position: relative;
   width: 230px;
@@ -136,6 +158,20 @@ h5 {
   width: 230px;
   height: 300px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.add-to-outfit-dark {
+  position: relative;
+  display: grid;
+  grid-template-rows: 150px 150px;
+  grid-template-areas:
+  "plus"
+  "text";
+  border: 1px solid rgb(223, 248, 235);
+  width: 230px;
+  height: 300px;
+  box-shadow: 0 4px 8px 0 rgba(223, 248, 235, 0.2);
   cursor: pointer;
 }
 
