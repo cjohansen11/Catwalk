@@ -39,18 +39,16 @@ const App = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const clickTracker = (e) => {
-    console.log(window.event.srcElement)
+  const clickTracker = (e, component) => {
     let trackerObject = {
-      'element': e.target,
-      'timeClicked': new Date(),
-      'module': null
+      'element': e.target.className,
+      'time': new Date().toTimeString(),
+      'module': component
     };
-    GET.interactions(e.target, 'Related Products')
+    GET.interactions(e.target.className, new Date().toTimeString(), component)
       .then(res => {
-        console.log('res', res.data);
-      })
-      .catch(err => console.error(err));
+        console.log('res', res);
+      });
   };
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
@@ -59,8 +57,7 @@ const App = () => {
   return !featuredProduct.id ? <div>loading...</div> : (
     <div className={
       isDarkMode ? 'catwalk-dark' : 'catwalk'
-    }
-    onClick={e => clickTracker(e)}>
+    }>
       <button onClick={toggleDarkMode}>Toggle Display</button>
       <h1 className={'page-title'}>FOREVER 31</h1>
       <Overview featuredProduct={featuredProduct.id} />
@@ -69,7 +66,8 @@ const App = () => {
         featuredProduct={featuredProduct}
         setFeaturedProduct={setFeaturedProduct}
         componentName={'Related Product'}
-        isDarkMode={isDarkMode} />
+        isDarkMode={isDarkMode}
+        clickTracker={clickTracker} />
       <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} />
       <RatingsReviews productId={featuredProduct.id} />
     </div>

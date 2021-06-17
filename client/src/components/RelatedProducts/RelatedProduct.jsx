@@ -9,7 +9,7 @@ import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
-const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, componentName }) => {
+const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, componentName, clickTracker }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
@@ -72,7 +72,7 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, compo
 
 
   return (
-    <div className={'related-container'}>
+    <div className={'related-container'} onClick={e => clickTracker(e, componentName)}>
       <div className={'related'}><h2 className={isDarkMode ? 'title-dark' : 'title'}>RELATED PRODUCTS</h2></div>
       <Carousel
         relatedProductList={relatedProductList}
