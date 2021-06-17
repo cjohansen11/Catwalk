@@ -10,11 +10,8 @@ class ImageGallary extends React.Component {
       toggleExpanded: false,
       currentUrl: '',
     };
-
     this.togglenotexpanded = this.togglenotexpanded.bind(this);
   }
-
-
   toggle(e, value, url) {
     e.preventDefault();
     console.log('this will run the modal');
@@ -37,29 +34,18 @@ class ImageGallary extends React.Component {
     }
     return (
       <div className='imageContainer'>
-
         <Carousel autoPlay interval="5000" transitionTime="500" >
-          {/* <div className ='photocontainer'> */}
-
           {this.props.currentStyle.photos.map(photo => {
             return <div className='photodiv' key={photo.url} onClick={(event) => { this.toggle(event, true, photo.url); }}>
-
               <img className='photo' src={photo.url} />
-
             </div>;
           })}
-          {/* </div> */}
-
         </Carousel>
-
         {this.state.toggleExpanded ? <ExpandedView
           setToggle={this.togglenotexpanded}
           photoUrl={this.state.currentUrl}
         /> : null}
-
       </div>
-
-
     );
   }
 }
