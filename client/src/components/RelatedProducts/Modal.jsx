@@ -4,7 +4,7 @@ import React from 'react';
 import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
-const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
+const Modal = ({ setToggleModal, featuredProduct, comparedProduct, componentName }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let similarValues = [];
@@ -43,19 +43,22 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
             {similarFeatures.length ? similarFeatures.map(feature => {
               return <ModalRows
                 key={Math.random()}
-                feature={feature} />;
+                feature={feature}
+                componentName={'Related Product'} />;
             }) : null }
             {!similarFeatures.length ? featuredProduct.features.map(feature => {
               return <ModalRows
                 key={Math.random()}
                 feature={feature}
-                type={'featured'} />;
+                type={'featured'}
+                componentName={'Related Product'} />;
             }) : null}
             {!similarFeatures.length ? comparedProduct.details.features.map(feature => {
               return <ModalRows
                 key={Math.random()}
                 feature={feature}
-                type={'compared'} />;
+                type={'compared'}
+                componentName={'Related Product'} />;
             }) : null}
           </tbody>
         </table>

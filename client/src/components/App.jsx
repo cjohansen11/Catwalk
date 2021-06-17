@@ -20,6 +20,7 @@ const App = () => {
   /* ** STATE(s) ** */
   const [productId, setProductId] = useState(19590);
   const [featuredProduct, setFeaturedProduct] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const userData = [];
 
@@ -32,16 +33,44 @@ const App = () => {
       });
   }, [productId]);
 
+  /* ** ADDITIONAL FUNCTION(s) ** */
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const clickTracker = (e, component) => {
+    let trackerObject = {
+      'element': e.target.className,
+      'time': new Date().toTimeString(),
+      'module': component
+    };
+
+    GET.interactions(e.target.className, new Date().toTimeString(), component)
+      .then(res => {
+        console.log('res', res);
+      });
+  };
+
   const RelatedWithTracker = WithTracker(RelatedProduct);
   const OverviewWithTracker = WithTracker(Overview);
 
   return !featuredProduct.id ? <div>loading...</div> : (
-    <div className={'catwalk'}>
+    <div className={
+      isDarkMode ? 'catwalk-dark' : 'catwalk'
+    }>
+      <button onClick={toggleDarkMode}>Toggle Display</button>
       <h1 className={'page-title'}>FOREVER 31</h1>
-      <Overview featuredProduct={featuredProduct.id}/>
-      <RelatedProduct userData={userData} featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} componentName={'Related Product'} />
-      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct}/>
-      <RatingsReviews productId = {featuredProduct.id} />
+      <Overview featuredProduct={featuredProduct.id} />
+      <RelatedProduct
+        userData={userData}
+        featuredProduct={featuredProduct}
+        setFeaturedProduct={setFeaturedProduct}
+        componentName={'Related Product'}
+        isDarkMode={isDarkMode}
+        clickTracker={clickTracker} />
+      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} />
+      <RatingsReviews productId={featuredProduct.id} />
     </div>
   );
 };

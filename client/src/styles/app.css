@@ -1,3 +1,9 @@
+/* $dark-jungle-green: rgba(0, 15, 8, 1);
+$outer-space-crayola: rgba(28, 55, 56, 1);
+$shadow-blue: rgba(117, 137, 163, 1);
+$mint-cream: rgba(244, 255, 248, 1);
+$honeydew: rgba(223, 248, 235, 1); */
+
 html {
 	background-color: rgba(185, 220, 224, 0.8);
 }
@@ -8,8 +14,18 @@ html {
 	width: 1000px;
 	margin: auto;
 	padding: 0 40px 0 40px;
-	border: 2px solid	rgba(117, 137, 163, 0.8);
-	background-color: white;
+	border: 2px solid	rgba(223, 248, 235, 1);
+	background-color: rgba(244, 255, 248, 1);
+}
+
+.catwalk-dark {
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
+	margin: auto;
+	padding: 0 40px 0 40px;
+	border: 2px solid	rgba(117, 137, 163, 1);
+	background-color: rgba(28, 55, 56, 1);
 }
 
 h1.page-title {
