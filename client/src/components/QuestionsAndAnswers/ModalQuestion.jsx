@@ -64,31 +64,40 @@ const ModalQuestion = ({ show, close }) => {
         }}
       >
         <div className="modal-header">
-          <p>Add a Question</p>
+          <h3>Ask Your Question</h3>
+          <div>About the "Product Name Here”</div>
           <span onClick={close} className="close-modal-btn">x</span>
+
         </div>
         <div className="modal-content">
           <div className="modal-body">
             <div className="modal-form">
               <div className="modal-input">
-                <input
+              <label>Your Question</label>
+                <textarea
                   value={values.question}
-                  type="text"
-                  placeholder="Question"
+                  type="textarea"
+                  rows="20"
+                  columns="20"
+                  maxLength="1000"
+                  placeholder="Your Question*"
                   onChange={handleQuestionText}
-                />
+                ></textarea>
+                <label>Nickname*</label>
                 <input
                   value={values.nickname}
                   type="text"
-                  placeholder="Nickname"
+                  placeholder="Example: jackson11!"
                   onChange={handleNickname}
                 />
+                <label>Email*</label>
                 <input
                   value={values.email}
                   type="text"
-                  placeholder="Email"
+                  placeholder="Why did you like the product or not?"
                   onChange={handleEmail}
                 />
+                <span>For authentication reasons, you will not be emailed</span>
               </div>
             </div>
           </div>

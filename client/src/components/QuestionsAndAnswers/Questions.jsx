@@ -9,6 +9,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
   const [query, setQuery] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
 
+  // console.log("listQuestions:  ",listOfQuestions)
   const filteredQuestions = () => {
     if (query.length < 3) {
       setFilteredResults(listOfQuestions.results);
@@ -53,7 +54,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
             }) : null}
         </div>
       </div>
-      <button className="bottom-buttons" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
+      <button className="bottom-buttons" title="moreQuestionsButton" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Answered Questions</button>
     </div>
   );
 };

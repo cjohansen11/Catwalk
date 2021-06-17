@@ -7,8 +7,49 @@ const Answer = ({answerHelpfulness}) => {
   const [clicked, setClicked] = useState(false);
   const [reported, setReported] = useState('Report');
 
+  console.log('answerHelpfulness:  ', answerHelpfulness)
   const helpfulClick = () => {
     console.log('hello');
+  };
+
+  const addHelpfulAnswer = () => {
+    axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${quetion_id}/helpful`,
+      headers: {
+        'Authorization': `${GIT_TOKEN}`
+      },
+      data: {
+        'product_id': `${question_id}`
+      }
+    })
+      .then((data) => {
+        // console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  };
+
+  const report = () => {
+    axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/answers/${quetion_id}/report`,
+      headers: {
+        'Authorization': `${GIT_TOKEN}`
+      },
+      params: {
+        'question_id': `${question_id}`
+      }
+    })
+      .then((data) => {
+        // console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
   };
 
 

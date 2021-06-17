@@ -6,7 +6,7 @@ const Answers = ( {answerList} ) => {
 
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
   const [toggled, setToggled] = useState(false);
-
+  console.log('answerList:  ', answerList)
   // const [answerHelpfulness, setAnswerHelpfulness] = useState(0)
   // console.log('answerList: listOfAnswers', answerList);
 
@@ -47,7 +47,7 @@ const Answers = ( {answerList} ) => {
             );
           }) : ''}
         {toggled ? (
-          <button className="answer-button" onClick={() => { setNumberOfAnswers(2); setToggled(false) }}>Less Answers</button>
+          <button className="answer-button" onClick={() => { setNumberOfAnswers(2); setToggled(false) }}>Collapse Answers</button>
         ) : (
           <button className="answer-button"
             onClick={() => { setNumberOfAnswers( answerList.length); setToggled(true) }}>More Answers</button>
