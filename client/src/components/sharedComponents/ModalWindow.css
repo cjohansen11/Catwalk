@@ -1,0 +1,14 @@
+.modalWindow {
+  margin: 0 auto;
+  width: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
+  filter: blur(0);
+  max-width: 100%;
+  background-color: white;
+  z-index: 50;
+}
