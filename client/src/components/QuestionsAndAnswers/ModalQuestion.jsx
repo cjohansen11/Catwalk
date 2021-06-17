@@ -87,16 +87,6 @@ const ModalQuestion = ({ show, close }) => {
                 ></textarea>
                 <label>Nickname*</label>
                 <input
-                  ref={register({
-                    required: {
-                      value: true,
-                      message: 'You must enter your name'
-                    },
-                    minLength: {
-                      value: 2,
-                      message: 'Your name must be at least 2 characters'
-                    }
-                  })}
                   value={values.nickname}
                   type="text"
                   placeholder="Example: jackson11!"
