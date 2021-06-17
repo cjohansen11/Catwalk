@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 import '../../styles/rightsidecontainer.css';
 import GET from '../../../../lib/related.js';
 import GIT_TOKEN from '../../../../lib/config.js';
@@ -24,8 +23,6 @@ class Addtocart extends React.Component {
     this.selectedQuantity = this.selectedQuantity.bind(this);
   }
 
-
-
   componentDidMount() {
     GET.getCart()
       .then((data) => {
@@ -33,20 +30,16 @@ class Addtocart extends React.Component {
         this.setState({
           cart: data.data
         });
-
       })
       .catch((error) => {
         console.log('cart error', error);
       });
-
   }
 
   conditionalDrop() {
     if (this.props.styleArrayy.length === 0) {
-
       return 'OUT OF STOCK';
     } else {
-
       return 'Select Size';
     }
   }
@@ -55,12 +48,10 @@ class Addtocart extends React.Component {
     this.setState({
       selectedQuantity: event.target.value,
     });
-
   }
   selectedSize(event) {
     this.setState({
       selectedSize: event.target.value,
-
     });
     this.getStock();
   }
@@ -68,7 +59,6 @@ class Addtocart extends React.Component {
     var search = Object.entries(this.props.currentStyle.skus);
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === event.target.value) {
-
         var sku = Number(search[i][0]);
         var styleStock = search[i][1]['quantity'];
         this.setState({
@@ -77,19 +67,16 @@ class Addtocart extends React.Component {
         });
       }
     }
-
     var cartArray = Object.entries(this.state.cart);
     var purchased = 0;
     for (var i = 0; i < this.state.cart.length; i++) {
       if (this.state.cart[i]['sku_id'] === sku) {
         purchased = this.state.cart[i]['count'];
-
       }
     }
     var availStock = styleStock - purchased;
     var stockArray = this.stockArray(availStock);
     var dashValue = this.dashValue(availStock);
-
     this.setState({
       availableStock: availStock,
       availableStockArray: stockArray,
@@ -103,7 +90,6 @@ class Addtocart extends React.Component {
     } else {
       return 1;
     }
-
   }
 
   stockArray(num) {
@@ -118,14 +104,8 @@ class Addtocart extends React.Component {
     return result;
   }
 
-
-
-
-
-
   addedToCart(e, click) {
     e.preventDefault();
-
     var search = Object.entries(this.props.currentStyle.skus);
     var skuId = '';
     var id = this.state.currentskuId;
@@ -134,7 +114,6 @@ class Addtocart extends React.Component {
 
     for (var i = 0; i < search.length; i++) {
       if (search[i][1]['size'] === this.state.selectedSize) {
-
         skuId = search[i][0];
       }
     }
@@ -149,14 +128,11 @@ class Addtocart extends React.Component {
       data: { 'sku_id': `${skuId}` }
     };
 
-
-
     for (var i = 0; i < quantity; i++) {
       axios(optionsAddCart)
         .then((data) => {
           console.log('added to cart!');
         })
-
         .catch((error) => {
           console.log('cart error', error);
         });
@@ -172,38 +148,27 @@ class Addtocart extends React.Component {
 
       })
       .catch((error) => {
-        // console.log('cart error', error);
       });
-
     this.props.updateStyleArray();
-
   }
-
 
   updateStyle(e, style) {
     e.preventDefault();
     this.setState({
       availableStockArray: [],
     });
-
     this.props.updateStyleArray(style);
     this.props.updateCurrentStyle(style);
     this.setState({
       dash: '-',
-
     });
-
-
-
   }
-
 
   render() {
     if (!this.props.currentStyle) {
       return <span>Loading...AC</span>;
     }
     return (
-
       <div className='stylecontainer'>
         <h3>Style > {this.props.currentStyle.name}</h3>
         <div className='thumbnailcontainer'>
@@ -212,55 +177,34 @@ class Addtocart extends React.Component {
             if (style.style_id === this.props.currentStyle.style_id) {
               classcheck = 'thumbnail check';
             }
-            return <div className={classcheck}key={style.style_id} onClick={(event) => { this.updateStyle(event, style); }}>
+            return <div className={classcheck} key={style.style_id} onClick={(event) => { this.updateStyle(event, style); }}>
               <img className='thumbnailimg' src={style.photos[0].thumbnail_url} />
-
-
             </div>;
           })}
-
         </div>
-
-
-
-
-
         <div className='addtocartcontainer'>
           <div className="size_dropdowndiv">
             <select className="size_dropdown" placeholder='none' onChange={this.selectedSize}>
               <option>{this.conditionalDrop()}</option>
-
-              {/* need to map the options from state */}
-
               {Object.entries(this.props.styleArrayy).map(style => {
                 return (
-
                   <option key={(style)}>{style.slice(1)}</option>
-
                 );
               })
               }
             </select>
           </div>
-
           <div className="quantity_dropdowndiv">
-
             <select className="quantity_dropdown" placeholder='none' onChange={this.selectedQuantity}>
               <option>{this.state.dash}</option>
               {this.state.availableStockArray.map(num => {
-
                 return <option key={num}>{num}</option>;
-
               })}
             </select>
           </div>
-
           <button className='addtocartbutton' onClick={(event) => this.addedToCart(event, this.state.selectedSize)}>Add To Cart</button>
-
         </div>
       </div>
-
-
     );
   }
 }

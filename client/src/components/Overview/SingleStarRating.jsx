@@ -10,7 +10,7 @@ const SingleStarRating = ({ ratings }) => {
     );
   }
 
-  /* ** THIS NEEDS WORK ** */
+
   let totalScore;
   let totalVotes;
   let percentage;
@@ -30,11 +30,8 @@ const SingleStarRating = ({ ratings }) => {
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   };
-
-
   return (
     <div className='ratingContainer'>
-
       <div className={`${'productRating'} ${'starr'}`} >
         <div className={'dark-starr'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <div className={'rating-starr'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>

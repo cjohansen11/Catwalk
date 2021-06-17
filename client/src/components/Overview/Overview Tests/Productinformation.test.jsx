@@ -88,7 +88,7 @@ describe('Product Information', () => {
   };
   it('should render the product title onto page', () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
-    expect(screen.getByText('Camo Onesie')).toBeInTheDocument();
+    expect(screen.queryByText('Camo Onesie')).toBeTruthy();
   });
   it('should render the product category onto the page', () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
@@ -96,7 +96,7 @@ describe('Product Information', () => {
   });
   it('should render the product price onto the page', () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
-    expect(screen.getByText('140.00')).toBeInTheDocument();
+    expect(screen.queryByText('140.00')).toBeTruthy();
   });
 
 
