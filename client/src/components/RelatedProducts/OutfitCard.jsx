@@ -5,7 +5,7 @@ import { IoIosCloseCircle } from 'react-icons/io';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const OutfitCard = ({ product, removeOutfit }) => {
+const OutfitCard = ({ product, removeOutfit, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;
@@ -22,7 +22,7 @@ const OutfitCard = ({ product, removeOutfit }) => {
   defaultStyle.sale_price ? DisplayPrice = <><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></> : DisplayPrice = <h5 className={'default-price'}>{defaultStyle.original_price}</h5>;
 
   return (
-    <div className={`${'productCard'} ${'outfit-card'}`} role="complementary">
+    <div className={`${isDarkMode ? 'productCard-dark' : 'productCard'} ${'outfit-card'}`} role="complementary">
       <div className={'image-container'}><img className={'image'} src={product.styles.results[0].photos[0].thumbnail_url} alt="" className="previewImage"></img></div>
       <h5 className={'productName'}>{product.details.name.toUpperCase()}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>

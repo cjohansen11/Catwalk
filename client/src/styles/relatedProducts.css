@@ -7,7 +7,15 @@
 
 .title {
   position: absolute;
-  color: black;
+  color: rgba(0, 15, 8, 1);
+  font-weight: 100;
+  font-family: sans-serif;
+  margin: auto;
+}
+
+.title-dark {
+  position: absolute;
+  color: rgba(223, 248, 235, 1);
   font-weight: 100;
   font-family: sans-serif;
   margin: auto;
@@ -46,6 +54,11 @@
   margin-bottom: auto;
 }
 
+.productCard-dark {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 div.container > div:first-child {
   margin-left: 30px;
 }
@@ -59,7 +72,19 @@ div.container > div:last-child {
   font-size: 60px;
   text-align: center;
   z-index: 6;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(223, 248, 235, 0.4);
+  color: rgba(0, 15, 8, 1);
+  top: 125px;
+  right: -30px;
+}
+
+.right_arrow-dark {
+  position: absolute;
+  font-size: 60px;
+  text-align: center;
+  z-index: 6;
+  background-color: rgba(0, 15, 8, 0.4);
+  color: rgba(223, 248, 235, 1);
   top: 125px;
   right: -30px;
 }
@@ -69,7 +94,19 @@ div.container > div:last-child {
   font-size: 60px;
   text-align: center;
   z-index: 6;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(223, 248, 235, 0.4);
+  color: rgba(0, 15, 8, 1);
+  top: 125px;
+  left: -30px;
+}
+
+.left_arrow-dark {
+  position: absolute;
+  font-size: 60px;
+  text-align: center;
+  z-index: 6;
+  background-color: rgba(0, 15, 8, 0.4);
+  color: rgba(223, 248, 235, 1);
   top: 125px;
   left: -30px;
 }

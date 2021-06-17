@@ -9,7 +9,7 @@ import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
-const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
+const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
@@ -72,18 +72,20 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
 
   return (
     <div className={'related-container'}>
-      <div className={'related'}><h2 className={'title'}>RELATED PRODUCTS</h2></div>
+      <div className={'related'}><h2 className={isDarkMode ? 'title-dark' : 'title'}>RELATED PRODUCTS</h2></div>
       <Carousel
         relatedProductList={relatedProductList}
         changeFeaturedProduct={changeFeaturedProduct}
-        featuredProduct={featuredProduct} />
-      <div className={'outfit'}><h2 className={'title'}>YOUR OUTFIT</h2></div>
+        featuredProduct={featuredProduct}
+        isDarkMode={isDarkMode}/>
+      <div className={'outfit'}><h2 className={isDarkMode ? 'title-dark' : 'title'}>YOUR OUTFIT</h2></div>
       <YourOutfitList
         handleAddToOutfit={handleAddToOutfit}
         yourOutfitList={yourOutfitList}
         setOutfitList={setOutfitList}
         outfitList={outfitList}
-        removeOutfit={removeOutfit} />
+        removeOutfit={removeOutfit}
+        isDarkMode={isDarkMode} />
     </div>
   );
 };

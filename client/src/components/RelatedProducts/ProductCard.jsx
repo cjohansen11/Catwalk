@@ -5,7 +5,7 @@ import { IoIosStar } from 'react-icons/io';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct, setCardCount }) => {
+const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct, setCardCount, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;
@@ -22,7 +22,7 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
   defaultStyle.sale_price ? DisplayPrice = <><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></> : DisplayPrice = <h5 className={'default-price'}>{defaultStyle.original_price}</h5>;
 
   return (
-    <div className={`${'productCard'} ${'product-card-array'}`}
+    <div className={`${isDarkMode ? 'productCard-dark' : 'productCard'} ${'product-card-array'}`}
       onClick={() => {
         setCardCount(1);
         changeFeaturedProduct(product.details.id);
