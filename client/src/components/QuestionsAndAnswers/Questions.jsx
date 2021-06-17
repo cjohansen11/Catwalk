@@ -5,10 +5,12 @@ import './Questions.css';
 
 const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 
+
   const [numberOfQuestions, setNumberOfQuestions] = useState(2);
   const [query, setQuery] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
 
+  // console.log("listQuestions:  ",listOfQuestions)
   const filteredQuestions = () => {
     if (query.length < 3) {
       setFilteredResults(listOfQuestions.results);
@@ -52,8 +54,8 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
               );
             }) : null}
         </div>
-        <button className="bottom-buttons" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Questions</button>
       </div>
+      <button className="bottom-buttons" title="moreQuestionsButton" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Answered Questions</button>
     </div>
   );
 };
@@ -61,14 +63,3 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
 export default Questions;
 
 
-/*
-map listOfQuestions --- .question_body to a div
-
-/*
-        {listOfQuestions.results.map((x) => {
-          return (
-            <div key={x.question_body} question={x.question_body}>{x.question_body}</div>
-          );
-        })
-        };
-*/

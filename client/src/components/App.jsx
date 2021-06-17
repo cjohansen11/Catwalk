@@ -18,7 +18,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 const App = () => {
 
   /* ** STATE(s) ** */
-  const [productId, setProductId] = useState(19089);
+  const [productId, setProductId] = useState(19590);
   const [featuredProduct, setFeaturedProduct] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
