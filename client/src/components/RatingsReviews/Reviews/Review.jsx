@@ -22,10 +22,11 @@ const Review = ({ review }) => {
   const slicedSummary = _.slice(review.summary, 0, 60);
   const restOfSummary = review.summary <= 60 ? null : _.slice(review.summary, 60);
   const body = !showMoreText ? _.slice(review.body, 0, 120) : review.body;
-  const showMoreButton = <span className='showmorespan' onClick = { () => {
-    setShowMoreText(!showMoreText);
-    setShowMoreTextButton(!showMoreTextButton);
-  } } >Show more!</span>;
+  const showMoreButton = <span className='showmorespan' onClick = {
+    () => {
+      setShowMoreText(!showMoreText);
+      setShowMoreTextButton(!showMoreTextButton);
+    } } >Show more!</span>;
 
   const helpfulReview = (id) => {
     Requests.updateHelpfulReview(id)
