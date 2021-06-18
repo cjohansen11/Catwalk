@@ -39,10 +39,10 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode, 
       .then((res) => {
         // console.log('setListOfQuestions:  ', res.data);
         setListOfQuestions(res.data);
-        console.log('listOfQuestions:  ', listOfQuestions);
-        console.log('listOfAnswers:  ', listOfAnswers);
-        // postReq();
-        console.log('featuredProduct:  ', JSON.stringify(featuredProduct))
+        // console.log('listOfQuestions:  ', listOfQuestions);
+        // console.log('listOfAnswers:  ', listOfAnswers);
+        // // postReq();
+        // console.log('featuredProduct:  ', JSON.stringify(featuredProduct))
       })
       .catch((err) => {
         // console.log('featuredProduct', featuredProduct);
