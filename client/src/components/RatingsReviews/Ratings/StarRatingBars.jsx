@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import RatingsBar from './RatingsBar.jsx';
 
-const StarRatingBars = ({ recommend, rating }) => {
+const StarRatingBars = ({
+  recommend,
+  rating,
+  reviewsLen
+}) => {
   const [one, setOne] = useState(0);
   const [two, setTwo] = useState(0);
   const [three, setThree] = useState(0);
@@ -14,7 +18,7 @@ const StarRatingBars = ({ recommend, rating }) => {
     if (isNaN(a)) {
       return 0;
     }
-    return a;
+    return (a / reviewsLen) * 100;
   };
 
   useEffect(() => {
@@ -40,11 +44,11 @@ const StarRatingBars = ({ recommend, rating }) => {
       <br />
       <br />
       <div className='ratingBars'>
-        <RatingsBar value = {1} rating = {one} /> {one}
-        <RatingsBar value = {2} rating = {two} /> {two}
-        <RatingsBar value = {3} rating = {three} /> {three}
-        <RatingsBar value = {4} rating = {four} /> {four}
-        <RatingsBar value = {5} rating = {five} /> {five}
+        <RatingsBar value = {1} rating = {one} /> 1
+        <RatingsBar value = {2} rating = {two} /> 2
+        <RatingsBar value = {3} rating = {three} /> 3
+        <RatingsBar value = {4} rating = {four} /> 4
+        <RatingsBar value = {5} rating = {five} /> 5
       </div>
     </div>
   );

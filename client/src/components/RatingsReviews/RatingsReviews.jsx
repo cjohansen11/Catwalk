@@ -21,10 +21,11 @@ const RatingsReviews = ({ productId, clickTracker, componentName }) => {
 
   const [reviews, setReviews] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState('relevant');
-
+  //
   useEffect(() => {
     Requests.getReviews(productId, currentSortingOption)
       .then((data) => {
+        // console.log(data.data.results);
         setReviews(data.data.results);
       })
       .catch((err) => {
@@ -56,7 +57,7 @@ const RatingsReviews = ({ productId, clickTracker, componentName }) => {
     let avarage = reviews.reduce((acc, val) => {
       return acc + val.rating;
     }, 0);
-    avarage = ((avarage / reviews.length)).toFixed(0);
+    avarage = ((avarage / reviews.length)).toFixed(2);
     // avarage = (avarage / reviews.length).toFixed(2);
     if (Number(avarage)) {
       setAvarageRating(Number(avarage));
@@ -74,6 +75,7 @@ const RatingsReviews = ({ productId, clickTracker, componentName }) => {
           recommended = {recommended}
           characteristics = {characteristics}
           rating = {rating}
+          reviewsLen = {reviews.length}
         />
 
         {/* Reviews */}
