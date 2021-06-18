@@ -40,23 +40,22 @@ const App = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  /* ** GIVES ME 401 ERRORS ON THE POST REQEST ** */
+  /* ** CLICK TRACKER ** */
   const clickTracker = (e, component) => {
-  //   let trackerObject = {
-  //     'element': e.target.className,
-  //     'time': new Date().toTimeString(),
-  //     'module': component
-  //   };
+    e.stopPropagation();
+    let data = JSON.stringify({
+      'element': e.target.className,
+      'time': new Date().toTimeString(),
+      'widget': component
+    });
 
-  //   console.log(trackerObject)
-
-  //   GET.interactions(e.target.className, new Date().toTimeString(), component)
-  //     .then(res => {
-  //       console.log('res', res);
-  //     })
-  //     .catch(err => {
-  //       console.error('click tracker', err);
-  //     });
+    GET.interactions(data)
+      .then(res => {
+        console.log(`Interaction : ${data} was ${res.data}`);
+      })
+      .catch(err => {
+        console.error('click tracker', err);
+      });
   };
 
   const RelatedWithTracker = WithTracker(RelatedProduct);
@@ -68,7 +67,7 @@ const App = () => {
     }>
       <div onClick={toggleDarkMode} className={isDarkMode ? "toggle-mode-dark" : "toggle-mode"}><CgDarkMode /></div>
       <h1 className={isDarkMode ? 'page-title-dark' : 'page-title'}>FOREVER 31</h1>
-      <Overview featuredProduct={featuredProduct.id} isDarkMode={isDarkMode}/>
+      <Overview featuredProduct={featuredProduct.id} isDarkMode={isDarkMode} componentName={'Overview'} clickTracker={clickTracker} />
       <RelatedProduct
         userData={userData}
         featuredProduct={featuredProduct}
