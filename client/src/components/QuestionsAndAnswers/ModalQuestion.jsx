@@ -10,7 +10,7 @@ const ModalQuestion = ({ show, close, featuredProduct}) => {
     nickname: '',
     email: ''
   });
-  console.log(featuredProduct);
+  // console.log(featuredProduct);
   const addQuestion = (values) => {
     axios({
       method: 'post',
@@ -26,7 +26,7 @@ const ModalQuestion = ({ show, close, featuredProduct}) => {
       }
     })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         console.log(err);
