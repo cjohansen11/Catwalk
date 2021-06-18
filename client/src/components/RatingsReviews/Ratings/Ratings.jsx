@@ -11,7 +11,8 @@ const Ratings = ({
   avarageRating,
   recommended,
   characteristics,
-  rating
+  rating,
+  reviewsLen
 }) => {
   return (
     <div className='ratings'>
@@ -26,6 +27,7 @@ const Ratings = ({
         <StarRatingBars
           recommend = {recommended}
           rating = {rating}
+          reviewsLen = {reviewsLen}
         />
       </div>
 
