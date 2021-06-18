@@ -3,7 +3,7 @@ import './ModalAnswer.css';
 import axios from 'axios';
 import GIT_TOKEN from '../../../../lib/config.js';
 
-const ModalAnswer = ({ show, close }) => {
+const ModalAnswer = ({ show, close, question_id }) => {
 
   const [values, setValues] = useState({
     answer: '',
@@ -15,7 +15,7 @@ const ModalAnswer = ({ show, close }) => {
   const addAnswer = (values) => {
     axios({
       method: 'post',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${quetion_id}/answers`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions/${question_id}/answers`,
       headers: {
         'Authorization': `${GIT_TOKEN}`
       },
@@ -23,7 +23,9 @@ const ModalAnswer = ({ show, close }) => {
         body: values.answer,
         name: values.nickname,
         email: values.email,
-        'product_id': 19089
+      },
+      params: {
+        'question_id': question_id
       }
     })
       .then((data) => {
@@ -32,7 +34,6 @@ const ModalAnswer = ({ show, close }) => {
       .catch((err) => {
         console.log(err);
       });
-
   };
 
   const handleAnswerText = e => {
@@ -65,7 +66,7 @@ const ModalAnswer = ({ show, close }) => {
         }}
       >
         <div className="modal-header">
-          <p>Submit your Answer</p>
+          <h3>Submit your Answer</h3>
           <span onClick={close} className="close-modal-btn">x</span>
         </div>
         <div className="modal-content">
@@ -79,7 +80,7 @@ const ModalAnswer = ({ show, close }) => {
                   rows="20"
                   columns="20"
                   maxLength="1000"
-                  placeholder="Your Question*"
+                  placeholder="Answer..."
                   onChange={handleAnswerText}
                 ></textarea>
                 <label>What is your nickname*</label>
