@@ -12,3 +12,5 @@ client/src/components/RelatedProducts/config.js
 client/components/Overview/config.js
 client/src/components/QuestionsAndAnswers/config.js
 lib/config.js
+
+client/src/components/RatingsReviews/__tests__/*
