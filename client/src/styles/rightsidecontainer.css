@@ -214,3 +214,13 @@ margin-top: 20px;
   width: 200px;
   font-family: sans-serif;
 }
+
+.size_dropdown:hover {
+  color: black;
+  /* background-color: skyblue; */
+  height: 40px;
+  width: 160px;
+  font-family: sans-serif;
+
+
+}
