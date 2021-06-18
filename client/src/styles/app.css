@@ -16,6 +16,7 @@ html {
 	padding: 0 40px 0 40px;
 	border: 2px solid	rgba(223, 248, 235, 1);
 	background-color: rgba(244, 255, 248, 1);
+	font-family: sans-serif;
 }
 
 .catwalk-dark {
@@ -26,6 +27,8 @@ html {
 	padding: 0 40px 0 40px;
 	border: 2px solid	rgba(117, 137, 163, 1);
 	background-color: rgba(28, 55, 56, 1);
+	color:  rgba(244, 255, 248, 1);
+	font-family: sans-serif;
 }
 
 h1.page-title {

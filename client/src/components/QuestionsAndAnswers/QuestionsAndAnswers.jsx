@@ -11,9 +11,7 @@ import CreateAnswer from './CreateAnswer.jsx';
 import App from '../App.jsx';
 import './QuestionsAndAnswers.css';
 
-
-
-const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
+const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode}) => {
 
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
@@ -56,9 +54,17 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
   return (
     <div>
       <div className="questions-and-answers">
-        <h3>Questions & Answers</h3>
-        <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
-        <CreateQuestion modalState={modalState} setModalState={setModalState} show={show} setShow={setShow} />
+        <h2 className="title-qa">QUESTIONS & ANSWERS</h2>
+        <Questions
+          setListOfAnswers={setListOfAnswers}
+          listOfQuestions={listOfQuestions}
+          featuredProduct={featuredProduct}
+          listOfAnswers={listOfAnswers}/>
+        <CreateQuestion
+          modalState={modalState}
+          setModalState={setModalState}
+          show={show}
+          setShow={setShow} />
       </div>
       <ModalQuestion className="modal-question" close={closeModalHandler} show={show}/>
     </div>
