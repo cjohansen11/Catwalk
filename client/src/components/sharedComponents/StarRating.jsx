@@ -19,16 +19,12 @@ const StarRating = ({ numberOfStars }) => {
     if (value <= num && decimal === 0) {
       return full;
     } else if (value === num && decimal > 0) {
-      // console.log('hshshs');
-      return 'smth';
+      return full;
     } else {
       return empty;
     }
   };
 
-  // useEffect(() => {
-
-  // }, [numberOfStars]);
   return (
     <div className = 'starRow'>
       {
@@ -37,7 +33,9 @@ const StarRating = ({ numberOfStars }) => {
             <div
               key = {idx}
             >
-              { a(value, num, decimal) }
+              {
+                a(value, num, decimal)
+              }
             </div>
           );
         })

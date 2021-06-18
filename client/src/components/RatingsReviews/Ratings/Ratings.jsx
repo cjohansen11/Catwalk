@@ -19,7 +19,7 @@ const Ratings = ({
       <h1>Ratings</h1>
       <div><p>Rating: {avarageRating}</p>
         <StarRating
-          numberOfStars = {avarageRating}
+          numberOfStars = {Math.floor(avarageRating)}
         />
       </div>
 
