@@ -58,6 +58,7 @@ h1.page-title-dark {
 	left: 980px;
 	top: 20px;
 	cursor: pointer;
+	width: 40px;
 }
 
 .toggle-mode-dark {
@@ -67,4 +68,5 @@ h1.page-title-dark {
 	left: 980px;
 	top: 20px;
 	cursor: pointer;
+	width: 40px;
 }

@@ -138,7 +138,7 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div className='overview'>
+      <div className='overview' onClick={e => this.props.clickTracker(e, this.props.componentName)}>
         <div className='galleryContainer'>
           <ImageGallary currentStyle={this.state.currentSelectedStyle} />
         </div>
