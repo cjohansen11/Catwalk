@@ -4,12 +4,8 @@ import _ from 'lodash';
 
 import Requests from '../../../../lib/RatingsReviews.js';
 
-import StarRating from '../sharedComponents/StarRating.jsx';
-import StarRatingBars from './StarRatingBars.jsx';
-import Characteristics from './Characteristics.jsx';
-
-import Review from './Review.jsx';
-import AddReviewForm from './AddReviewForm.jsx';
+import Ratings from './Ratings/Ratings.jsx';
+import Reviews from './Reviews/Reviews.jsx';
 
 import data from '../../../../dummy_data/ratings.js';
 
@@ -17,20 +13,14 @@ import './styles/ratingsReviews.css';
 
 const RatingsReviews = ({ productId }) => {
   const [ratings, setRatings] = useState(data);
-  const [loading, setLoading] = useState(false);
-  const [reviews, setReviews] = useState([]);
-  const [shownReview, setShownReview] = useState(2);
 
   const [recommended, setRecommended] = useState(0);
   const [rating, setRating] = useState({});
   const [characteristics, setCharacteristics] = useState({});
-
-  const [showMoreButton, setShowMoreButton] = useState(true);
-  const [showCreateReviewForm, setShowCreateReviewForm] = useState(false);
-
-  const [currentSortingOption, setCurrentSortingOption] = useState('relevant');
-
   const [avarageRating, setAvarageRating] = useState(0);
+
+  const [reviews, setReviews] = useState([]);
+  const [currentSortingOption, setCurrentSortingOption] = useState('relevant');
 
   useEffect(() => {
     Requests.getReviews(productId, currentSortingOption)
@@ -43,13 +33,12 @@ const RatingsReviews = ({ productId }) => {
   }, [productId]);
 
   useEffect(() => {
-    setLoading(true);
     Requests.getReviews(productId, currentSortingOption)
       .then((data) => {
         setReviews(data.data.results);
-        setLoading(false);
       });
   }, [currentSortingOption]);
+
 
   useEffect(() => {
     Requests.getReviewMetadata(productId)
@@ -74,75 +63,27 @@ const RatingsReviews = ({ productId }) => {
     }
   }, [reviews]);
 
-  const giveMoreReviews = () => {
-    setShownReview( shownReview + 2 );
-  };
-
   return (
     <div className = 'ratingsReviews'>
       <a id='route'></a>
       <h1>RatingsReviews</h1>
       <div className='ratingsReviewsContainer'>
         {/* Ratings */}
-        <div className='ratings'>
-          <h1>Ratings</h1>
-          <div>Number Rating
-            <StarRating numberOfStars = {avarageRating} />
-          </div>
-
-          <div>
-            <StarRatingBars
-              reviews = {reviews}
-              recommend = {recommended}
-              rating = {rating}
-            />
-          </div>
-
-          <div>
-            <Characteristics characteristics = {characteristics} />
-          </div>
-        </div>
+        <Ratings
+          avarageRating = {avarageRating}
+          recommended = {recommended}
+          characteristics = {characteristics}
+          rating = {rating}
+        />
 
         {/* Reviews */}
-        <div className='reviews'>
-          <h1>Reviews</h1>
-          <div className = 'upperBlock'>
-            {`${reviews.length} reviews, sorted by `}
-            <select onChange = { (e) => { setCurrentSortingOption(e.target.value); } }>
-              <option value='relevance'>Relevance</option>
-              <option value='helpful'>Helpful</option>
-              <option value='newest'>Newest</option>
-            </select>
-          </div>
-
-          <div className = 'reviewsContainer'>
-            {
-              _.map(
-                _.slice(reviews, 0, shownReview),
-                (review) => {
-                  return (
-                    <Review
-                      key = { review.review_id }
-                      review = { review }
-                    />
-                  );
-                })
-            }
-          </div>
-
-          <div>
-            {
-              (shownReview < reviews.length) && <button onClick = { giveMoreReviews } >More Reviews</button>
-            }
-            <button onClick = { () => { setShowCreateReviewForm(!showCreateReviewForm); } }>Add Review</button>
-            {
-              showCreateReviewForm && <AddReviewForm characteristics2 = {characteristics}
-                productId = {productId}
-              />
-            }
-
-          </div>
-        </div>
+        <Reviews
+          productId = { productId }
+          reviews = { reviews }
+          currentSortingOption = { currentSortingOption }
+          setCurrentSortingOption = { setCurrentSortingOption }
+          characteristics = { characteristics }
+        />
       </div>
     </div>
   );
