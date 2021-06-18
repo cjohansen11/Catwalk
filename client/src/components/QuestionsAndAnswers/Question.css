@@ -12,6 +12,7 @@
 
 .question__text {
   width: 70%;
+  font-weight: 200;
 }
 
 .question__right {

@@ -1,5 +1,4 @@
 .modal-wrapper {
-  background-color: rgb(243, 243, 243);
   width: 60%;
   max-width: 400px;
   margin: 4rem auto;
@@ -10,8 +9,6 @@
 }
 
 .modal-header {
-  background: #bbbbbb;
-  color: white;
   padding: .5rem;
   display: flex;
   align-items: center;

@@ -1,13 +1,20 @@
 .questions-and-answers {
   display: flex;
-  width: 90%;
+  width: 100%;
   flex-direction: column;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-family: sans-serif;
 }
 
 .modal-question {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.title-qa {
+  font-weight: 100;
+  font-family: sans-serif;
+
 }
