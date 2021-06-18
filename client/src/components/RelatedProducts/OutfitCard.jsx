@@ -5,7 +5,7 @@ import { IoIosCloseCircle } from 'react-icons/io';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const OutfitCard = ({ product, removeOutfit, isDarkMode, componentName }) => {
+const OutfitCard = ({ product, removeOutfit, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;
@@ -30,8 +30,6 @@ const OutfitCard = ({ product, removeOutfit, isDarkMode, componentName }) => {
       {defaultStyle.sale_price ? <span className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></span> : <span className={'productPrice'}><h5>{defaultStyle.original_price}</h5></span>}
       <div className={'actionButton'}
         onClick={() => removeOutfit(product.details.id)} role="button"><IoIosCloseCircle /></div>
-      {/* <div className={'actionButton'}
-        onClick={() => removeOutfit(product.details.id)} role="button">✘</div> */}
     </div>
   );
 };

@@ -1,0 +1,41 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  padding: 10px;
+  border-top: cadetblue 1px solid;
+  border-bottom: cadetblue 1px solid;
+}
+
+.row,
+.photoThumbsnail {
+  display: inline-flex;
+  flex-direction: row;
+  /* margin: 10px; */
+  width: 100%;
+}
+
+.response {
+  background-color: gray;
+}
+
+button {
+  margin: 10px;
+}
+
+div.text {
+  margin: 5px;
+}
+
+.review div {
+  margin: 5px;
+}
+
+.showmorespan {
+  font-size: 15px;
+}
+
+.photoThumbsnail {
+  width: 100px;
+  height: 100px;
+}

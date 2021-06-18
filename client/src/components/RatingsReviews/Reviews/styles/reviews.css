@@ -1,0 +1,11 @@
+.reviews {
+  padding: 10px;
+}
+
+.reviewsContainer {
+  height: 550px;
+  overflow: scroll;
+}
+.upperBlock {
+  margin: 5px;
+}

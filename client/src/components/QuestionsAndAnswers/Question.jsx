@@ -62,7 +62,7 @@ const Question = ( {question, listOfAnswers, setListOfAnswers}) => {
               <a className="helpful-click">Yes {`(${questionHelpfulness})`} </a>
             )}
             &ensp;| &ensp;
-            <CreateAnswer className="answer_button"/>
+            <CreateAnswer className="answer_button" question_id={question.question_id}/>
 
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Star from './Star.jsx';
 
@@ -23,7 +24,6 @@ const StarC = ({
 
   return (
     <div
-
       className="cursor-pointer"
       onMouseEnter={() => onMouseEnter(index)}
       onMouseLeave={() => onMouseLeave()}
@@ -32,6 +32,15 @@ const StarC = ({
       {/* <Star fill={fill} /> */}
     </div>
   );
+};
+
+StarC.propTypes = {
+  index: PropTypes.number,
+  rating: PropTypes.number,
+  hoverRating: PropTypes.number,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  onSaveRating: PropTypes.func,
 };
 
 export default StarC;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalRows = ({ feature, type, componentName }) => {
+const ModalRows = ({ feature, type }) => {
   if (!feature.value) {
     return null;
   }

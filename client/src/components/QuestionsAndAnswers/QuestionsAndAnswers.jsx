@@ -12,8 +12,7 @@ import App from '../App.jsx';
 import './QuestionsAndAnswers.css';
 
 
-
-const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
+const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode, clickTracker, componentName }) => {
 
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
@@ -40,7 +39,10 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
       .then((res) => {
         // console.log('setListOfQuestions:  ', res.data);
         setListOfQuestions(res.data);
-        // postReq();
+        // console.log('listOfQuestions:  ', listOfQuestions);
+        // console.log('listOfAnswers:  ', listOfAnswers);
+        // // postReq();
+        // console.log('featuredProduct:  ', JSON.stringify(featuredProduct))
       })
       .catch((err) => {
         // console.log('featuredProduct', featuredProduct);
@@ -54,13 +56,22 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
   }, [featuredProduct]);
 
   return (
-    <div>
+    <div onClick={e => clickTracker(e, componentName)}>
       <div className="questions-and-answers">
-        <h3>Questions & Answers</h3>
-        <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>
-        <CreateQuestion modalState={modalState} setModalState={setModalState} show={show} setShow={setShow} />
+        <h2 className="title-qa">QUESTIONS & ANSWERS</h2>
+        <Questions
+          setListOfAnswers={setListOfAnswers}
+          listOfQuestions={listOfQuestions}
+          featuredProduct={featuredProduct}
+          listOfAnswers={listOfAnswers}/>
+        <CreateQuestion
+          featuredProduct={featuredProduct}
+          modalState={modalState}
+          setModalState={setModalState}
+          show={show}
+          setShow={setShow} />
       </div>
-      <ModalQuestion className="modal-question" close={closeModalHandler} show={show}/>
+      <ModalQuestion className="modal-question" close={closeModalHandler} show={show} featuredProduct={featuredProduct} setShow={setShow} />
     </div>
   );
 };
