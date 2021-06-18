@@ -1,19 +1,25 @@
 import React from 'react';
 
-const CharacteristicsBars = ({data}) => {
+import './styles/CharacteristicsBars.css';
+
+const CharacteristicsBars = ({
+  data
+}) => {
   const containerStyles = {
     height: '7',
-    width: '80%',
+    width: '100%',
     backgroundColor: '#e0e0de',
     margin: 'auto',
     display: 'inline-block'
   };
 
-  let pointer = (<span className="" style={{
-    left: `${(Number(data) - 1) * 100 / 4}%`,
-    position: 'relative',
-    top: '-7px'
-  }}>&#x25BE;</span>);
+  let pointer = <span
+    className = ""
+    style = {{
+      left: `${(Number(data) - 1) * 100 / 4}%`,
+      position: 'relative',
+      top: '-7px'
+    }}>&#x25BE;</span>;
 
   return (
     <div>
