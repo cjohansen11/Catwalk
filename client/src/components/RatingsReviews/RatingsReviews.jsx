@@ -11,7 +11,7 @@ import data from '../../../../dummy_data/ratings.js';
 
 import './styles/ratingsReviews.css';
 
-const RatingsReviews = ({ productId }) => {
+const RatingsReviews = ({ productId, clickTracker, componentName }) => {
   const [ratings, setRatings] = useState(data);
 
   const [recommended, setRecommended] = useState(0);
@@ -64,7 +64,7 @@ const RatingsReviews = ({ productId }) => {
   }, [reviews]);
 
   return (
-    <div className = 'ratingsReviews'>
+    <div className = 'ratingsReviews' onClick={e => clickTracker(e, componentName)}>
       <a id='route'></a>
       <h1>RatingsReviews</h1>
       <div className='ratingsReviewsContainer'>

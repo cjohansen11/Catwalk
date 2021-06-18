@@ -13,7 +13,7 @@ import './QuestionsAndAnswers.css';
 
 
 
-const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
+const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, clickTracker, componentName }) => {
 
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
@@ -54,7 +54,7 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct}) => {
   }, [featuredProduct]);
 
   return (
-    <div>
+    <div onClick={e => clickTracker(e, componentName)}>
       <div className="questions-and-answers">
         <h3>Questions & Answers</h3>
         <Questions setListOfAnswers={setListOfAnswers} listOfQuestions={listOfQuestions} featuredProduct={featuredProduct} listOfAnswers={listOfAnswers}/>

@@ -75,8 +75,8 @@ const App = () => {
         componentName={'Related Product'}
         isDarkMode={isDarkMode}
         clickTracker={clickTracker} />
-      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} />
-      <RatingsReviews productId={featuredProduct.id} />
+      <QuestionsAndAnswers featuredProduct={featuredProduct} setFeaturedProduct={setFeaturedProduct} clickTracker={clickTracker} componentName={'Questions & Answers'} />
+      <RatingsReviews productId={featuredProduct.id} clickTracker={clickTracker} componentName={'Reviews & Ratings'} />
     </div>
   );
 };
