@@ -16,6 +16,14 @@
   margin: 20px;
 }
 
+.feature-table-dark > h4 {
+  font-size: 32px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 100;
+  margin: 20px;
+}
+
 .feature {
   font-size: 28;
   font-weight: 400;
@@ -23,7 +31,20 @@
 
 .feature-table {
   position: fixed;
-  background: white;
+  background: rgba(244, 255, 248, 1);
+  font-family: sans-serif;
+  font-weight: 100;
+  width: 50%;
+  height: 30%;
+  overflow: scroll;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.feature-table-dark {
+  position: fixed;
+  background: rgba(28, 55, 56, 1);
   font-family: sans-serif;
   font-weight: 100;
   width: 50%;

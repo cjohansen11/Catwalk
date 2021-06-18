@@ -1,15 +1,12 @@
 import * as React from 'react';
 import axios from 'axios';
 import Productinformation from './Productinformation.jsx';
-import ImageGallaryComponent from './corosel.jsx';
+import ImageGallary from './ImageGallary.jsx';
 import Productdescription from './Productdescription.jsx';
 import Addtocart from './Addtocart.jsx';
 import SingleStarRating from './SingleStarRating.jsx';
-// import Imagegallery from './Imagegallery.jsx';
-// import config from './config.js';
 import '../../styles/overview.css';
 import GET from '../../../../lib/related.js';
-
 
 class Overview extends React.Component {
   constructor(props) {
@@ -26,11 +23,8 @@ class Overview extends React.Component {
 
     this.updateCurrentSelectedStyle = this.updateCurrentSelectedStyle.bind(this);
     this.updateCart = this.updateCart.bind(this);
-    this.updateStyleArayyy = this.updateStyleArayyy.bind(this);
+    this.updateStyleArray = this.updateStyleArray.bind(this);
     this.styleDropdown = this.styleDropdown.bind(this);
-
-
-
   }
 
   updateCart(data) {
@@ -39,31 +33,23 @@ class Overview extends React.Component {
     });
   }
 
-  updateStyleArayyy(styleObj) {
+  updateStyleArray(styleObj) {
     this.styleDropdown(styleObj);
   }
 
   updateCurrentSelectedStyle(styleObj) {
-
-
     this.setState({
       currentSelectedStyle: styleObj,
     });
-
-
-
   }
 
-  componentDidMount() {
-
-    GET.featuredProduct(this.props.featuredProduct.id)
+  renderPage() {
+    GET.featuredProduct(this.props.featuredProduct)
       .then((data) => {
-
-
         this.setState({
           currentProductInfo: data.data
         });
-        return GET.productStyles(this.props.featuredProduct.id);
+        return GET.productStyles(this.props.featuredProduct);
       })
       .then((data) => {
 
@@ -75,11 +61,11 @@ class Overview extends React.Component {
         }
 
         this.setState({
-          currentProductStylesInfo: data.data,
+          currentProductStylesInfo: data.data.results,
           currentSelectedStyle: currentSelected
-          // default could be the defualt being true
+
         });
-        return GET.productReviews(this.props.featuredProduct.id);
+        return GET.productReviews(this.props.featuredProduct);
       })
       .then((data) => {
 
@@ -88,74 +74,26 @@ class Overview extends React.Component {
         });
         return GET.getCart();
       })
-
       .then((data) => {
-
         this.setState({
           cart: data.data
         });
         this.styleDropdown();
-
       })
       .catch((error) => {
         console.log('the data did not render', error);
       });
   }
+  componentDidMount() {
+    this.renderPage();
+  }
 
 
   componentDidUpdate(prevProps) {
     if (this.props.featuredProduct !== prevProps.featuredProduct) {
-
-
-
-      GET.featuredProduct(this.props.featuredProduct.id)
-        .then((data) => {
-
-
-          this.setState({
-            currentProductInfo: data.data
-          });
-          return GET.productStyles(this.props.featuredProduct.id);
-        })
-        .then((data) => {
-
-          var currentSelected = data.data.results[0];
-          for (var i = 0; i < data.data.results.length; i++) {
-            if (data.data.results[i]['default?'] === true) {
-              currentSelected = data.data.results[i];
-            }
-          }
-
-          this.setState({
-            currentProductStylesInfo: data.data,
-            currentSelectedStyle: currentSelected
-            // default could be the defualt being true
-          });
-          return GET.productReviews(this.props.featuredProduct.id);
-        })
-        .then((data) => {
-
-          this.setState({
-            ratings: data.data.ratings
-          });
-          return GET.getCart();
-        })
-
-        .then((data) => {
-
-          this.setState({
-            cart: data.data
-          });
-          this.styleDropdown();
-
-        })
-        .catch((error) => {
-          console.log('the data did not render', error);
-        });
+      this.renderPage();
     }
   }
-
-
 
   styleDropdown(styleObj) {
     this.setState({
@@ -166,8 +104,6 @@ class Overview extends React.Component {
     } else {
       var currentStyleArray = Object.entries(styleObj.skus);
     }
-
-
     var styleStockArray = [];
     for (var j = 0; j < currentStyleArray.length; j++) {
       var value = currentStyleArray[j][1].size;
@@ -198,39 +134,24 @@ class Overview extends React.Component {
     this.setState({
       styleArray: styleStockArray
     });
-
-
   }
 
-
   render() {
-
     return (
-
       <div className='overview'>
-
-
         <div className='galleryContainer'>
-          <ImageGallaryComponent currentStyle={this.state.currentSelectedStyle} />
+          <ImageGallary currentStyle={this.state.currentSelectedStyle} />
         </div>
+        <div className={this.props.isDarkMode ? 'productContainer-dark' : 'productContainer'}>
 
-
-        <div className='productContainer'>
           <div className='infocontainer'>
-            <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} ratings={this.state.ratings} />
-            <SingleStarRating ratings={this.state.ratings} />
+            <Productinformation currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
+            <SingleStarRating ratings={this.state.ratings} isDark={this.props.isDarkMode} />
           </div>
-
-          <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArrayy={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArayyy} />
-
+          <Addtocart currentStyles={this.state.currentProductStylesInfo} updateCurrentStyle={this.updateCurrentSelectedStyle} currentStyle={this.state.currentSelectedStyle} styleArray={this.state.styleArray} updateOverCart={this.updateCart} updateStyleArray={this.updateStyleArray} />
           <Productdescription currentProduct={this.state.currentProductInfo} currentStyle={this.state.currentSelectedStyle} />
         </div>
-
-
       </div>
-
-
-
     );
   }
 }

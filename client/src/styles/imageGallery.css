@@ -5,6 +5,11 @@
 
 }
 
+.imageContainer {
+
+width: 500px;
+}
+
 .carousel-root {
 
 }
@@ -60,3 +65,5 @@ top:400px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+

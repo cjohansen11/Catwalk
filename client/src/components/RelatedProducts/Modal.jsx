@@ -4,7 +4,7 @@ import React from 'react';
 import ModalRows from './ModalRows.jsx';
 import '../../styles/modal.css';
 
-const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
+const Modal = ({ setToggleModal, featuredProduct, comparedProduct, componentName, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let similarValues = [];
@@ -23,11 +23,10 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
   });
 
   return (
-    <div className={`${'modal'}`} onClick={() => setToggleModal(false)}>
-      <div className={`${'feature-table'}`}>
-        {/* <button className={'button'} onClick={() => setToggleModal(false)}>Close</button> */}
+    <div className={`${'modal'}`} onClick={() => setToggleModal(false)} role="tooltip">
+      <div className={`${isDarkMode ? 'feature-table-dark' : 'feature-table'}`}>
         <h4>Comparison Table</h4>
-        <table>
+        <table role="grid">
           <thead>
             <tr>
               <th colSpan="1">{featuredProduct.name}</th>
@@ -44,19 +43,22 @@ const Modal = ({ setToggleModal, featuredProduct, comparedProduct }) => {
             {similarFeatures.length ? similarFeatures.map(feature => {
               return <ModalRows
                 key={Math.random()}
-                feature={feature} />;
+                feature={feature}
+                componentName={'Related Product'} />;
             }) : null }
             {!similarFeatures.length ? featuredProduct.features.map(feature => {
               return <ModalRows
                 key={Math.random()}
                 feature={feature}
-                type={'featured'} />;
+                type={'featured'}
+                componentName={'Related Product'} />;
             }) : null}
             {!similarFeatures.length ? comparedProduct.details.features.map(feature => {
               return <ModalRows
                 key={Math.random()}
                 feature={feature}
-                type={'compared'} />;
+                type={'compared'}
+                componentName={'Related Product'} />;
             }) : null}
           </tbody>
         </table>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { SiAddthis } from 'react-icons/si';
 
 import OutfitCard from './OutfitCard.jsx';
 import '../../styles/relatedProducts.css';
 
-const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, removeOutfit, outfitList }) => {
+const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, removeOutfit, outfitList, isDarkMode, componentName }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
@@ -18,7 +19,7 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
     outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
     if (cardCount + 2 <= outfitCards.length) {
       outfitCards.forEach(card => {
-        card.style.transform = `translateX(${cardCount * -230}px)`;
+        card.style.transform = `translateX(${cardCount * -260}px)`;
         card.style.transitionDuration = '0.5s';
       });
       setCardCount(cardCount + 1);
@@ -29,7 +30,7 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
     outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
     if (cardCount > 1) {
       outfitCards.forEach(card => {
-        card.style.transform = `translateX(${((cardCount - 1) * -230) + 230}px)`;
+        card.style.transform = `translateX(${((cardCount - 1) * -260) + 260}px)`;
         card.style.transitionDuration = '0.5s';
       });
       setCardCount(cardCount - 1);
@@ -38,32 +39,34 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
 
   /* ** USE EFFECT CALLS ** */
   useEffect(() => {
-    yourOutfitList.length < 3 ? setHideRightArrow(true) : setHideRightArrow(false);
+    yourOutfitList.length < 4 ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [yourOutfitList]);
 
   useEffect(() => {
     cardCount === 1 ? setHideLeftArrow(true) : setHideLeftArrow(false);
-    (cardCount + 2) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
+    (cardCount + 3) === outfitCards.length ? setHideRightArrow(true) : setHideRightArrow(false);
   }, [cardCount]);
 
   return (
     <>
-      <div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}>
-        <div className={`${'left_arrow'}
+      <div className={`${'container'} ${'outfit-carousel'} ${'outfit-container'}`}role="figure">
+        <div className={`${isDarkMode ? 'left_arrow-dark' : 'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`}
         onClick={handlePrevClickOutfit}>❮</div>
-        <div className={`${'productCard'} ${'add-to-outfit'} ${'outfit-card'}`}
+        <div className={`${isDarkMode ? 'productCard-dark' : 'productCard'} ${isDarkMode ? 'add-to-outfit-dark' : 'add-to-outfit'} ${'outfit-card'}`}
           onClick={handleAddToOutfit} >
-          <div className={'plus-sign'}>+</div>
+          <div className={'plus-sign'}><SiAddthis /></div>
           <div className={'add-to-outfit-text'}>Add to Outfit</div>
         </div>
         {yourOutfitList.map(product => {
           return <OutfitCard
             key={product.details.id + product.details.name}
             product={{product}}
-            removeOutfit={removeOutfit} />;
+            removeOutfit={removeOutfit}
+            isDarkMode={isDarkMode}
+            componentName={'Related Product'} />;
         })}
-        <div className={`${'right_arrow'}
+        <div className={`${isDarkMode ? 'right_arrow-dark' : 'right_arrow'}
         ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={handleNextClickOutfit}>❯</div>
       </div>
     </>

@@ -25,6 +25,7 @@
   flex-direction: row;
   margin-top: 25px;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .answer_button {
@@ -33,4 +34,8 @@
   border: none;
   text-size: 11px;
   text-decoration: underline;
+}
+
+.helpful-click {
+  cursor: pointer;
 }

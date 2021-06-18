@@ -3,18 +3,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import '../../styles/imageGallery.css';
 import ExpandedView from './ExpandedView.jsx';
-class ImageGallaryComponent extends React.Component {
+class ImageGallary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       toggleExpanded: false,
       currentUrl: '',
     };
-
     this.togglenotexpanded = this.togglenotexpanded.bind(this);
   }
-
-
   toggle(e, value, url) {
     e.preventDefault();
     console.log('this will run the modal');
@@ -36,31 +33,21 @@ class ImageGallaryComponent extends React.Component {
       return <span>Loading...</span>;
     }
     return (
-      <div className ='galleryContainer'>
-
+      <div className='imageContainer'>
         <Carousel autoPlay interval="5000" transitionTime="500" >
-
-
           {this.props.currentStyle.photos.map(photo => {
             return <div className='photodiv' key={photo.url} onClick={(event) => { this.toggle(event, true, photo.url); }}>
-
               <img className='photo' src={photo.url} />
-
             </div>;
           })}
-
         </Carousel>
-
         {this.state.toggleExpanded ? <ExpandedView
           setToggle={this.togglenotexpanded}
           photoUrl={this.state.currentUrl}
         /> : null}
-
       </div>
-
-
     );
   }
 }
 
-export default ImageGallaryComponent;
+export default ImageGallary;

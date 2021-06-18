@@ -65,7 +65,8 @@ const RatingsReviews = ({ productId }) => {
 
   return (
     <div className = 'ratingsReviews'>
-      <a id='route'><h1>RatingsReviews</h1> </a>
+      <a id='route'></a>
+      <h1>RatingsReviews</h1>
       <div className='ratingsReviewsContainer'>
         {/* Ratings */}
         <Ratings

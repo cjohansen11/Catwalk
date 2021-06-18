@@ -8,7 +8,8 @@ const ModalAnswer = ({ show, close }) => {
   const [values, setValues] = useState({
     answer: '',
     nickname: '',
-    email: ''
+    email: '',
+    photos: [],
   });
 
   const addAnswer = (values) => {
@@ -64,31 +65,39 @@ const ModalAnswer = ({ show, close }) => {
         }}
       >
         <div className="modal-header">
-          <p>Add Answer</p>
+          <p>Submit your Answer</p>
           <span onClick={close} className="close-modal-btn">x</span>
         </div>
         <div className="modal-content">
           <div className="modal-body">
             <div className="modal-form">
               <div className="modal-input">
-                <input
+                <label>Your Answer*</label>
+                <textarea
                   value={values.answer}
-                  type="text"
-                  placeholder="Answer"
+                  type="textarea"
+                  rows="20"
+                  columns="20"
+                  maxLength="1000"
+                  placeholder="Your Question*"
                   onChange={handleAnswerText}
-                />
+                ></textarea>
+                <label>What is your nickname*</label>
                 <input
                   value={values.nickname}
                   type="text"
-                  placeholder="Nickname"
+                  placeholder="Example: jack543!"
                   onChange={handleNickname}
                 />
+                <label>Your Email*</label>
                 <input
                   value={values.email}
                   type="text"
-                  placeholder="Email"
+                  placeholder="Example: jack@email.com"
                   onChange={handleEmail}
                 />
+                <span>For authentication reasons, you will not be emailed</span>
+                <input type="file" accept="image/*" multiple/>
               </div>
             </div>
           </div>

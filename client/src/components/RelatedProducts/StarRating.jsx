@@ -1,9 +1,9 @@
 import React from 'react';
 
-import CardStyles from '../../styles/productCard.css';
+// import CardStyles from '../../styles/productCard.css';
 import '../../styles/starRating.css';
 
-const StarRating = ({ ratings }) => {
+const StarRating = ({ ratings, componentName }) => {
 
   /* ** CHECKS FOR RATINGS ** */
   if (!Object.keys(ratings).length) {

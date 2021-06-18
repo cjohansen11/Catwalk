@@ -1,63 +1,44 @@
 import React from 'react';
-import ProductCard from '../ProductCard.jsx';
+import RelatedProduct from '../RelatedProduct.jsx';
+import GET from '../../../../../lib/related.js';
+const axios = require('axios');
 import { render, fireEvent, screen } from '@testing-library/react';
-import { toHaveStyle } from '@testing-library/jest-dom';
 
-describe('Product Card', () => {
-  // Contains data for product ID:19653 includes Featured Product data, Styles, and Reviews
-  const sampleData = {
-    product: {
-      details: {
-        "id": 19653,
-        "campus": "hr-rfe",
-        "name": "Obie Pants",
-        "slogan": "Non dolorum in repellendus.",
-        "description": "Quos magni est voluptatum cum autem. Quaerat dolorum ex voluptas modi aut quas. Voluptas quisquam cupiditate voluptatem suscipit nobis excepturi quidem iusto.",
-        "category": "Pants",
-        "default_price": "219.00",
-        "created_at": "2021-02-23T19:24:34.674Z",
-        "updated_at": "2021-02-23T19:24:34.674Z",
-        "features": [
-          {
-            "feature": "Material",
-            "value": "\"Armor Weave\""
-          },
-          {
-            "feature": "Lens",
-            "value": "\"Ultrasheen Silver\""
-          }
-        ]
-      },
-      reviews: {
-        "product_id": "19653",
-        "ratings": {
-          "2": "5",
-          "3": "5",
-          "4": "6",
-          "5": "5"
-        },
-        "recommended": {
-          "true": "21"
-        },
-        "characteristics": {
-          "Fit": {
-            "id": 65973,
-            "value": "3.0000000000000000"
-          },
-          "Length": {
-            "id": 65974,
-            "value": "2.7619047619047619"
-          },
-          "Comfort": {
-            "id": 65975,
-            "value": "2.8571428571428571"
-          },
-          "Quality": {
-            "id": 65976,
-            "value": "3.2380952380952381"
-          }
+jest.mock('axios');
+
+describe('server requests needed for related products component', () => {
+  it('should return the name of the product with ID 19653', async () => {
+    axios.get.mockResolvedValue({
+      product: {
+        details: {
+          "id": 19653,
+          "campus": "hr-rfe",
+          "name": "Obie Pants",
+          "slogan": "Non dolorum in repellendus.",
+          "description": "Quos magni est voluptatum cum autem. Quaerat dolorum ex voluptas modi aut quas. Voluptas quisquam cupiditate voluptatem suscipit nobis excepturi quidem iusto.",
+          "category": "Pants",
+          "default_price": "219.00",
+          "created_at": "2021-02-23T19:24:34.674Z",
+          "updated_at": "2021-02-23T19:24:34.674Z",
+          "features": [
+            {
+              "feature": "Material",
+              "value": "\"Armor Weave\""
+            },
+            {
+              "feature": "Lens",
+              "value": "\"Ultrasheen Silver\""
+            }
+          ]
         }
-      },
+      }
+    });
+
+    const getProduct = await GET.featuredProduct(19653);
+    expect(getProduct.product.details.name).toBe('Obie Pants');
+  });
+  it('should return the style id of the product with ID 19653', async () => {
+    axios.get.mockResolvedValue({
       styles: {
         "product_id": "19653",
         "results": [
@@ -336,44 +317,49 @@ describe('Product Card', () => {
           }
         ]
       }
-    }
-  }
+    });
 
-  it('should render the product name onto a card', () => {
-    const productCard = render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('OBIE PANTS')).toBeTruthy();
+    const getStyles = await GET.productStyles(19653);
+    expect(getStyles.styles.results[0].style_id).toBe(107111);
   });
-  it('should render the product category onto a card', () => {
-    render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('Pants')).toBeTruthy();
-  });
-  it('should render the product price onto a card', () => {
-    render(<ProductCard product={sampleData} ></ProductCard>);
-    expect(screen.queryByText('219.00')).toBeTruthy();
-  });
-  it('should render the product image onto a card', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasImage = container.getElementsByClassName('previewImage')[0];
-    expect(hasImage).toBeTruthy();
-  });
-  it('should render the product rating onto a card', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasRating = container.getElementsByClassName('productRating')[0];
-    expect(hasRating).toBeTruthy();
-  });
-  it('should render the action button onto a card', () => {
-    const { container } = render(<ProductCard product={sampleData} ></ProductCard>);
-    const hasActionButton = container.getElementsByClassName('actionButton')[0];
-    expect(hasActionButton).toBeTruthy();
-  });
-  it('should change the featured product when clicked', async () => {
-    render(<ProductCard product={sampleData} changeFeaturedProduct={jest.fn()} setCardCount={jest.fn()} ></ProductCard>);
-    const wholeProductCard = await screen.getByRole(/complementary/i);
-    fireEvent.click(wholeProductCard);
-  });
-  it('should change the featured product when clicked', async () => {
-    render(<ProductCard product={sampleData} setToggleModal={jest.fn()} setComparedProduct={jest.fn()}></ProductCard>);
-    const actionButton = await screen.getByRole(/button/i);
-    fireEvent.click(actionButton);
+  it('should return the style id of the product with ID 19653', async () => {
+    axios.get.mockResolvedValue({
+      reviews: {
+        "product_id": "19653",
+        "ratings": {
+          "2": "5",
+          "3": "5",
+          "4": "6",
+          "5": "5"
+        },
+        "recommended": {
+          "true": "21"
+        },
+        "characteristics": {
+          "Fit": {
+            "id": 65973,
+            "value": "3.0000000000000000"
+          },
+          "Length": {
+            "id": 65974,
+            "value": "2.7619047619047619"
+          },
+          "Comfort": {
+            "id": 65975,
+            "value": "2.8571428571428571"
+          },
+          "Quality": {
+            "id": 65976,
+            "value": "3.2380952380952381"
+          }
+        }
+      }
+    });
+
+    const getReviews = await GET.productReviews(19653);
+    expect(getReviews.reviews.ratings['2']).toBe('5');
+    expect(getReviews.reviews.ratings['3']).toBe('5');
+    expect(getReviews.reviews.ratings['4']).toBe('6');
+    expect(getReviews.reviews.ratings['5']).toBe('5');
   });
 });
