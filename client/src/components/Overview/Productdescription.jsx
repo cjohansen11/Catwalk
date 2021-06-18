@@ -9,16 +9,8 @@ class Productdescription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
-
-
-
   }
-
-
-
-
 
   render() {
     if (!this.props.currentProduct) {
@@ -26,7 +18,6 @@ class Productdescription extends React.Component {
     }
     return (
       <div className='productinfocontainer'>
-
         <h3>{this.props.currentProduct.slogan}</h3>
         <p>Description: {this.props.currentProduct.description} </p>
         <div>
@@ -34,9 +25,9 @@ class Productdescription extends React.Component {
           <p>{this.props.currentProduct.features[0].feature}:{this.props.currentProduct.features[0].value}</p>
         </div>
         <div className='socialButtons'>
-          <a href='https://www.facebook.com/' className='fB'><IoLogoFacebook/></a>
-          <a href='https://instagram.com/' className='iG'><FaInstagram/></a>
-          <a href='https://twitter.com/' className='tW'><TiSocialTwitter/></a>
+          <a href='https://www.facebook.com/' className='fB'><IoLogoFacebook /></a>
+          <a href='https://instagram.com/' className='iG'><FaInstagram /></a>
+          <a href='https://twitter.com/' className='tW'><TiSocialTwitter /></a>
         </div>
       </div>
     );

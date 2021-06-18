@@ -2,7 +2,8 @@
 
 
 .modal-wrapper {
-  background-color: rgb(243, 243, 243);
+  background-color: rgba(244, 255, 248, 1);
+  color: rgba(0, 15, 8, 1);
   width: 60%;
   max-width: 400px;
   margin: 4rem auto;
@@ -13,8 +14,6 @@
 }
 
 .modal-header {
-  background: #bbbbbb;
-  color: white;
   padding: .5rem;
   display: flex;
   align-items: center;
@@ -38,7 +37,6 @@
 
 .modal-body h3 {
   font-size: 1.8rem;
-  color: palevioletred;
 }
 
 .modal-input {

@@ -13,6 +13,8 @@ import './QuestionsAndAnswers.css';
 
 const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode}) => {
 
+
+
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
   const [modalState, setModalState] = useState(false);
@@ -38,7 +40,10 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode})
       .then((res) => {
         // console.log('setListOfQuestions:  ', res.data);
         setListOfQuestions(res.data);
+        console.log('listOfQuestions:  ', listOfQuestions);
+        console.log('listOfAnswers:  ', listOfAnswers);
         // postReq();
+        console.log('featuredProduct:  ', JSON.stringify(featuredProduct))
       })
       .catch((err) => {
         // console.log('featuredProduct', featuredProduct);
@@ -61,12 +66,13 @@ const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode})
           featuredProduct={featuredProduct}
           listOfAnswers={listOfAnswers}/>
         <CreateQuestion
+          featuredProduct={featuredProduct}
           modalState={modalState}
           setModalState={setModalState}
           show={show}
           setShow={setShow} />
       </div>
-      <ModalQuestion className="modal-question" close={closeModalHandler} show={show}/>
+      <ModalQuestion className="modal-question" close={closeModalHandler} show={show} featuredProduct={featuredProduct} setShow={setShow} />
     </div>
   );
 };

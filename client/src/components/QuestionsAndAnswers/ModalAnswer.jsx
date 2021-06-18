@@ -66,7 +66,7 @@ const ModalAnswer = ({ show, close, question_id }) => {
         }}
       >
         <div className="modal-header">
-          <p>Submit your Answer</p>
+          <h3>Submit your Answer</h3>
           <span onClick={close} className="close-modal-btn">x</span>
         </div>
         <div className="modal-content">
@@ -80,7 +80,7 @@ const ModalAnswer = ({ show, close, question_id }) => {
                   rows="20"
                   columns="20"
                   maxLength="1000"
-                  placeholder="Your Answer*"
+                  placeholder="Answer..."
                   onChange={handleAnswerText}
                 ></textarea>
                 <label>What is your nickname*</label>

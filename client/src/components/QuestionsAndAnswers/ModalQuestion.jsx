@@ -3,14 +3,14 @@ import './ModalQuestion.css';
 import axios from 'axios';
 import GIT_TOKEN from '../../../../lib/config.js';
 
-const ModalQuestion = ({ show, close }) => {
+const ModalQuestion = ({ show, close, featuredProduct}) => {
 
   const [values, setValues] = useState({
     question: '',
     nickname: '',
     email: ''
   });
-
+  console.log(featuredProduct);
   const addQuestion = (values) => {
     axios({
       method: 'post',
@@ -22,7 +22,7 @@ const ModalQuestion = ({ show, close }) => {
         body: values.question,
         name: values.nickname,
         email: values.email,
-        'product_id': 19653
+        'product_id': featuredProduct.id
       }
     })
       .then((data) => {
@@ -46,16 +46,16 @@ const ModalQuestion = ({ show, close }) => {
     setValues({...values, email: e.target.value});
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    addQuestion(values);
-    setValues({
-      question: '',
-      nickname: '',
-      email: ''
-    });
-  };
 
+
+  const handleSubmit = e => {
+      addQuestion(values);
+      setValues({
+        question: '',
+        nickname: '',
+        email: ''
+      });
+  };
 
 
   if (show === true) {
@@ -66,23 +66,22 @@ const ModalQuestion = ({ show, close }) => {
         }}
       >
         <div className="modal-header">
-          <h3>Ask Your Question</h3>
-          <div>About the "Product Name Here”</div>
-          <span onClick={close} className="close-modal-btn">x</span>
-
+          <h3>&ensp;Ask Your Question</h3>
+          <p onClick={close} className="close-modal-btn">x</p>
         </div>
+        <div>&ensp; &ensp; About the {featuredProduct.name}</div>
         <div className="modal-content">
           <div className="modal-body">
             <div className="modal-form">
               <div className="modal-input">
-                <label>Your Question</label>
+                <label>Your Question*</label>
                 <textarea
                   value={values.question}
                   type="textarea"
                   rows="20"
                   columns="20"
                   maxLength="1000"
-                  placeholder="Your Question*"
+                  placeholder="Question..."
                   onChange={handleQuestionText}
                 ></textarea>
                 <label>Nickname*</label>
@@ -100,6 +99,7 @@ const ModalQuestion = ({ show, close }) => {
                   onChange={handleEmail}
                 />
                 <span>For authentication reasons, you will not be emailed</span>
+                <div>{}</div>
               </div>
             </div>
           </div>

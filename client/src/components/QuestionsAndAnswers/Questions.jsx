@@ -55,7 +55,10 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
             }) : null}
         </div>
       </div>
+      {filteredResults && numberOfQuestions < filteredResults.length ? (
       <button className="bottom-buttons" title="moreQuestionsButton" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Answered Questions</button>
+      ) : ('')
+      }
     </div>
   );
 };

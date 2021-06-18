@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../styles/rightsidecontainer.css';
 
-const SingleStarRating = ({ ratings }) => {
+const SingleStarRating = ({ ratings, isDark }) => {
 
   if (!Object.keys(ratings).length) {
     return (
@@ -10,7 +10,7 @@ const SingleStarRating = ({ ratings }) => {
     );
   }
 
-  /* ** THIS NEEDS WORK ** */
+
   let totalScore;
   let totalVotes;
   let percentage;
@@ -30,17 +30,14 @@ const SingleStarRating = ({ ratings }) => {
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   };
-
-
   return (
     <div className='ratingContainer'>
-
       <div className={`${'productRating'} ${'starr'}`} >
         <div className={'dark-starr'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
         <div className={'rating-starr'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       </div>
       <div className='seeAll'>
-        <a href='#route'>See All {totalVotes} Reviews</a>
+        <a className={isDark ? 'seeAllLink-dark' : 'seeAllLink'} href='#route'>See All {totalVotes} Reviews</a>
       </div>
     </div>
   );
