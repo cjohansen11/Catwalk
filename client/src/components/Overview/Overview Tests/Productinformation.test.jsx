@@ -86,19 +86,18 @@ describe('Product Information', () => {
       }
     }
   };
-  it('should render the product title onto page', () => {
+  it('should show the product information', async () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
-    expect(screen.getByText('Camo Onesie')).toBeInTheDocument();
+    await screen.getByText(/140.00/i);
   });
-  it('should render the product category onto the page', () => {
+  it('should show the product information', async () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
-    expect(screen.queryByText('Jackets')).toBeTruthy();
+    await screen.getByText(/Jackets/);
   });
-  it('should render the product price onto the page', () => {
+  it('should show the product information', async () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle} ></Productinformation>);
-    expect(screen.getByText('140.00')).toBeInTheDocument();
+    await screen.getByText(/Camo Onesie/i);
   });
-
 
   it('should have a div called saleContainer', () => {
     render(<Productinformation currentProduct={sampleCurrentProductInfo} currentStyle={sampleCurrentSelectedStyle}> </Productinformation>);
@@ -107,3 +106,4 @@ describe('Product Information', () => {
 
   });
 });
+

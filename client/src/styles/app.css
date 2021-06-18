@@ -1,3 +1,9 @@
+/* $dark-jungle-green: rgba(0, 15, 8, 1); 	// BACKGROUND
+$outer-space-crayola: rgba(28, 55, 56, 1);	// SECONDARY DARK
+$shadow-blue: rgba(117, 137, 163, 1);				// BORDER
+$mint-cream: rgba(244, 255, 248, 1);				// FONTS
+$honeydew: rgba(223, 248, 235, 1); 					// MISC light */
+
 html {
 	background-color: rgba(185, 220, 224, 0.8);
 }
@@ -8,15 +14,55 @@ html {
 	width: 1000px;
 	margin: auto;
 	padding: 0 40px 0 40px;
-	border: 2px solid	rgba(117, 137, 163, 0.8);
-	background-color: white;
+	border: 2px solid	rgba(223, 248, 235, 1);
+	background-color: rgba(244, 255, 248, 1);
+}
+
+.catwalk-dark {
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
+	margin: auto;
+	padding: 0 40px 0 40px;
+	border: 2px solid	rgba(117, 137, 163, 1);
+	background-color: rgba(28, 55, 56, 1);
+	color:rgba(223, 248, 235, 1);
 }
 
 h1.page-title {
 	font-family: sans-serif;
-	font-size: 40px;
+	color: rgba(0, 15, 8, 1);
+	font-size: 50px;
 	letter-spacing: 10px;
 	font-weight: 100;
 	padding: 0px;
-	margin: 30px auto 10px;
+	margin: 20px auto 30px;
+}
+
+h1.page-title-dark {
+	font-family: sans-serif;
+	color: rgba(223, 248, 235, 1);
+	font-size: 50px;
+	letter-spacing: 10px;
+	font-weight: 100;
+	padding: 0px;
+	margin: 20px auto 30px;
+}
+
+.toggle-mode {
+	font-size: 34px;
+	color: rgba(0, 15, 8, 1);
+	position: relative;
+	left: 980px;
+	top: 20px;
+	cursor: pointer;
+}
+
+.toggle-mode-dark {
+	font-size: 34px;
+	color: rgba(223, 248, 235, 1);
+	position: relative;
+	left: 980px;
+	top: 20px;
+	cursor: pointer;
 }

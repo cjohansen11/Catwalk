@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import './Answers.css';
 import Answer from './Answer.jsx';
+import './Answers.css';
+import axios from 'axios';
 
-const Answers = ( {answerList} ) => {
+const Answers = ( {answerList, question_id} ) => {
 
   const [numberOfAnswers, setNumberOfAnswers] = useState(2);
-  const [toggled, setToggled] = useState(true);
+  const [toggled, setToggled] = useState(false);
+
   // const [answerHelpfulness, setAnswerHelpfulness] = useState(0)
   // console.log('answerList: listOfAnswers', answerList);
 
   useEffect(() => {
   }, [toggled, numberOfAnswers]);
+
+
 
   const photosArray = (photos) => {
     if (photos) {
@@ -33,8 +37,9 @@ const Answers = ( {answerList} ) => {
 
               <div className="answer" key={index}>
                 <div className="answer-body"> {answer.body}</div>
-                <div className="answer__user">by {answer.answerer_name}&ensp; {date}
-                <Answer answerHelpfulness={answer.helpfulness}/>
+                <div className="answer__user">by&ensp;
+                  <div style={{fontWeight: "bold"}}>{answer.answerer_name}, </div>&ensp; {date}
+                  <Answer answerHelpfulness={answer.helpfulness} answer_id={answer.answer_id} />
                 </div>
                 <div className="answer-photos">
                   {photosArray(answer.photos)}
@@ -42,8 +47,12 @@ const Answers = ( {answerList} ) => {
               </div>
             );
           }) : ''}
-        <button className="answer-button"
-          onClick={() => {setNumberOfAnswers(toggled === true ? answerList.length : numberOfAnswers); setToggled(toggled ? false : true) }}>More Answers</button>
+        {toggled ? (
+          <button className="answer-button" onClick={() => { setNumberOfAnswers(2); setToggled(false) }}>Collapse Answers</button>
+        ) : (
+          <button className="answer-button"
+            onClick={() => { setNumberOfAnswers( answerList.length); setToggled(true) }}>More Answers</button>
+        )}
       </div>
 
     </div>

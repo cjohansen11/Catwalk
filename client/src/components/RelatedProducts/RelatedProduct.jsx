@@ -9,10 +9,11 @@ import Carousel from './Carousel.jsx';
 import YourOutfitList from './YourOutfitList.jsx';
 import RelatedStyles from '../../styles/relatedProducts.css';
 
-const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
+const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, componentName, clickTracker }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
+  let component = 'Related Products'
 
   /* ** STATE(s) ** */
   const [relatedProducts, setRelatedProducts] = useState([]); // Array
@@ -71,19 +72,23 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct }) => {
 
 
   return (
-    <div className={'related-container'}>
-      <div className={'related'}><h2 className={'title'}>RELATED PRODUCTS</h2></div>
+    <div className={'related-container'} onClick={e => clickTracker(e, componentName)}>
+      <div className={'related'}><h2 className={isDarkMode ? 'title-dark' : 'title'}>RELATED PRODUCTS</h2></div>
       <Carousel
         relatedProductList={relatedProductList}
         changeFeaturedProduct={changeFeaturedProduct}
-        featuredProduct={featuredProduct} />
-      <div className={'outfit'}><h2 className={'title'}>YOUR OUTFIT</h2></div>
+        featuredProduct={featuredProduct}
+        isDarkMode={isDarkMode}
+        componentName={'Related Product'} />
+      <div className={'outfit'}><h2 className={isDarkMode ? 'title-dark' : 'title'}>YOUR OUTFIT</h2></div>
       <YourOutfitList
         handleAddToOutfit={handleAddToOutfit}
         yourOutfitList={yourOutfitList}
         setOutfitList={setOutfitList}
         outfitList={outfitList}
-        removeOutfit={removeOutfit} />
+        removeOutfit={removeOutfit}
+        isDarkMode={isDarkMode}
+        componentName={'Related Product'} />
     </div>
   );
 };

@@ -5,14 +5,27 @@
 display: flex;
 flex-direction: column;
 height: 100%;
-
   padding: 20px;
+
 }
+
+.productContainer-dark {
+  /* background-color: grey; */
+display: flex;
+flex-direction: column;
+height: 100%;
+  padding: 20px;
+
+  color:rgba(223, 248, 235, 1);
+}
+
 
 .infocontainer {
   /* background-color: brown; */
   display: flex;
+
 }
+
 
 
 .saleContainer {
@@ -28,7 +41,9 @@ PRODUCT INFO SECTION */
   font-family: sans-serif;
 }
 
-
+.categoryText {
+text-transform: uppercase;
+}
 
 .saleText {
   font-family: sans-serif;
@@ -76,7 +91,23 @@ align-content: left;
   margin-left: 77px;
   margin-top: -16px;
 
+
 }
+
+
+.seeAllLink-dark:visited {
+
+  color:rgba(223, 248, 235, 1);
+}
+
+.seeAllLink-dark:link {
+
+  color:rgba(223, 248, 235, 1);
+}
+
+
+
+
 
 .socialButtons {
 display: flex;

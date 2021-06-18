@@ -5,7 +5,7 @@ import ProductCard from './ProductCard.jsx';
 import Modal from './Modal.jsx';
 import '../../styles/relatedProducts.css';
 
-const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }) => {
+const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct, isDarkMode, componentName }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let eachCard = Array.from(document.getElementsByClassName('product-card-array'));
@@ -54,7 +54,7 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
   return (
     <>
       <div className={`${'container'} ${'related-carousel'}`} role="figure">
-        <div className={`${'left_arrow'}
+        <div className={`${isDarkMode ? 'left_arrow-dark' : 'left_arrow'}
         ${hideLeftArrow ? 'hideLeftArrow' : 'activeArrow'}`} onClick={() => handlePrevClick()} role="button" id="prev-button">❮</div>
         {relatedProductList.map(product => {
           return <ProductCard
@@ -63,15 +63,19 @@ const Carousel = ({ relatedProductList, changeFeaturedProduct, featuredProduct }
             changeFeaturedProduct={changeFeaturedProduct}
             setToggleModal={setToggleModal}
             setComparedProduct={setComparedProduct}
-            setCardCount={setCardCount} />;
+            setCardCount={setCardCount}
+            isDarkMode={isDarkMode}
+            componentName={'Related Product'} />;
         })}
-        <div className={`${'right_arrow'}
+        <div className={`${isDarkMode ? 'right_arrow-dark' :'right_arrow'}
         ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={() => handleNextClick()} role="button" id="next-button">❯</div>
       </div>
       {toggleModal ? <Modal
         setToggleModal={setToggleModal}
         featuredProduct={featuredProduct}
-        comparedProduct={comparedProduct} /> : null}
+        comparedProduct={comparedProduct}
+        componentName={'Related Product'}
+        isDarkMode={isDarkMode} /> : null}
     </>
   );
 };
