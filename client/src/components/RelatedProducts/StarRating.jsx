@@ -36,8 +36,8 @@ const StarRating = ({ ratings }) => {
 
   return (
     <div className={`${'productRating'} ${'star'}`} >
-      <div className={'dark-star'}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <div className={'rating-star'} style={divStyle}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div className={'dark-star'}><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span></div>
+      <div className={'rating-star'} style={divStyle}><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span><span className={'star-icons'}>★</span></div>
     </div>
   );
 };
