@@ -25,7 +25,7 @@ const RatingsReviews = ({ productId }) => {
   useEffect(() => {
     Requests.getReviews(productId, currentSortingOption)
       .then((data) => {
-        console.log(data.data.results);
+        // console.log(data.data.results);
         setReviews(data.data.results);
       })
       .catch((err) => {
@@ -64,7 +64,6 @@ const RatingsReviews = ({ productId }) => {
     }
   }, [reviews]);
 
-  console.log(avarageRating);
   return (
     <div className = 'ratingsReviews'>
       <a id='route'></a>
