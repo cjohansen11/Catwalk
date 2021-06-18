@@ -24,13 +24,16 @@ const Answers = ( {answerList, question_id} ) => {
     }
   };
 
+  const sortAnswers = (filtered) => {
+    return filtered.sort((a, b) => a - b);
+  };
 
   return (
     <div className="answers">
       <h3 className="answers-title">A:</h3>
       <div className="answer-container">
         {answerList ?
-          answerList.slice(0, numberOfAnswers).map((answer, index) => {
+          sortAnswers(answerList).slice(0, numberOfAnswers).map((answer, index) => {
             let date = new Date(answer.date).toDateString().split(' ').slice(1).join(', ');
 
             return (

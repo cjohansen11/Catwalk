@@ -10,7 +10,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
   const [query, setQuery] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
 
-  // console.log("listQuestions:  ",listOfQuestions)
+
   const filteredQuestions = () => {
     if (query.length < 3) {
       setFilteredResults(listOfQuestions.results);
@@ -22,9 +22,11 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
         }
       }
     }
-    // console.log('filtered:  ', filteredResults);
   };
 
+  const sortQuestions = (filtered) => {
+    return filtered.sort((a, b) => a - b);
+  };
 
   useEffect(() => {
     filteredQuestions();
@@ -47,7 +49,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
       <div className="questions">
         <div>
           {filteredResults ?
-            filteredResults.slice(0, numberOfQuestions).map((q, i) => {
+            sortQuestions(filteredResults).slice(0, numberOfQuestions).map((q, i) => {
               // console.log(q);
               return (
                 <Question key={i} question={q} listOfAnswers={listOfAnswers} setListOfAnswers={setListOfAnswers} />
@@ -56,7 +58,7 @@ const Questions = ({ listOfQuestions, listOfAnswers, setListOfAnswers }) => {
         </div>
       </div>
       {filteredResults && numberOfQuestions < filteredResults.length ? (
-      <button className="bottom-buttons" title="moreQuestionsButton" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Answered Questions</button>
+        <button className="bottom-buttons" title="moreQuestionsButton" onClick={() => setNumberOfQuestions(numberOfQuestions + 2)}>More Answered Questions</button>
       ) : ('')
       }
     </div>

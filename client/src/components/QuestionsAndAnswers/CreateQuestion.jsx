@@ -7,7 +7,7 @@ const CreateQuestion = ( {modalState, setModalState, show, setShow, featuredProd
 
   return (
     <div className="bottom-buttons-container">
-      <button className="bottom-buttons" title="questionButton" onClick={() => setShow(true)}>Ask Your Question</button>
+      <button className="bottom-buttons question-button" title="questionButton" onClick={() => setShow(true)}>Ask Your Question</button>
 
     </div>
   );
