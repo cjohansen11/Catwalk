@@ -29,6 +29,7 @@ class Productdescription extends React.Component {
           <a href='https://instagram.com/' className='iG'><FaInstagram /></a>
           <a href='https://twitter.com/' className='tW'><TiSocialTwitter /></a>
         </div>
+
       </div>
     );
   }
