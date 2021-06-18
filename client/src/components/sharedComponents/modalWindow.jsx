@@ -13,9 +13,11 @@ const ModalWindow = ({
   };
 
   return (
-    <div className = 'modalWindow'>
-      <button onClick = {closeMe} >CloseMe!</button>
-      {children}
+    <div className = 'modal'>
+      <div className = 'modalWindow'>
+        <span onClick = {closeMe} >&times;</span>
+        {children}
+      </div>
     </div>
   );
 };
