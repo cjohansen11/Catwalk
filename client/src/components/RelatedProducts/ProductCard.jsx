@@ -5,7 +5,7 @@ import { IoIosStar } from 'react-icons/io';
 import StarRating from './StarRating.jsx';
 import '../../styles/productCard.css';
 
-const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct, setCardCount, isDarkMode, componentName }) => {
+const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setComparedProduct, setCardCount, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   product = product.product;
@@ -31,19 +31,13 @@ const ProductCard = ({ product, changeFeaturedProduct, setToggleModal, setCompar
       <h5 className={'productName'} >{product.details.name.toUpperCase()}</h5>
       <h5 className={'productCategory'}>{product.details.category}</h5>
       <StarRating
-        ratings={ratings}
-        componentName={'Related Product'} />
+        ratings={ratings} />
       {defaultStyle.sale_price ? <div className={'productPrice'}><h5 className={'sale-price'}>{defaultStyle.sale_price}</h5><h5 className={'default-price'}>{defaultStyle.original_price}</h5></div> : <div className={'productPrice'}><h5>{defaultStyle.original_price}</h5></div>}
       <div className={'actionButton'} onClick={(e) => {
         e.stopPropagation();
         setComparedProduct(product);
         setToggleModal(true);
       }} role="button"><IoIosStar /></div>
-      {/* <div className={'actionButton'} onClick={(e) => {
-        e.stopPropagation();
-        setComparedProduct(product);
-        setToggleModal(true);
-      }} role="button">★</div> */}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { SiAddthis } from 'react-icons/si';
 import OutfitCard from './OutfitCard.jsx';
 import '../../styles/relatedProducts.css';
 
-const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, removeOutfit, outfitList, isDarkMode, componentName }) => {
+const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, removeOutfit, outfitList, isDarkMode }) => {
 
   /* ** COMPONENT VARIABLE(s) ** */
   let outfitCards = Array.from(document.getElementsByClassName('outfit-card'));
@@ -63,8 +63,7 @@ const YourOutfitList = ({ handleAddToOutfit, yourOutfitList, setOutfitList, remo
             key={product.details.id + product.details.name}
             product={{product}}
             removeOutfit={removeOutfit}
-            isDarkMode={isDarkMode}
-            componentName={'Related Product'} />;
+            isDarkMode={isDarkMode} />;
         })}
         <div className={`${isDarkMode ? 'right_arrow-dark' : 'right_arrow'}
         ${hideRightArrow ? 'hideRightArrow' : 'activeArrow'}`} onClick={handleNextClickOutfit}>❯</div>

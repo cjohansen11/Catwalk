@@ -11,10 +11,8 @@ import CreateAnswer from './CreateAnswer.jsx';
 import App from '../App.jsx';
 import './QuestionsAndAnswers.css';
 
-const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode}) => {
 
-
-const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, clickTracker, componentName }) => {
+const QuestionsAndAnswers = ( {featuredProduct, setFeaturedProduct, isDarkMode, clickTracker, componentName }) => {
 
   const [listOfQuestions, setListOfQuestions] = useState([]);
   const [listOfAnswers, setListOfAnswers] = useState([]);
