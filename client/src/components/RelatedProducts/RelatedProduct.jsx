@@ -1,6 +1,7 @@
 /* ** LIBRARY(s) ** */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const _ = require('lodash');
 
 /* ** ADDTIONAL IMPORT(s) ** */
 import GET from '../../../../lib/related.js';
@@ -13,7 +14,7 @@ const RelatedProduct = ({ featuredProduct, setFeaturedProduct, isDarkMode, compo
 
   /* ** COMPONENT VARIABLE(s) ** */
   let localStorage = window.localStorage;
-  let component = 'Related Products'
+  let component = 'Related Products';
 
   /* ** STATE(s) ** */
   const [relatedProducts, setRelatedProducts] = useState([]); // Array

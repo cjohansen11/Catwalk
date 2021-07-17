@@ -1,10 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const ESLintPlugin = require('eslint-webpack-plugin');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
-const ESLintConfig = {
-  extensions: ['js', 'jsx']
-};
+// const ESLintConfig = {
+//   extensions: ['js', 'jsx']
+// };
 
 const config = {
   entry: {
@@ -39,9 +39,9 @@ const config = {
       }
     ]
   },
-  plugins: [
-    new ESLintPlugin(ESLintConfig)
-  ],
+  // plugins: [
+  //   new ESLintPlugin(ESLintConfig)
+  // ],
   output: {
     path: path.resolve(__dirname, './client/dist'),
     filename: 'app.bundle.js'
@@ -49,7 +49,7 @@ const config = {
 };
 
 module.exports = (env, argv) => {
-  if (argv.mode === 'production') { config['mode'] = 'production'; } else { config['mode'] = 'development'; }
+  if (argv.mode === 'production') { config['mode'] = 'production'; } else { config['mode'] = 'production'; }
 
   return config;
 };
